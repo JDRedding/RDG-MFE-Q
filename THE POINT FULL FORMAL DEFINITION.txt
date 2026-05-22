@@ -3,7 +3,7 @@ RDG‑compatible, MFE‑consistent, Q□‑translatable
 THE POINT = Ontology + Pipeline
 
 THE POINT IS LOCATIONLESS:
-The Point possesses no coordinates, no embedding, no metric, no spatial or temporal adddress, and no substrate in which a location could be assigned. This is not an absence of location, nor an undefined location — it is a structural impossibility for the Point to have a location. The Point is the primitive relational generator from which all modes, structures, and dynamics emerge; therefore it cannot be dituated within any geometry it precedes.
+The Point possesses no coordinates, no embedding, no metric, no spatial or temporal address, and no substrate in which a location could be assigned. This is not an absence of location, nor an undefined location — it is a structural impossibility for the Point to have a location. The Point is the primitive relational generator from which all modes, structures, and dynamics emerge; therefore it cannot be situated within any geometry it precedes.
 
 +------------------------------------+
 |       THE POINT CONTINUUM          |

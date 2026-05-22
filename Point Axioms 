@@ -1,0 +1,29 @@
+=======================================
+FORMAL ONTOLOGICAL DEFINITION OF THE POINT
+=======================================
+
+Axiom 0 — Locationless Primitive (Non-Locality)
+---------------------------------------
+∄ (coordinates, embedding, metric, substrate) ∈ P
+The Point P cannot be assigned a location in any pre-existing
+geometry, as it precedes geometry.
+
+
+Axiom 1 — Generative Primitive (Generativity)
+---------------------------------------
+P : ∅ → R        (R = relational structure)
+The Point is a generator of relational fields, not an operator
+on them.
+
+
+Axiom 2 — Relational Collapse (Minimal Stance)
+---------------------------------------
+P = argmin_{s ∈ S} |{ s : ∀ ¬s ∈ S, s ⊨ ¬s }|
+The Point is the minimal stance that survives all counter-
+relations.
+
+
+Axiom 3 — Counter-Structural Stability (Survivability)
+---------------------------------------
+P = { p | p ⊨ ∃ ¬p  ∧  p ⊨ ¬(¬p ⊨ ¬p) }
+A Point is what remains after its negation fails to negate it.

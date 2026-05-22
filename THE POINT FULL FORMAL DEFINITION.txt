@@ -101,8 +101,7 @@ Once stabilized, the point becomes a modal generator. The Q□ layer does not ap
     Q□(p) → ◇p  (projected possibility)
 
 These are not operators acting on a domain. They are generative modal
-projections that create the conditions under which modal operators may
-later exist. The Q□ layer is therefore the final generative lift before
+projections emergence that create the conditions under which modal operators may later exist. The Q□ layer is therefore the final generative lift before
 computability.
 
     □p = p is necessary in this field

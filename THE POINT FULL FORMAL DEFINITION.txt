@@ -21,7 +21,7 @@ The Point possesses no coordinates, no embedding, no metric, no spatial or tempo
 (Symbolic representation only — the Point has no location)
 
 THE POINT IS A GENERATOR, NOT AN OPERATOR:
-The Point does not act on pre‑existing objects, coordinates, or fields. It is not an operator applied to a domain. The Point is a generator: it produces relational structure, modes, and dynamics from nothing prior. Operators describe what has already been generated; generators create what comes next. The Point is therefore agenerative primitive, not an operational one.
+The Point does not act on pre‑existing objects, coordinates, or fields. It is not an operator applied to a domain. The Point is a generator: it produces relational structure, modes, and dynamics from nothing prior. Operators describe what has already been generated; generators create what comes next. The Point is therefore a generative primitive, not an operational one.
 
 +------------------------------------+
 |     THE GENERATIVE PRIMITIVE       |
@@ -95,13 +95,14 @@ A point is the intersection where all four fields agree on asingle stable outpu
 
 
 6. THE POINT AS Q□ TRANSLATION
-Once stabilized, the point becomes a modal operator:
+Once stabilized, the point becomes a modal generator:
 
     □p = p is necessary in this field
     ◇p = p is possible in this field
 
-The point is the □-fixed stance: the one that remains true underall admissible transformations. This is the first moment the pointbecomes computable.
+The point is the □-fixed stance: the one that remains true underall admissible transformations. 
 
+This is the first moment the pointbecomes computable. Computability arises because the generative stack has finally produced a domain on which operators may later act.
 
 7. THE POINT AS THE INFERRED ORIGINAL CHOICE
 Finally, the system back-infers:
@@ -177,7 +178,7 @@ Four stances:
     Affirm p     | Deny p
     Affirm ¬p    | Deny ¬p
 
-Modal expansions per cell:
+Modal generator expansions per cell:
     □p, ◇p, □¬p, ◇¬p
 
 Forced Bifurcation:
@@ -189,7 +190,7 @@ Forced Bifurcation:
             F4 = Stabilizer
 
 Q□ Translation:
-    Map configuration to modal sentences:
+    Map configuration to modal generator‑sentences:
         □Q(p), ◇Q(p), □Q(¬p), ◇Q(¬p)
 
 Infer original choice:
@@ -217,11 +218,7 @@ ANALYTICAL OBSERVATIONS
 
 3. The Inevitability of p_0
 
-The definition of p_0 as the argmax_stability across the machine is the
- profound shift from traditional logic. In standard logic, a proposition
- is either true or false based on external correspondence. In this system,
- a proposition is true if it is the only stance that survives the
- machine’s internal friction. Truth, in this system, is residual durability.
+The definition of p_0 as the argmax_stability across the machine is theprofound shift from traditional logic. In standard logic, a propositionis either true or false based on external correspondence. In this system,a proposition is true if it is the only stance that survives the machine’s internal friction. Truth, in this system, is residual durability.
 
 CONCRETE EXAMPLE 1: p = "Free will exists" (libertarian)
 
@@ -283,7 +280,7 @@ STEP 6 — Q□ Translation
     □Q(¬p): determinism strongly necessary in physical Q-frame
     ◇Q(p): free will possible in phenomenological/moral Q-frame
 
-Dominant stabilized operator:
+Dominant stabilized generator:
     □¬p in base reality
     ◇p as emergent effective description
 

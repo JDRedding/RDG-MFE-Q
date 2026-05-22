@@ -105,16 +105,13 @@ A point is the inevitable stance.
 
 
 COMPLETE DEFINITION (COMPACT)
-A POINT is the minimal, inevitable stance-operator that emerges
-when a relational field is forced through its counterpoint,
-counter-pair, 2×2 relational square, RDG trifoil geometry,
-MFE 4-field dynamics, and Q□ modal stabilization.
+A POINT is the minimal, inevitable stance-operator that emergeswhen a relational field is forced through its counterpoint,counter-pair, 2×2 relational square, RDG trifoil geometry,MFE 4-field dynamics, and Q□ modal stabilization.
 
 It is not a location but a relational attractor.
 
-It is the stance that survives all oppositions, contexts,
-and transformations, and therefore becomes the system’s
-irreducible declaration of itself.
+It is the stance that survives all oppositions, contexts,and transformations, and therefore becomes the system’sirreducible declaration of itself.
+
+A Point begins as fundamentally locationless. This is not an absence of location, but the impossibility of assigning one. Only after relational structure emerges (RDG → MFE → Q□) can something analogous to “location” appear as a derived, secondary construct. The Point does not start with location; location is what the system eventually manufactures.
 
 PIPELINE (CONDENSED OPERATIONAL FORM)
 
@@ -130,8 +127,7 @@ Point Definition		Pipeline Step
 “Trifoil knot (RDG)”		RDG bifurcation
 “4-field attractor (MFE)”	MFE bifurcation
 “Modal stabilization (Q□)”	Q□ translation
-“Attractor = the point”		Infer original choice p₀
-
+“Attractor = the point”		Infer original choice p₀
 
 Definition 				Mechanism
 Minimal stance-operator			Choose p
@@ -318,5 +314,4 @@ Inferred p₀:
     Universe had a finite beginning (Big Bang),
     but may be spatially infinite.
 
-Pure “finite” survives on time but not necessarily on space.
-
+Pure “finite” survives on time but not necessarily on space. 

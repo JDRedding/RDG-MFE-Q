@@ -2,7 +2,23 @@ THE POINT — FULL FORMAL DEFINITION
 RDG‑compatible, MFE‑consistent, Q□‑translatable
 THE POINT = Ontology + Pipeline
 
+THE POINT IS LOCATIONLESS:
+The Point possesses no coordinates, no embedding, no metric, no spatial or temporal adddress, and no substrate in which a location could be assigned. This is not an absence of location, nor an undefined location — it is a structural impossibility for the Point to have a location. The Point is the primitive relational generator from which all modes, structures, and dynamics emerge; therefore it cannot be dituated within any geometry it precedes.
 
++------------------------------------+
+|       THE POINT CONTINUUM          |
++------------------------------------+
+|  [P] ------------> Relational      |
+|   |                Generation      |
+|   v                                |
+|  {S-Mode} -> {I-Mode} -> {D-Mode}  |
+|   |                                |
+|   v                                |
+|  [Metric / Embedding Geometry]     |
++------------------------------------+
+| Primordial Core                    |
++------------------------------------+
+
 1. THE POINT AS RELATIONAL COLLAPSE
 A POINT is the minimal, inevitable stance-operator that emerges
 when a relational field is forced to declare itself.

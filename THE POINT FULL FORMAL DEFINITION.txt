@@ -95,7 +95,15 @@ A point is the intersection where all four fields agree on asingle stable outpu
 
 
 6. THE POINT AS Q□ TRANSLATION
-Once stabilized, the point becomes a modal generator:
+Once stabilized, the point becomes a modal generator. The Q□ layer does not apply modal operators; it generates modal projections. A modal projection is a generative mapping from a stabilized relational configuration into a modal stance:
+
+    Q□(p) → □p  (projected necessity)
+    Q□(p) → ◇p  (projected possibility)
+
+These are not operators acting on a domain. They are generative modal
+projections that create the conditions under which modal operators may
+later exist. The Q□ layer is therefore the final generative lift before
+computability.
 
     □p = p is necessary in this field
     ◇p = p is possible in this field

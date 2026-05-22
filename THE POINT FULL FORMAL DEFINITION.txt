@@ -18,7 +18,8 @@ The Point possesses no coordinates, no embedding, no metric, no spatial or tempo
 +------------------------------------+
 | Primordial Core                    |
 +------------------------------------+
-
+(Symbolic representation only — the Point has no location)
+
 1. THE POINT AS RELATIONAL COLLAPSE
 A POINT is the minimal, inevitable stance-operator that emerges
 when a relational field is forced to declare itself.

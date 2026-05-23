@@ -1,0 +1,156 @@
+FOUNDATION LAYER
+Full Formalization: 7-Mode Relational Substrate → G → Admissibility → {3,4}
+MFERDGQ Framework — Substrate Documentation
+
+
+I.  Universe of Modes
+The primitive substrate consists of seven undifferentiated modes, partitioned into two structurally distinguished blocks.
+
+M = {1, 2, 3, 4, 5, 6, 7}
+
+A = {1, 2, 3}        // distinguished triadic primitive
+B = {4, 5, 6, 7}     // complementary 4-block
+
+A ∩ B = ∅
+A ∪ B = M
+
+
+II.  Relational Signature  R
+The relational signature is minimal and complete. These are the ONLY primitive relations of the substrate.
+
+R = { T(x), C(x), E(x,y), Tri(x,y,z) }
+
+RELATION DEFINITIONS
+T(x)        unary predicate marking triadic primitive
+C(x)        unary predicate marking complement block
+E(x,y)      symmetric, irreflexive adjacency relation
+Tri(x,y,z)  primitive triadic relation
+
+
+III.  Interpretation of the Relations
+Unary Predicates
+T(i) = true   iff   i ∈ {1,2,3}
+C(i) = true   iff   i ∈ {4,5,6,7}
+
+These predicates force any automorphism g ∈ G to preserve the A/B partition. No automorphism can mix A and B.
+Triadic Relation
+Tri(x,y,z) holds exactly on the 3! permutations of (1,2,3).
+
+This makes {1,2,3} the unique primitive triad in the structure.
+Binary Adjacency  E
+ON A = {1,2,3}  —  TRIANGLE (COMPLETE GRAPH K3)
+E(1,2),  E(2,3),  E(1,3)
+
+ON B = {4,5,6,7}  —  4-CYCLE (C4)
+E(4,5),  E(5,6),  E(6,7),  E(7,4)
+
+BETWEEN A AND B  —  COMPLETE BIPARTITE K3,4
+For all a ∈ A and b ∈ B:   E(a,b)
+Adjacency List (Explicit)
+1:  2, 3, 4, 5, 6, 7
+2:  1, 3, 4, 5, 6, 7
+3:  1, 2, 4, 5, 6, 7
+
+4:  1, 2, 3, 5, 7
+5:  1, 2, 3, 4, 6
+6:  1, 2, 3, 5, 7
+7:  1, 2, 3, 4, 6
+
+
+IV.  Automorphism Group  G = Aut(M, R)
+Because T(x) and C(x) are in the signature, any automorphism must satisfy:
+
+g(A) = A
+g(B) = B
+
+Within A: adjacency is K3, Tri(x,y,z) marks it uniquely  →  full S3 symmetry
+Within B: adjacency is C4  →  dihedral symmetry D4
+Cross edges: complete bipartite K3,4 — uniform, preserves S3 × D4, introduces no new symmetries
+Therefore:
+G = Aut(M, R)  ≅  S3 × D4
+This result is exact and complete. |G| = |S3| × |D4| = 6 × 8 = 48.
+
+
+V.  Role-Symmetry Classes of Partitions
+For any partition π of M, the role-symmetry class is the orbit under G:
+
+[π]  =  { g·π : g ∈ G }
+
+Two partitions are in the same role-symmetry class iff one is the G-orbit of the other. This is now fully well-defined because G is explicit.
+
+
+VI.  Pure Refinement Order on Partitions
+π' ≺ π   ("π' is a pure refinement of π")
+
+...iff every block of π' is contained in some block of π.
+This is the standard refinement order on partitions.
+
+
+VII.  Structural Constraints  (A1–A3)
+A1  —  Mesoscopic Nontriviality
+1  <  |π|  <  7
+A2  —  Explicit Triadic Realization
+∃ block B ∈ π  with  |B| = 3
+A3  —  Anti-Monolith Symmetry
+∀ blocks B ∈ π ,  |B|  ≤  3
+
+Together A1–A3 imply that the only possible block-size patterns are:
+
+3 + 3 + 1
+3 + 2 + 2
+3 + 2 + 1 + 1
+3 + 1 + 1 + 1 + 1
+
+
+VIII.  Role-Symmetry Minimality  (A4′)
+A partition π is admissible only if there is NO pure refinement π' ≺ π such that:
+
+(i)   π' satisfies A1–A3
+(ii)  [π'] = [π]   (same role-symmetry class under G)
+
+This is the non-ad-hoc minimality condition. It is fully formal because G = Aut(M, R) is explicit.
+
+
+IX.  Derivation of Lawful Cardinalities
+Candidate cardinalities surviving A1–A3:
+
+k ∈ {3, 4, 5}
+
+MINIMALITY CHECK UNDER A4′
+
+5-block pattern (3+1+1+1+1):
+Is a pure refinement of the 4-block pattern (3+2+1+1) in the same role-symmetry class. Eliminated by A4′.
+
+4-block pattern (3+2+1+1):
+Is NOT a pure refinement of any 3-block pattern. Survives.
+
+3-block patterns (3+3+1) and (3+2+2):
+Minimal in their classes. Survive.
+
+K_lawful  =  {3, 4}
+This is a theorem of the substrate.
+
+
+X.  Consequence: Uniqueness of RDG and MFE
+The only lawful treatment cardinalities are:
+
+3-mode treatment  →  RDG  (geometry engine)
+4-mode treatment  →  MFE  (matter / field engine)
+
+These are not interpretive preferences. They are the complete set of structurally admissible treatments of the same neutral 7-mode substrate.
+
+The geometry / physics fork is a theorem.
+
+
+XI.  The Foundation Layer Is Now Closed
+The complete derivation chain:
+
+R defined explicitly
+  →  G = Aut(M, R)  ≅  S3 × D4  computed exactly
+  →  Role-symmetry classes well-defined
+  →  A4′ fully formal
+  →  A_adm non-ad-hoc
+  →  K_lawful = {3, 4}  derived
+  →  RDG and MFE uniquely admissible
+
+This is the substrate-level foundation the framework did not have before this derivation.

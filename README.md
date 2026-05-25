@@ -1,43 +1,48 @@
-RDG‑I introduces a Fermat‑type variational principle for dynamical systems in which geometry is induced by a closure flow Γ. Coherence density replaces a metric tensor, action replaces arclength, and closure geodesics replace classical geodesics. The resulting geometry aligns with LCS, transfer operators, and Conley theory, providing a unified dynamical‑first framework.
+# RDG–MFE–Q
 
-RDG/
-│
-├── README.md
-├── docs/
-│   ├── 00_overview.md
-│   ├── 01_closure_flow.md
-│   ├── 02_coherence_density.md
-│   ├── 03_action_functional.md
-│   ├── 04_variational_principle.md
-│   ├── 05_geodesics.md
-│   ├── 06_RDG_distance.md
-│   ├── 07_induced_geometry.md
-│   ├── 08_axioms.md
-│   ├── 09_examples/
-│   │   ├── duffing.md
-│   │   ├── double_gyre.md
-│   │   └── two_attractor.md
-│   ├── 10_correspondence/
-│   │   ├── LCS.md
-│   │   ├── transfer_operator.md
-│   │   └── conley_index.md
-│   ├── 11_future_work.md
-│   └── 12_bibliography.md
-│
-├── src/
-│   ├── coherence_density/
-│   ├── action/
-│   ├── geodesics/
-│   ├── metrics/
-│   └── quotient_geometry/
-│
-├── examples/
-│   ├── duffing/
-│   ├── double_gyre/
-│   └── two_attractor/
-│
-└── figures/
-├── pipeline_ascii.txt
-├── closure_flow_diagram.png
-├── geodesic_variation.png
-└── quotient_geometry.png
+**Relational Dynamic Geometry + Momentum-Flux Engine + Quotient**
+
+A three-layer framework that **strictly generalizes** cellular automata (Conway’s Game of Life, Wolfram rules) **and** classical field theory.
+
+### Core Idea
+**RDG–MFE** is a discretization of Maxwell’s original **quaternion formulation** of electromagnetism onto a *dynamically generated relational geometry*.  
+When the geometry Γ_t is frozen to a regular lattice approximating ℝ³ and the discretization is taken to the continuum limit, it recovers the classical Heaviside-Maxwell equations.
+
+The full **RDG–MFE–Q** stack adds:
+- **RDG** — generative relational manifolds
+- **MFE** — field dynamics (quaternion Maxwell on evolving graphs)
+- **Q** — admissibility & stability layer (SID tri-mode, physical constraints)
+
+### Repository Contents
+- `FOUNDATION LAYER.txt` — base axioms
+- `RDG Substrate — 7 DOFs.txt` — geometry layer
+- `THE POINT FULL FORMAL DEFINITION.txt` — foundational objects
+- `Redding's Closure Stability Conjecture.pdf` — related conjecture
+- Maxwell–Quaternion mapping (embedded in MFE layer)
+
+### Next Milestones
+- [ ] Clean Markdown versions of all theory files
+- [ ] Minimal Python implementation (Life glider + simple wave on graph)
+- [ ] Visualizations of dynamic geometry + quaternion fields
+- [ ] Full paper draft
+
+---
+
+**See also the companion repo:** [RAM-Relational-Automata-Manifolds](https://github.com/JDRedding/RAM-Relational-Automata-Manifolds)
+
+---
+
+This makes the repo immediately understandable and positions the Maxwell recovery as a highlight.
+
+---
+
+**Would you like me to:**
+
+1. **Generate the full set of clean `.md` files** from your `.txt` files (with proper headings, math, tables)?
+2. **Create diagrams** for the Maxwell–RDG–MFE equivalence (fixed vs dynamic, quaternion potential, continuum limit)?
+3. **Write a short abstract / technical note** ready for arXiv-style submission?
+4. **Build a minimal `code/` folder** with the glider + simple field example?
+
+Just reply with 1, 2, 3, or 4 (or a mix) and I’ll output the exact content/files you can push in the next commit.
+
+The project has strong bones — a few hours of polish will make it look professional and ready for sharing. What’s your top priority right now?

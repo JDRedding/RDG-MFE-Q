@@ -14,8 +14,8 @@ The full **RDG–MFE–Q** stack adds:
 - **Q□** — admissibility & stability layer (SID tri-mode, constraints)
 
 ### Repository Contents
-- `FOUNDATION LAYER.txt` — base axioms
-- `RDG Substrate — 7 DOFs.txt` — geometry layer
+- `FOUNDATION LAYER.txt` — base foundations
+- `RDG Substrate — 7 DOFs.txt` — Substrate layer
 - `THE POINT FULL FORMAL DEFINITION.txt` — foundational objects
 - `Redding's Closure Stability Conjecture.pdf` — related conjecture
 - Maxwell–Quaternion mapping (embedded in MFE layer)

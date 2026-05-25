@@ -1,4 +1,5 @@
 RDG‑I introduces a Fermat‑type variational principle for dynamical systems in which geometry is induced by a closure flow Γ. Coherence density replaces a metric tensor, action replaces arclength, and closure geodesics replace classical geodesics. The resulting geometry aligns with LCS, transfer operators, and Conley theory, providing a unified dynamical‑first framework.
+
 RDG/
 │
 ├── README.md

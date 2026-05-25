@@ -11,7 +11,7 @@ When the geometry Γ_t is frozen to a regular lattice approximating ℝ³ and th
 The full **RDG–MFE–Q** stack adds:
 - **RDG** — generative relational manifolds
 - **MFE** — field dynamics (quaternion Maxwell on evolving graphs)
-- **Q** — admissibility & stability layer (SID tri-mode, physical constraints)
+- **Q□** — admissibility & stability layer (SID tri-mode, constraints)
 
 ### Repository Contents
 - `FOUNDATION LAYER.txt` — base axioms

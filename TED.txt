@@ -1,0 +1,107 @@
+===========================================
+=        T E D   —   TRIAD EVOLUTION      =
+=        (Q–Layer Dynamic Update)         =
+===========================================
+
+Given a hybrid triad:
+    X(τ) = ( L_τ , R_τ , H_τ )
+
+TED defines the meta-time evolution:
+    dX/dτ = F(X)
+where F is the Q-forced relational vector field.
+
+-------------------------------------------
+-- 1. STRUCTURE OF THE TED OPERATOR      --
+-------------------------------------------
+
+TED = {
+    Intrinsic:     ω_L , ω_R , ω_H
+    Coupling:      κ_LR , κ_HL , κ_HR
+    Hybrid Weights: α(τ) , β(τ)
+    Q-Forcing:     Q_rel , Q_lock , Q_eval
+}
+
+TED acts on phases:
+    dθ_L/dτ = Ω_L(X)
+    dθ_R/dτ = Ω_R(X)
+    dθ_H/dτ = Ω_H(X)
+
+Ω_i(X) = intrinsic_i
+         + coupling_i(X)
+         + Q_forcing_i(X)
+
+-------------------------------------------
+-- 2. COUPLING TERMS (Triadic Stabilizer) --
+-------------------------------------------
+
+coupling_L = κ_LR * sin(θ_R - θ_L)
+coupling_R = κ_LR * sin(θ_L - θ_R)
+
+Hybrid mode:
+    H_τ = α(τ) L_τ + β(τ) R_τ
+
+-------------------------------------------
+-- 3. Q-FORCING (TED’s Generative Core)  --
+-------------------------------------------
+
+Q_forcing = {
+    P-mode:  gradient pull toward relational coherence
+    I-mode:  slow drift / policy bias accumulator
+    D-mode:  damping of rapid relational mismatch
+}
+
+Example:
+    P:  -η_P * ∂Φ_Q/∂θ_i
+    I:  -γ * μ(τ)
+    D:  -η_D * d/dτ (θ_R - θ_L)
+
+-------------------------------------------
+-- 4. HYBRID UPDATE (Shape Generator)    --
+-------------------------------------------
+
+dH/dτ = α dL/dτ + β dR/dτ
+        + (dα/dτ) L + (dβ/dτ) R
+
+α(τ), β(τ) may be fixed or adaptive:
+    dα/dτ = -∂Φ_Q/∂α
+    dβ/dτ = -∂Φ_Q/∂β
+
+-------------------------------------------
+-- 5. TED AS FLOW MAP (Q-Operator)       --
+-------------------------------------------
+
+For small Δτ:
+    Q(Δτ) ≈ I + Δτ * TED
+
+For finite Δτ:
+    Q(Δτ) = exp( Δτ * TED )
+
+This is the discrete Θ-update:
+    X_{k+1} = Q(Δτ_Q) X_k
+
+-------------------------------------------
+-- 6. MINIMAL RELATIONAL LOOP (MRL)      --
+-------------------------------------------
+
+TED enforces:
+    bounded phase difference
+    stable relational orbit
+    non-decohering hybrid mode
+
+MRL = stable loop in (θ_L, θ_R, θ_H)
+      under TED flow.
+
+-------------------------------------------
+-- 7. SUMMARY                             --
+-------------------------------------------
+
+TED = Triad Evolution Dynamics:
+    - The Q-layer’s vector field
+    - Drives meta-time relational updates
+    - Stabilizes the triad via P/I/D modes
+    - Generates hybrid trajectories (poi shapes)
+    - Produces the Minimal Relational Loop
+
+===========================================
+=        END OF TED ASCII BLOCK           =
+===========================================

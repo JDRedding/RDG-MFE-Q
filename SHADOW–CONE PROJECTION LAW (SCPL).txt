@@ -1,0 +1,90 @@
+===============================================================
+                SHADOW–CONE PROJECTION LAW (SCPL)
+        (RDG-Compatible Formal Statement — ASCII Block Spec)
+===============================================================
+
+Let Σ be any historical or relational system.
+Let Π_Q(Σ) be its projection through the Q-boundary onto the
+triadic generator frame T = {SID, PED, RED}.
+
+---------------------------------------------------------------
+1. TRIADIC FRAME
+---------------------------------------------------------------
+                 Q  (forcing boundary)
+                /|\
+               / | \
+            SID  PED  RED
+             |     |     |
+          MFE-Q   RDG    TED
+              \     |     /
+               \    |    /
+                \   |   /
+                 \  |  /
+                  \ | /
+                   \|/
+              Minimal Relational Loop
+                     (MRL)
+
+---------------------------------------------------------------
+2. COLLAPSE CONDITION (Rank Drop)
+---------------------------------------------------------------
+A system collapses when its projection loses one generator mode:
+
+    Π_Q(Σ) → (t_i , t_j)   with   t_k = 0
+
+Equivalent: rank(Π_Q(Σ)) ≤ 2
+
+Interpretation of missing mode:
+    SID = 0  → structural brittleness / rigidity
+    PED = 0  → loss of evaluative power / drift
+    RED = 0  → relational decay / isolation
+
+Dyadic attractors emerge:
+    (SID, PED)   → rigid hierarchy / dominance cascade
+    (PED, RED)   → power oscillation / loyalty fracture
+    (SID, RED)   → brittle networks / stalled renewal
+
+---------------------------------------------------------------
+3. Q-FORCING REPAIR OPERATOR
+---------------------------------------------------------------
+Q induces a triadic restoration map:
+
+    Γ_Q : (t_i , t_j) → (SID, PED, RED)
+
+Mechanisms:
+    MFE-Q : generates minimal relational loops (MRLs)
+    RDG   : distributes relational load across faces
+    TED   : stabilizes temporal evolution of the triad
+
+Outcome:
+    MRL = internally dynamic, externally frozen fixed-point triad
+
+---------------------------------------------------------------
+4. STABILITY CONDITION (Full Rank)
+---------------------------------------------------------------
+A system is stable iff:
+
+    rank(Π_Q(Σ)) = 3
+
+i.e., all three generator modes are active and Q-bounded.
+
+This yields:
+    • SID integrity (structure)
+    • PED coherence (valuation/power)
+    • RED extension (relational renewal)
+
+---------------------------------------------------------------
+5. SHADOW–CONE PROJECTION LAW (Canonical Form)
+---------------------------------------------------------------
+Every historical collapse corresponds to a degenerate projection
+of Σ onto the triadic cone:
+
+        Collapse  ⇔  Π_Q(Σ) loses rank
+        Stability ⇔  Π_Q(Σ) maintains rank 3
+
+Q-forcing restores rank by regenerating MRLs, producing
+anti-fragile triadic shadows across the pyramidic cone.
+
+===============================================================
+END OF SHADOW–CONE PROJECTION LAW (ASCII BLOCK)
+===============================================================

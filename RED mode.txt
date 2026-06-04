@@ -1,0 +1,45 @@
+===========================================
+=   RED MODE — RELATIONAL ENGINE DYNAMICS  =
+===========================================
+
+ROLE:
+  RED is the generator engine’s internal update law.
+  It is the mode that shows how relations MOVE.
+
+WHAT IT DOES:
+  - Takes the current relational configuration S(t)
+  - Applies the generator’s dynamic rule
+  - Produces the next configuration S(t+1)
+  - Feeds it back into the loop
+
+CORE CYCLE:
+        ┌──────────────┐
+        │   S(t)        │   (current state)
+        └──────┬───────┘
+               │
+               ▼
+        ┌──────────────┐
+        │     RED       │   (update law)
+        └──────┬───────┘
+               │
+               ▼
+        ┌──────────────┐
+        │  S(t+1)       │   (next state)
+        └──────────────┘
+
+INTERPRETATION:
+  - RED is not a structure (SID)
+  - RED is not an evaluation slice (PED)
+  - RED is the ENGINE’S SPIN — the becoming, not the being
+
+PROPERTIES:
+  - Internally dynamic
+  - Externally stable (observer-frozen)
+  - Generates counterpoints and mirrors
+  - Q-indexed forcing applies here
+  - Keeps the MRL alive and turning
+
+SUMMARY:
+  RED = the generator engine’s heartbeat.
+  It is the dynamic mode that drives the Minimal Relational Loop.
+===========================================

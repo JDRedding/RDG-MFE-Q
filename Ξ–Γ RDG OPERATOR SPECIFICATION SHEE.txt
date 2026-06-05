@@ -119,6 +119,102 @@ Axiom W3 (Default Mode Declaration):
   A single α_default ∈ M is chosen once.
   Ξ_flip := Ξ_flip^(α_default)
 
+SECTION 6 — EXPLICIT ACTION OF Ξ_flip ON (SID/PED/Q)
+------------------------------------------------------------
+We distinguish three structural layers on each axis:
+
+  On A_H (Hamilton-side):
+    SID_H = Structural / Static layer
+    PED_H = Process / Dynamic layer
+    Q_H   = Interaction / Quantum / Relational layer
+
+  On A_C (Clifford-side):
+    DIS_C = Structural / Static layer (dual of SID_H)
+    DEP_C = Process / Dynamic layer (dual of PED_H)
+    Q_C   = Interaction / Quantum / Relational layer (dual frame of Q_H)
+
+
+--- 6.1 Identity Mode Mapping ------------------------------
+Under Ξ_flip^Identity, the action on the triple is:
+
+  Ξ_flip^Identity :
+    (SID_H, PED_H, Q_H)  ↦  (DIS_C, DEP_C, Q_C)
+
+with the following behavior:
+
+  - SID_H ↔ DIS_C
+      Pure axis relabeling / dualization of the structural layer.
+
+  - PED_H ↔ DEP_C
+      Pure axis relabeling / dualization of the process layer.
+
+  - Q_H ↔ Q_C
+      Interaction layer is preserved up to axis reinterpretation
+      (no change in semantic content, only in its embedding side).
+
+
+--- 6.2 Functor Mode Mapping -------------------------------
+Under Ξ_flip^Functor, the action is enriched:
+
+  Ξ_flip^Functor :
+    (SID_H, PED_H, Q_H)  ↦  (DIS_C, DEP_C, Q_C)
+
+with:
+
+  - On objects:
+      SID_H  ↦ DIS_C
+      PED_H  ↦ DEP_C
+      Q_H    ↦ Q_C
+
+  - On morphisms:
+      All legal transforms, constraints, and regulator relations
+      between (SID_H, PED_H, Q_H) are transported to corresponding
+      transforms, constraints, and regulator relations between
+      (DIS_C, DEP_C, Q_C).
+
+  - Semantic invariance:
+      Sem(SID_H, PED_H, Q_H) = Sem(DIS_C, DEP_C, Q_C)
+      (up to the chosen notion of equivalence in R).
+
+Interpretation:
+  Ξ_flip^Functor is a semantic, structure-preserving axis flip on
+  the full triple (SID/PED/Q) → (DIS/DEP/Q).
+
+
+SECTION 7 — PED–DEP BRAIDING UNDER Ξ_flip
+------------------------------------------------------------
+We introduce a braiding (or interaction swap) between process layers:
+
+  B_H : PED_H ⊗ Q_H → Q_H ⊗ PED_H
+  B_C : DEP_C ⊗ Q_C → Q_C ⊗ DEP_C
+
+These encode how the process layer interacts with the interaction
+layer on each side.
+
+
+Axiom B1 (Braiding on H-side):
+  B_H is a natural isomorphism in A_H:
+    B_H : PED_H ⊗ Q_H  ≅  Q_H ⊗ PED_H
+
+Axiom B2 (Braiding on C-side):
+  B_C is a natural isomorphism in A_C:
+    B_C : DEP_C ⊗ Q_C  ≅  Q_C ⊗ DEP_C
+
+
+Axiom B3 (Ξ_flip^Functor Intertwines Braiding):
+  Ξ_flip^Functor respects the PED/DEP–Q interaction pattern:
+
+    Ξ_flip^Functor(B_H)  ≅  B_C'  ∘  Ξ_flip^Functor
+    (up to natural isomorphism)
+
+  where B_C' is the image of B_H under Ξ_flip^Functor, and is
+  equivalent to the canonical braiding B_C on the C-side.
+
+Informal reading:
+  Flipping axes via Ξ_flip^Functor does not break or distort the
+  way the process layer (PED/DEP) interacts with the interaction
+  layer (Q). It transports the interaction structure coherently
+  from (PED_H, Q_H) to (DEP_C, Q_C).
 
 ============================================================
 END OF SPECIFICATION

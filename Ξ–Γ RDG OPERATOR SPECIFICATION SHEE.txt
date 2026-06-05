@@ -373,11 +373,16 @@ under the axis-transformation operator Ξ_flip.
 It states that Γ-closure transported across the Ξ_flip functor
 is equivalent to Λ-closure, and vice versa.
 
+DUALITY COMMUTING SQUARE
+
 Γ(R_H) ──Ξ_flip──> Ξ_flip(Γ(R_H))
   │                    │
   Ξ_flip               Λ
   ↓                    ↓
 Ξ_flip(R_H) ──Λ──> Λ(Ξ_flip(R_H))
+
+Identity encoded:
+  Λ ∘ Ξ_flip  ≅  Ξ_flip ∘ Γ
 
 AXIOM DL1 — Duality (Core Identity)
 ------------------------------------------------------------

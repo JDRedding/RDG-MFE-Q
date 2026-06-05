@@ -1,6 +1,8 @@
 ============================================================
         Ξ–Γ RDG OPERATOR SPECIFICATION SHEET v1.1
 ============================================================
+Default mode: Functor (per W3) | Working in Γ/Λ-closed regime
+unless noted.
 
 SECTION 0 — AMBIENT STRUCTURES
 ------------------------------------------------------------
@@ -370,6 +372,12 @@ under the axis-transformation operator Ξ_flip.
 
 It states that Γ-closure transported across the Ξ_flip functor
 is equivalent to Λ-closure, and vice versa.
+
+Γ(R_H) ──Ξ_flip──> Ξ_flip(Γ(R_H))
+  │                    │
+  Ξ_flip               Λ
+  ↓                    ↓
+Ξ_flip(R_H) ──Λ──> Λ(Ξ_flip(R_H))
 
 AXIOM DL1 — Duality (Core Identity)
 ------------------------------------------------------------
@@ -1229,6 +1237,25 @@ D.8  IDENTITY CLASS — SEMANTIC IDENTITIES
 ============================================================
 END OF APPENDIX D
 ============================================================
+============================================================
+RELATED DOCUMENTS
+============================================================
+
+This specification is part of the broader RDG–MFE–Q framework.
+For foundational context and complementary formal structures,
+see the following documents:
+
+  • DUAL‑AXIS REGULATOR FORMALISM  
+      (Defines SID/PED/Q and DIS/DEP/Q regulator stacks and
+       introduces the Ξ_flip transpilation operator.)
+
+  • Closure Stability Conjecture  
+      (Establishes closure-generated geometry, Γ-flow,
+       coherence density, and the foundational RDG axioms.)
+
+These documents provide the conceptual and mathematical basis
+for the Ξ–Γ operator system defined herein.
+
 ============================================================
 END OF SPECIFICATION
 ============================================================

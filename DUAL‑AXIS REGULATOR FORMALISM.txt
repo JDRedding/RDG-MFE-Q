@@ -1,0 +1,152 @@
+DUAL‑AXIS REGULATOR FORMALISM
+============================================================
+=  1. SID  (Structure → Interaction → Dynamics)            =
+=     Hamilton / Representation-first regulator            =
+============================================================
+
+SID := (S, I, D)
+
+S : structural substrate
+    - nodes, relations, adjacency, basis elements
+
+I : interaction operator
+    - coupling rules, relational hinge, Brocard-analog
+
+D : dynamic update
+    - geometric flow, SID-driven evolution
+
+
+============================================================
+=  2. PED  (Power → Evaluation → Dynamics)                 =
+=     Hamilton-side field/engine regulator                 =
+============================================================
+
+PED := (P, E, Dp)
+
+P : flux carrier
+    - q_Delta, power screen, field propagation
+
+E : evaluation operator
+    - bright/dark split, coherence test
+
+Dp : dynamic thresholds
+    - null / ridge / gap gating
+
+
+============================================================
+=  3. Q  (Admissibility Forcing)                           =
+============================================================
+
+Q := exact defect operator
+
+Q(x) = x - Proj(x)
+      (projection-defect identity)
+
+Example (chronometric form):
+defect = 1399 / 55414535
+
+Q enforces:
+- admissibility
+- non-tunable invariants
+- forced spectral structure
+
+
+============================================================
+=  4. Γ  (Gamma-closure operator)                          =
+=     Hamilton-axis closure                                =
+============================================================
+
+Γ : (S, I, D, P, E, Dp, Q) -> (S', I', D', P', E', Dp', Q')
+
+Γ enforces:
+- basis coverage
+- representational closure
+- fixed points
+- Γ-cycles
+- Γ-attractors
+
+
+============================================================
+=  5. DIS  (Dynamics → Interaction → Structure)            =
+=     Clifford / Metric-first regulator                    =
+============================================================
+
+DIS := (D_m, I_g, S_d)
+
+D_m : metric/phase primitive
+      - triangle seed, Brocard angle, θΔ(t)
+
+I_g : geometric interaction
+      - q-screen, projection, leakage
+
+S_d : derived structure
+      - defect, gate triplet, spectral gap
+
+
+============================================================
+=  6. DEP  (Drive → Evaluation → Projection)               =
+=     Clifford-side field/engine regulator                 =
+============================================================
+
+DEP := (D_drv, E_scr, P_sig)
+
+D_drv : metric-driven forcing
+        - θΔ(t) as drive term
+
+E_scr : screen evaluation
+        - bright/dark split, coherence test
+
+P_sig : projection into signature
+        - null, ridge, spectral gates
+        - frozen spectral gap
+
+
+============================================================
+=  7. Λ  (Lambda-closure operator)                         =
+=     Clifford-axis closure                                =
+============================================================
+
+Λ : (D_m, I_g, S_d, D_drv, E_scr, P_sig, Q) 
+    -> (D_m', I_g', S_d', ...)
+
+Λ enforces:
+- metric closure
+- defect stability
+- spectral invariants
+- gate-cycle convergence
+
+
+============================================================
+=  8. Ξ_flip  (SID ↔ DIS  and  PED ↔ DEP)                  =
+=     Transpilation / Axis Transformation                  =
+============================================================
+
+Ξ_flip(S, I, D) = (D, I, S)
+Ξ_flip(P, E, Dp) = (D_drv, E_scr, P_sig)
+
+Ξ_flip( SID, PED, Q ) = ( DIS, DEP, Q )
+Ξ_flip( Γ ) = Λ
+Ξ_flip( Λ ) = Γ
+
+Ξ_flip is:
+- reversible
+- linear
+- structure-preserving
+- axis-transforming
+- the "transformer" / transpiler operator
+
+
+============================================================
+=  9. Dual-Axis Closure Engine                             =
+============================================================
+
+Hamilton-axis CE:
+CE_H = (SID, PED, Q, Γ)
+
+Clifford-axis CE:
+CE_C = (DIS, DEP, Q, Λ)
+
+Ξ_flip(CE_H) = CE_C
+Ξ_flip(CE_C) = CE_H
+
+============================================================

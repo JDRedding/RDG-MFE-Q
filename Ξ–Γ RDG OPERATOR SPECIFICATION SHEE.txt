@@ -1,3 +1,4 @@
+============================================================
               Ξ–Γ RDG OPERATOR SPECIFICATION SHEET
 ============================================================
 
@@ -19,8 +20,9 @@ Let M be a mode monoid:
 Let Sem : Ob(R) → Meaning be the semantic invariant.
 
 
+============================================================
 SECTION 1 — THE Ξ_rdg OPERATOR
-------------------------------------------------------------
+============================================================
 Ξ_rdg : R → R
 
 Axiom R1 (Endofunctor):
@@ -34,10 +36,12 @@ Interpretation:
   Ξ_rdg is a semantic-preserving transpolator on RDG representations.
 
 
+============================================================
 SECTION 2 — THE Ξ_flip OPERATOR FAMILY
-------------------------------------------------------------
+============================================================
 Ξ_flip^α : A_H → A_C   for α ∈ M
 Ξ_flip   := Ξ_flip^(default mode)
+
 
 --- Identity Mode ------------------------------------------
 Ξ_flip^Identity : A_H ↔ A_C
@@ -74,8 +78,9 @@ Axiom F5 (Mode Monoid Action):
   (Optional) Functor ⋆ Functor = Functor
 
 
+============================================================
 SECTION 3 — Γ-CLOSURE OPERATOR
-------------------------------------------------------------
+============================================================
 Γ : R → R
 
 Axiom G1 (Endofunctor):
@@ -91,8 +96,9 @@ Interpretation:
   Γ enforces representational well-formedness / completion.
 
 
-SECTION 4 — Ξ–Γ COMPATIBILITY (WELL-FORMEDNESS AXIOMS)
-------------------------------------------------------------
+============================================================
+SECTION 4 — Ξ–Γ COMPATIBILITY (WELL-FORMEDNESS)
+============================================================
 Axiom GX1 (Ξ_rdg Respects Closure):
   Γ(Ξ_rdg(R)) = Ξ_rdg(Γ(R))
   or at minimum: Ξ_rdg ∘ Γ ≅ Γ ∘ Ξ_rdg
@@ -105,8 +111,9 @@ Consequences:
   If R is Γ-closed, then Ξ_rdg(R) and Ξ_flip^Functor(R) are also Γ-closed.
 
 
+============================================================
 SECTION 5 — ADDITIONAL WELL-FORMEDNESS CONDITIONS
-------------------------------------------------------------
+============================================================
 Axiom W1 (Semantic Non-Degeneracy):
   If Sem(R) = Sem(S) and both are Γ-closed,
   then R and S are equivalent objects in R.
@@ -119,102 +126,86 @@ Axiom W3 (Default Mode Declaration):
   A single α_default ∈ M is chosen once.
   Ξ_flip := Ξ_flip^(α_default)
 
-SECTION 6 — EXPLICIT ACTION OF Ξ_flip ON (SID/PED/Q)
-------------------------------------------------------------
-We distinguish three structural layers on each axis:
+
+============================================================
+SECTION 6 — EXPLICIT ACTION OF Ξ_flip ON TRIPLE
+============================================================
+
+We treat each axis as a triple of layers:
 
   On A_H (Hamilton-side):
-    SID_H = Structural / Static layer
-    PED_H = Process / Dynamic layer
-    Q_H   = Interaction / Quantum / Relational layer
+    SID_H = Structural layer
+    PED_H = Process layer
+    Q_H   = Interaction layer
 
   On A_C (Clifford-side):
-    DIS_C = Structural / Static layer (dual of SID_H)
-    DEP_C = Process / Dynamic layer (dual of PED_H)
-    Q_C   = Interaction / Quantum / Relational layer (dual frame of Q_H)
+    DIS_C = Structural layer (dual of SID_H)
+    DEP_C = Process layer (dual of PED_H)
+    Q_C   = Interaction layer (dual frame of Q_H)
 
 
---- 6.1 Identity Mode Mapping ------------------------------
-Under Ξ_flip^Identity, the action on the triple is:
+--- 6.1 Identity Mode (Ξ_flip^Identity) ---------------------
 
-  Ξ_flip^Identity :
-    (SID_H, PED_H, Q_H)  ↦  (DIS_C, DEP_C, Q_C)
-
-with the following behavior:
-
-  - SID_H ↔ DIS_C
-      Pure axis relabeling / dualization of the structural layer.
-
-  - PED_H ↔ DEP_C
-      Pure axis relabeling / dualization of the process layer.
-
-  - Q_H ↔ Q_C
-      Interaction layer is preserved up to axis reinterpretation
-      (no change in semantic content, only in its embedding side).
-
-
---- 6.2 Functor Mode Mapping -------------------------------
-Under Ξ_flip^Functor, the action is enriched:
-
-  Ξ_flip^Functor :
-    (SID_H, PED_H, Q_H)  ↦  (DIS_C, DEP_C, Q_C)
+Ξ_flip^Identity :
+  (SID_H, PED_H, Q_H)  ↦  (DIS_C, DEP_C, Q_C)
 
 with:
+  SID_H ↔ DIS_C
+  PED_H ↔ DEP_C
+  Q_H   ↔ Q_C
 
-  - On objects:
-      SID_H  ↦ DIS_C
-      PED_H  ↦ DEP_C
-      Q_H    ↦ Q_C
-
-  - On morphisms:
-      All legal transforms, constraints, and regulator relations
-      between (SID_H, PED_H, Q_H) are transported to corresponding
-      transforms, constraints, and regulator relations between
-      (DIS_C, DEP_C, Q_C).
-
-  - Semantic invariance:
-      Sem(SID_H, PED_H, Q_H) = Sem(DIS_C, DEP_C, Q_C)
-      (up to the chosen notion of equivalence in R).
-
-Interpretation:
-  Ξ_flip^Functor is a semantic, structure-preserving axis flip on
-  the full triple (SID/PED/Q) → (DIS/DEP/Q).
+No enrichment, no morphism transport, no semantic modification.
 
 
+--- 6.2 Functor Mode (Ξ_flip^Functor) -----------------------
+
+Ξ_flip^Functor :
+  (SID_H, PED_H, Q_H)  ↦  (DIS_C, DEP_C, Q_C)
+
+Object-level mapping:
+  SID_H  ↦ DIS_C
+  PED_H  ↦ DEP_C
+  Q_H    ↦ Q_C
+
+Morphism-level mapping:
+  All legal transforms, constraints, and regulator relations between
+  (SID_H, PED_H, Q_H) are transported to corresponding transforms,
+  constraints, and regulator relations between (DIS_C, DEP_C, Q_C).
+
+Semantic invariance:
+  Sem(SID_H, PED_H, Q_H) = Sem(DIS_C, DEP_C, Q_C)
+
+
+============================================================
 SECTION 7 — PED–DEP BRAIDING UNDER Ξ_flip
-------------------------------------------------------------
-We introduce a braiding (or interaction swap) between process layers:
+============================================================
+
+Define braidings encoding how the process layer interacts with
+the interaction layer on each axis:
 
   B_H : PED_H ⊗ Q_H → Q_H ⊗ PED_H
   B_C : DEP_C ⊗ Q_C → Q_C ⊗ DEP_C
 
-These encode how the process layer interacts with the interaction
-layer on each side.
+These are natural isomorphisms in A_H and A_C respectively.
 
 
-Axiom B1 (Braiding on H-side):
-  B_H is a natural isomorphism in A_H:
-    B_H : PED_H ⊗ Q_H  ≅  Q_H ⊗ PED_H
+Axiom B1 (H-side Braiding):
+  B_H : PED_H ⊗ Q_H  ≅  Q_H ⊗ PED_H
 
-Axiom B2 (Braiding on C-side):
-  B_C is a natural isomorphism in A_C:
-    B_C : DEP_C ⊗ Q_C  ≅  Q_C ⊗ DEP_C
+Axiom B2 (C-side Braiding):
+  B_C : DEP_C ⊗ Q_C  ≅  Q_C ⊗ DEP_C
 
 
 Axiom B3 (Ξ_flip^Functor Intertwines Braiding):
-  Ξ_flip^Functor respects the PED/DEP–Q interaction pattern:
+  Ξ_flip^Functor(B_H)  ≅  B_C'  ∘  Ξ_flip^Functor
 
-    Ξ_flip^Functor(B_H)  ≅  B_C'  ∘  Ξ_flip^Functor
-    (up to natural isomorphism)
+where B_C' is the transported braiding and is naturally isomorphic
+to the canonical braiding B_C on the C-side.
 
-  where B_C' is the image of B_H under Ξ_flip^Functor, and is
-  equivalent to the canonical braiding B_C on the C-side.
+Interpretation:
+  The enriched flip preserves the process–interaction structure
+  across axes.
 
-Informal reading:
-  Flipping axes via Ξ_flip^Functor does not break or distort the
-  way the process layer (PED/DEP) interacts with the interaction
-  layer (Q). It transports the interaction structure coherently
-  from (PED_H, Q_H) to (DEP_C, Q_C).
 
 ============================================================
 END OF SPECIFICATION

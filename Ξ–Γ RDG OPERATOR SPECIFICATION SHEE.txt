@@ -208,5 +208,82 @@ Interpretation:
 
 
 ============================================================
+APPENDIX A — WORKED EXAMPLES FOR THE Ξ–Γ RDG FRAMEWORK
+============================================================
+
+This appendix provides concrete instantiations of the Ξ_rdg,
+Ξ_flip, and Γ operators on familiar mathematical/physical
+objects. These examples are illustrative and do not add new
+axioms to the core specification.
+
+------------------------------------------------------------
+A.1  Example: Dirac Operator on a Spinor Bundle
+------------------------------------------------------------
+Object:
+  D_H : Γ(S_H) → Γ(S_H)
+    (Dirac operator on the Hamilton-side spinor bundle)
+
+Steps:
+  1. Apply Γ-closure to ensure well-formedness.
+  2. Apply Ξ_rdg to change representation basis.
+  3. Apply Ξ_flip^Identity to map to Clifford-side.
+  4. Apply Ξ_flip^Functor to transport morphisms and constraints.
+
+Result:
+  D_C : Γ(S_C) → Γ(S_C)
+    (Clifford-side Dirac operator with preserved semantics)
+
+Semantic invariance:
+  Sem(D_H) = Sem(D_C)
+
+------------------------------------------------------------
+A.2  Example: Gauge Connection and Curvature
+------------------------------------------------------------
+Object:
+  A_H = gauge connection on H-side
+  F_H = dA_H + A_H ∧ A_H
+
+Steps:
+  1. Γ(A_H) ensures consistency of the gauge data.
+  2. Ξ_rdg(A_H) changes representation without altering physics.
+  3. Ξ_flip^Functor(A_H) transports the connection to C-side.
+  4. Curvature transforms functorially:
+       F_C = Ξ_flip^Functor(F_H)
+
+Semantic invariance:
+  Sem(F_H) = Sem(F_C)
+
+------------------------------------------------------------
+A.3  Example: SID/PED/Q Triple Under Ξ_flip
+------------------------------------------------------------
+Given:
+  (SID_H, PED_H, Q_H)
+
+Identity mode:
+  Ξ_flip^Identity(SID_H, PED_H, Q_H)
+    = (DIS_C, DEP_C, Q_C)
+
+Functor mode:
+  Ξ_flip^Functor(SID_H, PED_H, Q_H)
+    = (DIS_C, DEP_C, Q_C)
+  with full morphism transport and braiding preservation.
+
+------------------------------------------------------------
+A.4  Example: Braiding Preservation
+------------------------------------------------------------
+Given braidings:
+  B_H : PED_H ⊗ Q_H → Q_H ⊗ PED_H
+  B_C : DEP_C ⊗ Q_C → Q_C ⊗ DEP_C
+
+Check:
+  Ξ_flip^Functor(B_H) ≅ B_C' ∘ Ξ_flip^Functor
+
+Interpretation:
+  Process–interaction structure is preserved across axes.
+
+============================================================
+END OF APPENDIX A
+============================================================
+============================================================
 END OF SPECIFICATION
 ============================================================

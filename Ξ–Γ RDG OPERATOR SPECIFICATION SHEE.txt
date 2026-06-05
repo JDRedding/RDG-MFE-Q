@@ -1,0 +1,125 @@
+              Ξ–Γ RDG OPERATOR SPECIFICATION SHEET
+============================================================
+
+SECTION 0 — AMBIENT STRUCTURES
+------------------------------------------------------------
+Let R be the RDG category:
+  Ob(R)  = RDG representations (SID, DIS, PED, DEP, Q-forms, etc.)
+  Mor(R) = structure-respecting transforms between representations
+
+Let A_H, A_C be full subcategories of R:
+  A_H = Hamilton-axis representations
+  A_C = Clifford-axis representations
+
+Let M be a mode monoid:
+  Elements: {Identity, Functor, ...}
+  Operation: (α ⋆ β)
+  Unit: Identity
+
+Let Sem : Ob(R) → Meaning be the semantic invariant.
+
+
+SECTION 1 — THE Ξ_rdg OPERATOR
+------------------------------------------------------------
+Ξ_rdg : R → R
+
+Axiom R1 (Endofunctor):
+  Ξ_rdg(Id_R) = Id_(Ξ_rdg(R))
+  Ξ_rdg(g ∘ f) = Ξ_rdg(g) ∘ Ξ_rdg(f)
+
+Axiom R2 (Semantic Preservation):
+  Sem(Ξ_rdg(R)) = Sem(R)
+
+Interpretation:
+  Ξ_rdg is a semantic-preserving transpolator on RDG representations.
+
+
+SECTION 2 — THE Ξ_flip OPERATOR FAMILY
+------------------------------------------------------------
+Ξ_flip^α : A_H → A_C   for α ∈ M
+Ξ_flip   := Ξ_flip^(default mode)
+
+--- Identity Mode ------------------------------------------
+Ξ_flip^Identity : A_H ↔ A_C
+
+Axiom F1 (Involution):
+  Ξ_flip^Identity ∘ Ξ_flip^Identity = Id
+
+Interpretation:
+  Pure axis flip (SID ↔ DIS, PED ↔ DEP, H ↔ C).
+
+
+--- Functor Mode -------------------------------------------
+Ξ_flip^Functor : A_H → A_C
+
+Axiom F2 (Functoriality):
+  Ξ_flip^Functor(Id_R) = Id_(Ξ_flip^Functor(R))
+  Ξ_flip^Functor(g ∘ f) = Ξ_flip^Functor(g) ∘ Ξ_flip^Functor(f)
+
+Axiom F3 (Semantic Transport):
+  Sem(Ξ_flip^Functor(R)) = Sem(R)
+
+Axiom F4 (Coherence):
+  There exist natural transformations:
+    η : Ξ_flip^Identity ⇒ Ξ_flip^Functor
+    μ : Ξ_flip^Functor ∘ Ξ_flip^Functor ⇒ Id
+  expressing semantic enrichment and near-involutivity.
+
+
+--- Mode Algebra -------------------------------------------
+Axiom F5 (Mode Monoid Action):
+  (Ξ_flip^α) ∘ (Ξ_flip^β) behaves as Ξ_flip^(α ⋆ β)
+
+  Identity ⋆ α = α ⋆ Identity = α
+  (Optional) Functor ⋆ Functor = Functor
+
+
+SECTION 3 — Γ-CLOSURE OPERATOR
+------------------------------------------------------------
+Γ : R → R
+
+Axiom G1 (Endofunctor):
+  Γ is a functor on R.
+
+Axiom G2 (Idempotence):
+  Γ ∘ Γ = Γ
+
+Axiom G3 (Closed Objects):
+  R is Γ-closed  ⇔  Γ(R) = R
+
+Interpretation:
+  Γ enforces representational well-formedness / completion.
+
+
+SECTION 4 — Ξ–Γ COMPATIBILITY (WELL-FORMEDNESS AXIOMS)
+------------------------------------------------------------
+Axiom GX1 (Ξ_rdg Respects Closure):
+  Γ(Ξ_rdg(R)) = Ξ_rdg(Γ(R))
+  or at minimum: Ξ_rdg ∘ Γ ≅ Γ ∘ Ξ_rdg
+
+Axiom GX2 (Ξ_flip^Functor Respects Closure):
+  Γ(Ξ_flip^Functor(R)) = Ξ_flip^Functor(Γ(R))
+  or at minimum: Ξ_flip^Functor ∘ Γ ≅ Γ ∘ Ξ_flip^Functor
+
+Consequences:
+  If R is Γ-closed, then Ξ_rdg(R) and Ξ_flip^Functor(R) are also Γ-closed.
+
+
+SECTION 5 — ADDITIONAL WELL-FORMEDNESS CONDITIONS
+------------------------------------------------------------
+Axiom W1 (Semantic Non-Degeneracy):
+  If Sem(R) = Sem(S) and both are Γ-closed,
+  then R and S are equivalent objects in R.
+
+Axiom W2 (Domain/Codomain Sanity):
+  A_H and A_C are full subcategories of R.
+  All Ξ_flip^α map between appropriate sides.
+
+Axiom W3 (Default Mode Declaration):
+  A single α_default ∈ M is chosen once.
+  Ξ_flip := Ξ_flip^(α_default)
+
+
+============================================================
+END OF SPECIFICATION
+============================================================

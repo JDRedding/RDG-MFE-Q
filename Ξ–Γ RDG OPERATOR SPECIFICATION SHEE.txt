@@ -1094,5 +1094,141 @@ Axis invariance:
 END OF APPENDIX C
 ============================================================
 ============================================================
+APPENDIX D — CANONICAL IDENTITIES
+============================================================
+
+Canonical identities are equations that hold universally across
+the RDG category R, its Hamilton and Clifford subcategories
+A_H and A_C, and all regulator stacks. They express the algebraic
+backbone of the dual-axis system.
+
+All identities preserve semantics:
+  Sem(LHS) = Sem(RHS)
+
+D.1  IDENTITY CLASS — FUNCTORIAL IDENTITIES
+------------------------------------------------------------
+
+(Identity Preservation)
+  F(Id_R) = Id_(F(R))
+  for F ∈ {Γ, Λ, Ξ_rdg, Ξ_flip^Functor}
+
+(Composition Preservation)
+  F(g ∘ f) = F(g) ∘ F(f)
+
+(Endofunctor Identity)
+  Ξ_rdg(R) ∈ Ob(R)
+  Γ(R)     ∈ Ob(R)
+  Λ(R)     ∈ Ob(R)
+
+D.2  IDENTITY CLASS — CLOSURE IDENTITIES
+------------------------------------------------------------
+
+(Gamma Idempotence)
+  Γ(Γ(R)) = Γ(R)
+
+(Lambda Idempotence)
+  Λ(Λ(R)) = Λ(R)
+
+(Gamma Fixed Point)
+  Γ(R) = R   ⇔   R is Γ-closed
+
+(Lambda Fixed Point)
+  Λ(R) = R   ⇔   R is Λ-closed
+
+D.3  IDENTITY CLASS — AXIS-FLIP IDENTITIES
+------------------------------------------------------------
+
+(Involution)
+  Ξ_flip(Ξ_flip(R)) = R
+
+(SID–DIS Duality)
+  Ξ_flip(SID_H) = DIS_C
+  Ξ_flip(DIS_C) = SID_H
+
+(PED–DEP Duality)
+  Ξ_flip(PED_H) = DEP_C
+  Ξ_flip(DEP_C) = PED_H
+
+(Q-Layer Invariance)
+  Ξ_flip(Q_H) = Q_C
+  Ξ_flip(Q_C) = Q_H
+
+D.4  IDENTITY CLASS — Γ–Λ DUALITY IDENTITIES
+------------------------------------------------------------
+
+(Core Duality)
+  Λ ∘ Ξ_flip = Ξ_flip ∘ Γ
+
+(Object Duality)
+  Λ(Ξ_flip(R_H)) = Ξ_flip(Γ(R_H))
+
+(Morphism Duality)
+  Λ(Ξ_flip(f)) = Ξ_flip(Γ(f))
+
+(Closure Transport)
+  Γ-closed(R_H)  ⇒  Λ-closed(Ξ_flip(R_H))
+  Λ-closed(R_C)  ⇒  Γ-closed(Ξ_flip(R_C))
+
+D.5  IDENTITY CLASS — Q-LAYER IDENTITIES
+------------------------------------------------------------
+
+(Projection–Defect Identity)
+  Q(x) = x - Proj(x)
+
+(Defect Invariance)
+  Q_H(x) = Q_C(x)
+  (defect is axis-invariant)
+
+(Admissibility Stability)
+  Q(Γ(R)) = Q(R)
+  Q(Λ(R)) = Q(R)
+
+D.6  IDENTITY CLASS — BRAIDING IDENTITIES
+------------------------------------------------------------
+
+(Hamilton Braiding)
+  B_H : PED_H ⊗ Q_H = Q_H ⊗ PED_H
+
+(Clifford Braiding)
+  B_C : DEP_C ⊗ Q_C = Q_C ⊗ DEP_C
+
+(Flip-Transported Braiding)
+  Ξ_flip(B_H) = B_C'
+
+(Braiding Coherence)
+  B_C' ≅ B_C
+
+D.7  IDENTITY CLASS — REGULATOR TRIPLE IDENTITIES
+------------------------------------------------------------
+
+(Hamilton Triple)
+  (SID_H, PED_H, Q_H)
+    = Γ(SID_H, PED_H, Q_H)
+
+(Clifford Triple)
+  (DIS_C, DEP_C, Q_C)
+    = Λ(DIS_C, DEP_C, Q_C)
+
+(Flip Triple)
+  Ξ_flip(SID_H, PED_H, Q_H)
+    = (DIS_C, DEP_C, Q_C)
+
+D.8  IDENTITY CLASS — SEMANTIC IDENTITIES
+------------------------------------------------------------
+
+(Semantic Preservation)
+  Sem(Ξ_rdg(R)) = Sem(R)
+  Sem(Ξ_flip(R)) = Sem(R)
+  Sem(Γ(R))      = Sem(R)
+  Sem(Λ(R))      = Sem(R)
+
+(Semantic Equivalence)
+  Sem(R) = Sem(S)  ∧  R,S Γ-closed
+    ⇒  R ≅ S
+
+============================================================
+END OF APPENDIX D
+============================================================
+============================================================
 END OF SPECIFICATION
 ============================================================

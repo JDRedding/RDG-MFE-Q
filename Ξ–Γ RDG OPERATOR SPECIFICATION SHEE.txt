@@ -1,5 +1,5 @@
 ============================================================
-        Ξ–Γ RDG OPERATOR SPECIFICATION SHEET v1.0
+        Ξ–Γ RDG OPERATOR SPECIFICATION SHEET v1.1
 ============================================================
 
 SECTION 0 — AMBIENT STRUCTURES
@@ -205,6 +205,18 @@ to the canonical braiding B_C on the C-side.
 Interpretation:
   The enriched flip preserves the process–interaction structure
   across axes.
+
+============================================================
+SECTION 8 — THE Γ-STABLE OPERATOR Ξ_Γ^closure
+============================================================
+
+Define the Γ-stable Ξ operator:
+
+  Ξ_Γ^closure := Ξ |_{Γ-closed}
+
+This is the restriction of Ξ to the full subcategory of Γ-closed
+objects. By axioms GX1 and GX2, Ξ_Γ^closure is well-defined and
+preserves Γ-closure, semantics, and braiding structure.
 
 
 ============================================================

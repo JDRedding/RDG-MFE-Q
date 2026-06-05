@@ -1,5 +1,5 @@
 ============================================================
-              Ξ–Γ RDG OPERATOR SPECIFICATION SHEET
+        Ξ–Γ RDG OPERATOR SPECIFICATION SHEET v1.0
 ============================================================
 
 SECTION 0 — AMBIENT STRUCTURES

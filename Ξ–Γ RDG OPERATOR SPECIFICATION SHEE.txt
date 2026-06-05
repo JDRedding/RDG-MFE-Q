@@ -914,7 +914,184 @@ Interpretation:
 END OF APPENDIX B
 ============================================================
 ============================================================
-APPENDIX C (To do:)
+APPENDIX C — REWRITE RULE SCHEMAS
+============================================================
+
+Rewrite rule schemas describe general transformation patterns
+that any concrete RDG expression must obey. They operate on:
+
+  - regulator triples (SID/PED/Q, DIS/DEP/Q)
+  - closure operators (Γ, Λ)
+  - flip operators (Ξ_rdg, Ξ_flip)
+  - braidings (B_H, B_C)
+  - semantic invariants (Sem)
+
+All schemas are semantics-preserving:
+  Sem(LHS) = Sem(RHS)
+
+C.1  AXIOMATIC REWRITE SCHEMA
+------------------------------------------------------------
+
+General form:
+
+  (AXIOM)   LHS  ⇒  RHS
+
+Subject to:
+  - type correctness (objects/morphisms in R)
+  - semantic invariance
+  - closure compatibility (Γ, Λ)
+
+Example schema:
+
+  (Idempotence)
+    O : Ob(R)
+    -----------------
+    Γ(Γ(O))  ⇒  Γ(O)
+
+C.2  TRIPLE-LEVEL REWRITE SCHEMA
+------------------------------------------------------------
+
+Let T_H be a Hamilton triple:
+  T_H = (SID_H, PED_H, Q_H)
+
+Let T_C be a Clifford triple:
+  T_C = (DIS_C, DEP_C, Q_C)
+
+Schema H→C:
+
+  (AxisFlip)
+    T_H
+    -----------------
+    Ξ_flip(T_H)  ⇒  T_C
+
+Schema C→H:
+
+  (AxisFlip^-1)
+    T_C
+    -----------------
+    Ξ_flip(T_C)  ⇒  T_H
+
+These are involutive up to isomorphism.
+
+C.3  CLOSURE-LEVEL REWRITE SCHEMA
+------------------------------------------------------------
+
+Hamilton closure:
+
+  (GammaClosure)
+    R ∈ Ob(R)
+    -----------------
+    Γ(R)  ⇒  R_Γ
+    with Γ(R_Γ) = R_Γ
+
+Clifford closure:
+
+  (LambdaClosure)
+    R ∈ Ob(R)
+    -----------------
+    Λ(R)  ⇒  R_Λ
+    with Λ(R_Λ) = R_Λ
+
+Duality schema:
+
+  (GammaLambdaDuality)
+    R_H ∈ A_H
+    -----------------
+    Λ(Ξ_flip(R_H))  ⇒  Ξ_flip(Γ(R_H))
+
+C.4  PROCESS/STRUCTURE REWRITE SCHEMA
+------------------------------------------------------------
+
+Hamilton-side:
+
+  (SID_PED_Update)
+    (SID_H, PED_H, Q_H)
+    -------------------------
+    Γ(SID_H, PED_H, Q_H)
+      ⇒ (SID_H', PED_H', Q_H')
+
+Clifford-side:
+
+  (DIS_DEP_Update)
+    (DIS_C, DEP_C, Q_C)
+    -------------------------
+    Λ(DIS_C, DEP_C, Q_C)
+      ⇒ (DIS_C', DEP_C', Q_C')
+
+Axis-transport:
+
+  (TransportUpdate)
+    (SID_H', PED_H', Q_H')
+    -------------------------
+    Ξ_flip(SID_H', PED_H', Q_H')
+      ⇒ (DIS_C', DEP_C', Q_C')
+
+C.5  MORPHISM-LEVEL REWRITE SCHEMA
+------------------------------------------------------------
+
+Composition:
+
+  (Functoriality)
+    f : A → B
+    g : B → C
+    -----------------
+    F(g ∘ f)  ⇒  F(g) ∘ F(f)
+
+for F ∈ {Γ, Λ, Ξ_rdg, Ξ_flip^Functor}.
+
+Identity:
+
+  (IdentityPreservation)
+    Id_A : A → A
+    -----------------
+    F(Id_A)  ⇒  Id_(F(A))
+
+C.6  BRAIDING REWRITE SCHEMA
+------------------------------------------------------------
+
+Hamilton braiding:
+
+  (HBraid)
+    B_H : PED_H ⊗ Q_H → Q_H ⊗ PED_H
+    -----------------
+    Γ(B_H)  ⇒  B_H
+
+Clifford braiding:
+
+  (CBraid)
+    B_C : DEP_C ⊗ Q_C → Q_C ⊗ DEP_C
+    -----------------
+    Λ(B_C)  ⇒  B_C
+
+Transport:
+
+  (BraidTransport)
+    B_H
+    -----------------
+    Ξ_flip(B_H)  ⇒  B_C'
+
+with B_C' ≅ B_C.
+
+C.7  Q-LAYER REWRITE SCHEMA
+------------------------------------------------------------
+
+Projection–defect:
+
+  (QDefect)
+    x ∈ Ob(R)
+    -----------------
+    Q(x)  ⇒  x - Proj(x)
+
+Axis invariance:
+
+  (QAxisInvariance)
+    Q_H, Q_C
+    -----------------
+    Ξ_flip(Q_H)  ⇒  Q_C
+    Ξ_flip(Q_C)  ⇒  Q_H
+
+============================================================
+END OF APPENDIX C
 ============================================================
 ============================================================
 END OF SPECIFICATION

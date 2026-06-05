@@ -239,6 +239,395 @@ Interpretation:
   acting entirely within the Γ-closed universe of representations.
 
 ============================================================
+SECTION 9 — Λ-CLOSURE OPERATOR (CLIFFORD-AXIS)
+============================================================
+
+Λ : R → R
+
+Domain:
+  R = RDG category of representations
+  A_C ⊂ R = Clifford-axis subcategory (DIS, DEP, Q_C, etc.)
+
+Codomain:
+  Λ(R) ∈ A_C
+
+Λ is the Clifford-side analogue of the Γ operator on the
+Hamilton axis. Where Γ enforces representational closure,
+Λ enforces metric-side (Clifford-side) closure.
+
+AXIOM L1 — Endofunctor
+------------------------------------------------------------
+Λ is a functor on R:
+
+  Λ(Id_R) = Id_(Λ(R))
+  Λ(g ∘ f) = Λ(g) ∘ Λ(f)
+
+Interpretation:
+  Λ acts functorially on objects and morphisms, preserving
+  composition and identity.
+
+AXIOM L2 — Idempotence
+------------------------------------------------------------
+Λ ∘ Λ = Λ
+
+Interpretation:
+  Applying Λ twice yields no further refinement. Λ-closed
+  objects are fixed points of the operator.
+
+AXIOM L3 — Λ-Closed Objects
+------------------------------------------------------------
+R is Λ-closed  ⇔  Λ(R) = R
+
+Interpretation:
+  Λ-closed objects are those whose metric/phase structure,
+  geometric interactions, and derived signatures are already
+  internally consistent.
+
+AXIOM L4 — Semantic Preservation
+------------------------------------------------------------
+Sem(Λ(R)) = Sem(R)
+
+Interpretation:
+  Λ preserves the semantic content of the representation.
+  Only the metric-side well-formedness is enforced.
+
+AXIOM L5 — Clifford-Axis Stability
+------------------------------------------------------------
+If R ∈ A_C (Clifford-axis), then Λ(R) ∈ A_C.
+
+Interpretation:
+  Λ maps Clifford-side objects to Clifford-side objects.
+  It does not produce Hamilton-side structures.
+
+AXIOM L6 — DIS/DEP/Q Closure
+------------------------------------------------------------
+For any Clifford-axis triple:
+
+  (DIS_C, DEP_C, Q_C)
+
+Λ enforces:
+
+  - metric coherence of D_m
+  - geometric-product consistency of I_g
+  - defect/gate/spectral stability of S_d
+  - DEP-layer evaluation/projection consistency
+  - Q_C admissibility invariants
+
+Formally:
+
+  Λ(DIS_C, DEP_C, Q_C)
+    = (DIS_C', DEP_C', Q_C')
+
+with:
+  DIS_C' = DIS_C        (metric fixed)
+  DEP_C' = DEP_C        (screen/projection stabilized)
+  Q_C'   = Q_C          (admissibility preserved)
+
+AXIOM L7 — Compatibility with Ξ_flip^Functor
+------------------------------------------------------------
+Λ ∘ Ξ_flip^Functor  ≅  Ξ_flip^Functor ∘ Γ
+
+Interpretation:
+  Λ is the Clifford-axis dual of Γ. The flip functor
+  transports Γ-closure on the Hamilton side into Λ-closure
+  on the Clifford side.
+
+This is the Γ–Λ duality law.
+
+AXIOM L8 — Braiding Preservation
+------------------------------------------------------------
+Λ preserves the Clifford-side braiding:
+
+  Λ(B_C) ≅ B_C
+
+where:
+  B_C : DEP_C ⊗ Q_C → Q_C ⊗ DEP_C
+
+Interpretation:
+  Λ does not disturb the process–interaction braiding on
+  the Clifford axis.
+
+AXIOM L9 — Λ-Stable Universe
+------------------------------------------------------------
+Define the Λ-stable subcategory:
+
+  R_Λ := { R ∈ Ob(R) | Λ(R) = R }
+
+Then Λ restricts to an identity functor on R_Λ:
+
+  Λ |_(R_Λ) = Id_(R_Λ)
+
+Interpretation:
+  Λ-closed objects form a stable semantic universe.
+
+============================================================
+SECTION 10 — THE Γ–Λ DUALITY LAW
+============================================================
+
+The Γ–Λ duality law expresses the fundamental compatibility
+between Hamilton-axis closure (Γ) and Clifford-axis closure (Λ)
+under the axis-transformation operator Ξ_flip.
+
+It states that Γ-closure transported across the Ξ_flip functor
+is equivalent to Λ-closure, and vice versa.
+
+AXIOM DL1 — Duality (Core Identity)
+------------------------------------------------------------
+
+  Λ ∘ Ξ_flip^Functor   ≅   Ξ_flip^Functor ∘ Γ
+
+Interpretation:
+  Applying Γ on the Hamilton side and then flipping axes
+  yields the same result (up to natural isomorphism) as
+  flipping axes first and then applying Λ on the Clifford side.
+
+This is the categorical expression of Hamilton–Clifford duality.
+
+AXIOM DL2 — Object-Level Duality
+------------------------------------------------------------
+
+For any Hamilton-axis object R_H ∈ A_H:
+
+  Λ(Ξ_flip^Functor(R_H))   ≅   Ξ_flip^Functor(Γ(R_H))
+
+Equivalently:
+
+  Λ(DIS_C, DEP_C, Q_C)   ≅   Ξ_flip^Functor(Γ(SID_H, PED_H, Q_H))
+
+Interpretation:
+  Closure on one axis corresponds exactly to closure on the
+  other axis after applying the flip functor.
+
+AXIOM DL3 — Morphism-Level Duality
+------------------------------------------------------------
+
+For any morphism f : R_H → S_H in A_H:
+
+  Λ(Ξ_flip^Functor(f))   ≅   Ξ_flip^Functor(Γ(f))
+
+Interpretation:
+  The duality law holds not only for objects but also for
+  all structure-respecting transforms between them.
+
+AXIOM DL4 — Natural Transformation Witness
+------------------------------------------------------------
+
+There exists a natural isomorphism:
+
+  δ : Λ ∘ Ξ_flip^Functor   ⇒   Ξ_flip^Functor ∘ Γ
+
+such that for every R_H:
+
+  δ_(R_H) : Λ(Ξ_flip^Functor(R_H)) → Ξ_flip^Functor(Γ(R_H))
+
+is an isomorphism in A_C.
+
+Interpretation:
+  δ is the "duality witness" ensuring the two sides of the
+  duality law are equivalent in a natural, structure-preserving
+  way.
+
+AXIOM DL5 — Closure Stability Under Duality
+------------------------------------------------------------
+
+If R_H is Γ-closed:
+
+  Γ(R_H) = R_H
+
+then Ξ_flip^Functor(R_H) is Λ-closed:
+
+  Λ(Ξ_flip^Functor(R_H)) = Ξ_flip^Functor(R_H)
+
+Conversely:
+
+If S_C is Λ-closed:
+
+  Λ(S_C) = S_C
+
+then Ξ_flip^Functor(S_C) is Γ-closed:
+
+  Γ(Ξ_flip^Functor(S_C)) = Ξ_flip^Functor(S_C)
+
+Interpretation:
+  Γ-closed objects map to Λ-closed objects and vice versa.
+  Closure is preserved across axes.
+
+AXIOM DL6 — Semantic Invariance
+------------------------------------------------------------
+
+Sem(Γ(R_H)) = Sem(R_H)
+Sem(Λ(S_C)) = Sem(S_C)
+
+and therefore:
+
+Sem(Ξ_flip^Functor(Γ(R_H))) = Sem(Ξ_flip^Functor(R_H))
+Sem(Λ(Ξ_flip^Functor(R_H))) = Sem(Ξ_flip^Functor(R_H))
+
+Interpretation:
+  The duality law preserves meaning. Closure does not alter
+  semantic content on either axis.
+
+============================================================
+SECTION 11 — CANONICAL REWRITE RULES
+============================================================
+
+Canonical rewrite rules define the syntactic and structural
+transformations that preserve RDG semantics under Γ-closure,
+Λ-closure, and Ξ-based transpilation.
+
+These rules act on the regulator triples:
+  (SID_H, PED_H, Q_H)   on the Hamilton axis
+  (DIS_C, DEP_C, Q_C)   on the Clifford axis
+
+and on the morphisms between them.
+
+11.1 — STRUCTURAL REWRITE RULES (SID ↔ DIS)
+------------------------------------------------------------
+
+Rule S1 (SID → DIS):
+  S :: (Structure-first)   →   D_m :: (Metric-first)
+
+Rule S2 (DIS → SID):
+  D_m :: (Metric-first)    →   S :: (Structure-first)
+
+Rule S3 (Interaction Stability):
+  I_H  →  I_C
+  I_C  →  I_H
+
+Rule S4 (Derived Structure ↔ Derived Structure):
+  D_H  →  S_d
+  S_d  →  D_H
+
+Interpretation:
+  These rules express the SID/DIS duality under Ξ_flip.
+
+11.2 — PROCESS REWRITE RULES (PED ↔ DEP)
+------------------------------------------------------------
+
+Rule P1 (Power ↔ Drive):
+  P_H   →   D_drv
+  D_drv →   P_H
+
+Rule P2 (Evaluation ↔ Screen):
+  E_H   →   E_scr
+  E_scr →   E_H
+
+Rule P3 (Dynamics ↔ Projection):
+  Dp_H  →   P_sig
+  P_sig →   Dp_H
+
+Interpretation:
+  PED and DEP are dual process layers under Ξ_flip.
+
+11.3 — Q-LAYER REWRITE RULES (ADMISSIBILITY)
+------------------------------------------------------------
+
+Rule Q1 (Projection–Defect Identity):
+  Q(x)  →  x - Proj(x)
+
+Rule Q2 (Admissibility Preservation):
+  Q_H   →   Q_C
+  Q_C   →   Q_H
+
+Rule Q3 (Defect Stability):
+  defect  →  defect
+  (exact invariants are rewrite-fixed)
+
+Interpretation:
+  Q is invariant under axis flip and closure.
+
+11.4 — Γ-CLOSURE REWRITE RULES
+------------------------------------------------------------
+
+Rule G1 (Idempotence):
+  Γ(Γ(R))  →  Γ(R)
+
+Rule G2 (Closure Fixpoint):
+  Γ(R) = R   →   R
+
+Rule G3 (Γ-Transport):
+  Γ(f ∘ g)  →  Γ(f) ∘ Γ(g)
+
+Rule G4 (Γ-Respect for SID/PED/Q):
+  Γ(SID_H, PED_H, Q_H)
+    → (SID_H', PED_H', Q_H')
+
+Interpretation:
+  Γ enforces Hamilton-side representational completeness.
+
+11.5 — Λ-CLOSURE REWRITE RULES
+------------------------------------------------------------
+
+Rule L1 (Idempotence):
+  Λ(Λ(R))  →  Λ(R)
+
+Rule L2 (Closure Fixpoint):
+  Λ(R) = R   →   R
+
+Rule L3 (Λ-Transport):
+  Λ(f ∘ g)  →  Λ(f) ∘ Λ(g)
+
+Rule L4 (Λ-Respect for DIS/DEP/Q):
+  Λ(DIS_C, DEP_C, Q_C)
+    → (DIS_C', DEP_C', Q_C')
+
+Interpretation:
+  Λ enforces Clifford-side metric/defect/spectral stability.
+
+11.6 — Ξ_flip REWRITE RULES (AXIS TRANSPILATION)
+------------------------------------------------------------
+
+Rule X1 (Triple Flip):
+  (SID_H, PED_H, Q_H)
+    → (DIS_C, DEP_C, Q_C)
+
+Rule X2 (Involution):
+  Ξ_flip(Ξ_flip(R))  →  R
+
+Rule X3 (Functoriality):
+  Ξ_flip(f ∘ g)  →  Ξ_flip(f) ∘ Ξ_flip(g)
+
+Rule X4 (Semantic Preservation):
+  Sem(Ξ_flip(R))  →  Sem(R)
+
+Interpretation:
+  Ξ_flip is the canonical axis-transpilation operator.
+
+11.7 — Γ–Λ DUALITY REWRITE RULES
+------------------------------------------------------------
+
+Rule DL1 (Core Duality):
+  Λ(Ξ_flip(R))  →  Ξ_flip(Γ(R))
+
+Rule DL2 (Object Duality):
+  Λ(DIS_C)  →  Ξ_flip(Γ(SID_H))
+
+Rule DL3 (Morphism Duality):
+  Λ(Ξ_flip(f))  →  Ξ_flip(Γ(f))
+
+Rule DL4 (Closure Preservation):
+  Γ-closed(R_H)  →  Λ-closed(Ξ_flip(R_H))
+  Λ-closed(S_C)  →  Γ-closed(Ξ_flip(S_C))
+
+Interpretation:
+  Closure on one axis corresponds to closure on the other.
+
+11.8 — BRAIDING REWRITE RULES
+------------------------------------------------------------
+
+Rule B1 (Hamilton Braiding):
+  PED_H ⊗ Q_H   →   Q_H ⊗ PED_H
+
+Rule B2 (Clifford Braiding):
+  DEP_C ⊗ Q_C   →   Q_C ⊗ DEP_C
+
+Rule B3 (Braiding Transport):
+  Ξ_flip(B_H)   →   B_C'
+
+Interpretation:
+  Process–interaction braiding is preserved across axes.
+
+============================================================
 APPENDIX A — WORKED EXAMPLES FOR THE Ξ–Γ RDG FRAMEWORK
 ============================================================
 
@@ -316,10 +705,216 @@ Interpretation:
 END OF APPENDIX A
 ============================================================
 ============================================================
-APPENDIX  B (To  Do: regulator stack behavior)
+APPENDIX  B — REGULATOR STACK BEHAVIOR EXAMPLES
+============================================================
+
+This section provides concrete examples illustrating how the
+regulator stacks behave under:
+
+  - Γ-closure (Hamilton-axis)
+  - Λ-closure (Clifford-axis)
+  - Ξ_flip (axis transpilation)
+  - braiding interactions
+  - Q-layer admissibility
+
+All examples preserve semantic invariants:
+  Sem(R_in) = Sem(R_out)
+
+B.1  EXAMPLE — SID/PED/Q UNDER Γ-CLOSURE
+============================================================
+
+Given Hamilton-axis triple:
+
+  R_H = (SID_H, PED_H, Q_H)
+
+where:
+  SID_H = (S, I, D)
+  PED_H = (P, E, Dp)
+  Q_H   = projection-defect operator
+
+Apply Γ:
+
+  Γ(R_H) = (SID_H', PED_H', Q_H')
+
+Behavior:
+
+  - S is completed to S' by basis coverage
+  - I is normalized to I'
+  - D is stabilized to D'
+  - P/E/Dp are made consistent with SID_H'
+  - Q_H' preserves the same defect invariants
+
+Rewrite:
+
+  Γ(SID_H, PED_H, Q_H)
+      → (SID_H', PED_H', Q_H')
+
+Interpretation:
+  Γ enforces representational completeness on the Hamilton axis.
+
+B.2  EXAMPLE — DIS/DEP/Q UNDER Λ-CLOSURE
+============================================================
+
+Given Clifford-axis triple:
+
+  R_C = (DIS_C, DEP_C, Q_C)
+
+where:
+  DIS_C = (D_m, I_g, S_d)
+  DEP_C = (D_drv, E_scr, P_sig)
+  Q_C   = projection-defect operator
+
+Apply Λ:
+
+  Λ(R_C) = (DIS_C', DEP_C', Q_C')
+
+Behavior:
+
+  - D_m is fixed (metric is primitive)
+  - I_g is stabilized under geometric-product constraints
+  - S_d is updated to reflect stable defect/gate structure
+  - D_drv/E_scr/P_sig are made consistent with DIS_C'
+  - Q_C' preserves the same defect invariants
+
+Rewrite:
+
+  Λ(DIS_C, DEP_C, Q_C)
+      → (DIS_C', DEP_C', Q_C')
+
+Interpretation:
+  Λ enforces metric/defect/spectral stability on the Clifford axis.
+
+B.3  EXAMPLE — AXIS FLIP VIA Ξ_flip
+============================================================
+
+Given Hamilton-axis triple:
+
+  (SID_H, PED_H, Q_H)
+
+Apply Ξ_flip:
+
+  Ξ_flip(SID_H, PED_H, Q_H)
+      = (DIS_C, DEP_C, Q_C)
+
+Behavior:
+
+  - S ↦ D_m      (structure becomes metric primitive)
+  - I ↦ I_g      (interaction preserved)
+  - D ↦ S_d      (dynamics becomes derived structure)
+  - P ↦ D_drv    (power becomes drive)
+  - E ↦ E_scr    (evaluation becomes screen)
+  - Dp ↦ P_sig   (dynamic thresholds become projection signatures)
+  - Q_H ↦ Q_C    (admissibility preserved)
+
+Interpretation:
+  Ξ_flip is a semantic-preserving axis transpiler.
+
+B.4  EXAMPLE — Γ–Λ DUALITY IN ACTION
+============================================================
+
+Start with Hamilton-side object R_H:
+
+  R_H = (SID_H, PED_H, Q_H)
+
+Two paths:
+
+Path A:
+  R_H --Γ--> Γ(R_H) --Ξ_flip--> Ξ_flip(Γ(R_H))
+
+Path B:
+  R_H --Ξ_flip--> Ξ_flip(R_H) --Λ--> Λ(Ξ_flip(R_H))
+
+Duality law:
+
+  Λ(Ξ_flip(R_H))  ≅  Ξ_flip(Γ(R_H))
+
+Interpretation:
+  Closure on one axis corresponds to closure on the other.
+
+B.5  EXAMPLE — BRAIDING BEHAVIOR
+============================================================
+
+Hamilton-side braiding:
+
+  B_H : PED_H ⊗ Q_H → Q_H ⊗ PED_H
+
+Example:
+
+  (P ⊗ Q_H)  →  (Q_H ⊗ P)
+
+Clifford-side braiding:
+
+  B_C : DEP_C ⊗ Q_C → Q_C ⊗ DEP_C
+
+Example:
+
+  (D_drv ⊗ Q_C)  →  (Q_C ⊗ D_drv)
+
+Transport under Ξ_flip:
+
+  Ξ_flip(B_H)  ≅  B_C'
+
+Interpretation:
+  Process–interaction braiding is preserved across axes.
+
+B.6  EXAMPLE — Q-LAYER ADMISSIBILITY
+============================================================
+
+Given any x in either axis:
+
+  Q(x) = x - Proj(x)
+
+Example:
+
+  Let x = (metric vector)
+  Proj(x) = (projection onto admissible subspace)
+
+Then:
+
+  Q(x) = x - Proj(x)
+
+Under Ξ_flip:
+
+  Q_H(x)  →  Q_C(x)
+  Q_C(x)  →  Q_H(x)
+
+Interpretation:
+  Q is axis-invariant and rewrite-fixed.
+
+12.7  EXAMPLE — FULL ROUND TRIP
+
+Start with Hamilton-side triple:
+
+  R_H = (SID_H, PED_H, Q_H)
+
+Apply Γ:
+
+  R_H' = Γ(R_H)
+
+Apply Ξ_flip:
+
+  R_C = Ξ_flip(R_H')
+
+Apply Λ:
+
+  R_C' = Λ(R_C)
+
+Apply Ξ_flip again:
+
+  R_H'' = Ξ_flip(R_C')
+
+Result:
+
+  R_H'' ≅ R_H'
+
+Interpretation:
+  A full Γ → Ξ → Λ → Ξ cycle returns a Γ-closed Hamilton object.
+
+============================================================
+END OF APPENDIX B
 ============================================================
 ============================================================
-APPENDIX C (To do: canonical identities or rewrite rules)
+APPENDIX C (To do:)
 ============================================================
 ============================================================
 END OF SPECIFICATION

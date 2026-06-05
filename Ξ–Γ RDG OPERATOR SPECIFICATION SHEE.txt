@@ -218,8 +218,22 @@ This is the restriction of Ξ to the full subcategory of Γ-closed
 objects. By axioms GX1 and GX2, Ξ_Γ^closure is well-defined and
 preserves Γ-closure, semantics, and braiding structure.
 
-(SID_H, PED_H, Q_H) --Γ-closed--> closed_H --Ξ_Γ^closure
-   --> closed_C --Γ-closed--> (DIS_C, DEP_C, Q_C)
+Flow on the SID/PED/Q triple:
+
+  (SID_H, PED_H, Q_H)
+        |  Γ-closure
+        v
+     closed_H
+        |  Ξ_Γ^closure
+        v
+     closed_C
+        |  Γ-closure
+        v
+  (DIS_C, DEP_C, Q_C)
+
+Interpretation:
+  Ξ_Γ^closure is the semantically valid, Γ-stable form of Ξ,
+  acting entirely within the Γ-closed universe of representations.
 
 ============================================================
 APPENDIX A — WORKED EXAMPLES FOR THE Ξ–Γ RDG FRAMEWORK

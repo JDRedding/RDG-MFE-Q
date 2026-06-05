@@ -1,5 +1,5 @@
 ============================================================
-        Ξ–Γ RDG OPERATOR SPECIFICATION SHEET v1.1
+        Ξ–Γ RDG OPERATOR SPECIFICATION SHEET v2.0
 ============================================================
 Default mode: Functor (per W3) | Working in Γ/Λ-closed regime
 unless noted.

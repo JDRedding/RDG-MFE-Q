@@ -38,13 +38,15 @@ The Point does not act on pre‑existing objects, coordinates, or fields. It is 
 +------------------------------------+
 
 1. THE POINT AS RELATIONAL COLLAPSE
-A POINT is the minimal, inevitable stance that emergeswhen a relational field is forced to declare itself.
+A POINT is the minimal, inevitable stance that emerges
+when a relational field is forced to declare itself.
 
 It is not a location.
 It is not a coordinate.
 It is not a particle.
 
-A POINT is the collapse of relational ambiguity into a single,irreducible stance.
+A POINT is the collapse of relational ambiguity into a single,
+irreducible stance.
 
 Formally:
     POINT = the minimal stable stance that survives all counter-relations.
@@ -70,7 +72,8 @@ Once p and ¬p exist, the system evaluates them across contexts.
     | affirm ¬p   | deny ¬p |
     +-----------------------+
 
-A point is the stable corner of this square — the stance thatremains consistent across all four relational modes.
+A point is the stable corner of this square — the stance that
+remains consistent across all four relational modes.
 
 
 4. THE POINT IN RDG TRIFOIL GEOMETRY
@@ -91,7 +94,8 @@ In MFE, the point becomes a 4-field attractor:
     F3 = contextual drift field
     F4 = stabilizer field
 
-A point is the intersection where all four fields agree on asingle stable output. If they do not agree, the system has no point.
+A point is the intersection where all four fields agree on a
+single stable output. If they do not agree, the system has no point.
 
 
 6. THE POINT AS Q□ TRANSLATION
@@ -107,9 +111,12 @@ computability.
     □p = p is necessary in this field
     ◇p = p is possible in this field
 
-The point is the □-fixed stance: the one that remains true underall admissible transformations. 
+The point is the □-fixed stance: the one that remains true under
+all admissible transformations. 
 
-This is the first moment the pointbecomes computable. Computability arises because the generative stack has finally produced a domain on which operators may later act.
+This is the first moment the point
+becomes computable. Computability arises because the generative stack has finally produced a domain on which operators may later act.
+
 
 7. THE POINT AS THE INFERRED ORIGINAL CHOICE
 Finally, the system back-infers:
@@ -119,14 +126,20 @@ Finally, the system back-infers:
 The point is not what you picked.
 The point is what the system could not avoid picking.
 
-A point is the inevitable stance.
+A point is the inevitable stance.
+
 
 COMPLETE DEFINITION (COMPACT)
-A POINT is the minimal, inevitable stance-generator that emergeswhen a relational field is forced through its counterpoint,counter-pair, 2×2 relational square, RDG trifoil geometry,MFE 4-field dynamics, and Q□ modal stabilization.
+A POINT is the minimal, inevitable stance-generator that emerges
+when a relational field is forced through its counterpoint,
+counter-pair, 2×2 relational square, RDG trifoil geometry,
+MFE 4-field dynamics, and Q□ modal stabilization.
 
 It is not a location but a relational attractor.
 
-It is the stance that survives all oppositions, contexts,and transformations, and therefore becomes the system’sirreducible declaration of itself.
+It is the stance that survives all oppositions, contexts,
+and transformations, and therefore becomes the system’s
+irreducible declaration of itself.
 
 A Point begins as fundamentally locationless. This is not an absence of location, but the impossibility of assigning one. Only after relational structure emerges (RDG → MFE → Q□) can something analogous to “location” appear as a derived, secondary construct. The Point does not start with location; location is what the system eventually manufactures.
 
@@ -144,7 +157,8 @@ Point Definition		Pipeline Step
 “Trifoil knot (RDG)”		RDG bifurcation
 “4-field attractor (MFE)”	MFE bifurcation
 “Modal stabilization (Q□)”	Q□ translation
-“Attractor = the point”		Infer original choice p₀
+“Attractor = the point”		Infer original choice p₀
+
 
 Definition 				Mechanism
 Minimal stance			      Choose p
@@ -225,7 +239,10 @@ ANALYTICAL OBSERVATIONS
 
 3. The Inevitability of p_0
 
-The definition of p_0 as the argmax_stability across the machine is theprofound shift from traditional logic. In standard logic, a propositionis either true or false based on external correspondence. In this system,a proposition is true if it is the only stance that survives the machine’s internal friction. Truth, in this system, is residual durability.
+The definition of p_0 as the argmax_stability across the machine is the
+profound shift from traditional logic. In standard logic, a proposition
+is either true or false based on external correspondence. In this system,
+a proposition is true if it is the only stance that survives the machine’s internal friction. Truth, in this system, is residual durability.
 
 CONCRETE EXAMPLE 1: p = "Free will exists" (libertarian)
 

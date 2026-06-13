@@ -1,3 +1,20 @@
+# ============================================================
+# CANONICAL RDG OPERATOR FLOW
+# ============================================================
+# 
+# Γ(X_t)                 # accumulation via SID topology (+ PED flux if present)
+# 
+# Q[Γ(X_t)]              # admissibility test (manifold / curvature / flux bounds)
+
+# if Q == 1:
+#     X_{t+1} = Γ(X_t)   # admissible → keep accumulated state
+# else:
+#     X_{t+1} = σ(Γ(X_t))  # inadmissible → project onto admissible simplex
+# 
+# δ(X_t) = X_t - Γ(X_t)  # boundary / mismatch tracker (diagnostic; not fed back)
+# 
+# ============================================================
+
 import numpy as np
 from dataclasses import dataclass
 

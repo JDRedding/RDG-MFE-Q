@@ -5,7 +5,7 @@
 # Γ(X_t)                 # accumulation via SID topology (+ PED flux if present)
 # 
 # Q[Γ(X_t)]              # admissibility test (manifold / curvature / flux bounds)
-
+#
 # if Q == 1:
 #     X_{t+1} = Γ(X_t)   # admissible → keep accumulated state
 # else:

@@ -1,0 +1,37 @@
+RDG-MFE-Q Pipeline
+
+
+[ Current State: X_t ]
+                 |
+                 v
+       +-------------------+
+       |     Γ-Operator    |  <-- Uses SID topology & PED (α)
+       +-------------------+
+                 |
+                 v
+       [ Virtual State: Γ(X_t) ]
+                 |
+                 v
+       +-------------------+
+       |   Q-Admissibility |  <-- Tests if Sum(Γ(X_t)) <= Manifold Bounds
+       +-------------------+
+            /         \
+     (If Admissible)  (If Inadmissible)
+          /             \
+       [Q = 1]        [Q = 0]
+        /                 \
+       v                   v
+  [ Keep State ]     +--------------------+
+                     | σ-Reconstruction   | <-- Scales/Clips to Simplex
+                     +--------------------+
+                               |
+                               v
+                     [ Normalized State ]
+                               |
+                               v
+                     +--------------------+
+                     | δ-Boundary Engine  | <-- Tracks gradient/momentum
+                     +--------------------+
+                               |
+                               v
+                     [ Final State: X_t+1 ]

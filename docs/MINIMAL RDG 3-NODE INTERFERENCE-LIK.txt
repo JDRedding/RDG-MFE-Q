@@ -1,0 +1,343 @@
+MINIMAL RDG 3-NODE INTERFERENCE-LIKE EXAMPLE
+===============================================
+
+Goal:
+Show a tiny substrate where a "middle" locus receives contributions
+from two "paths" and exhibits an interference-like pattern via Γ and δ.
+
+1. SUBSTRATE AND STATE
+
+Substrate S:
+- Loci: L = {1, 2, 3}
+- Edges: a simple line: 1 <-> 2 <-> 3
+
+    1 ---- 2 ---- 3
+
+State X_t:
+- X_t(1) = a        (left locus)
+- X_t(2) = b        (middle locus)
+- X_t(3) = c        (right locus)
+
+Interpretation:
+- Locus 2 is the "screen" / "detector line".
+- Loci 1 and 3 are two "paths" feeding into 2.
+
+
+2. SID, PED, AND Γ
+
+SID[X_t]:
+- Structure: 3-node line graph above.
+- Local interaction rule:
+  - Each node averages with its neighbors.
+  - Endpoints (1 and 3) have one neighbor.
+  - Middle node (2) has two neighbors.
+
+PED[X_t]:
+- For this minimal example, PED sets scalar weights α = 1.
+  (No extra field modulation; pure structural averaging.)
+
+Γ — Accumulation:
+- For each node i, Γ(X_t)(i) is the average of X_t(i) and its neighbors.
+
+Explicitly:
+
+- Node 1 (neighbor: 2):
+
+    Γ(X_t)(1) = ( X_t(1) + X_t(2) ) / 2
+              = ( a + b ) / 2
+
+- Node 2 (neighbors: 1 and 3):
+
+    Γ(X_t)(2) = ( X_t(1) + X_t(2) + X_t(3) ) / 3
+              = ( a + b + c ) / 3
+
+- Node 3 (neighbor: 2):
+
+    Γ(X_t)(3) = ( X_t(2) + X_t(3) ) / 2
+              = ( b + c ) / 2
+
+So:
+
+    Γ(X_t) = ( (a + b)/2 , (a + b + c)/3 , (b + c)/2 )
+
+The middle node 2 is where "interference-like" combination occurs:
+it receives contributions from both paths 1 and 3.
+
+
+3. Q — ADMISSIBILITY MANIFOLD
+
+We reuse a simple global constraint:
+
+- Total intensity <= 1:
+
+    Sum_i X(i) <= 1
+
+We evaluate admissibility on Γ(X_t):
+
+    Q[X_t] = 1  iff  Γ(X_t)(1) + Γ(X_t)(2) + Γ(X_t)(3) <= 1
+
+Compute the sum:
+
+    Γ(X_t)(1) + Γ(X_t)(2) + Γ(X_t)(3)
+      = (a + b)/2 + (a + b + c)/3 + (b + c)/2
+
+Put over a common denominator 6:
+
+    (a + b)/2       = 3(a + b)/6
+    (a + b + c)/3   = 2(a + b + c)/6
+    (b + c)/2       = 3(b + c)/6
+
+Sum:
+
+    3(a + b) + 2(a + b + c) + 3(b + c)
+  = 3a + 3b + 2a + 2b + 2c + 3b + 3c
+  = (3a + 2a) + (3b + 2b + 3b) + (2c + 3c)
+  = 5a + 8b + 5c
+
+So:
+
+    Γ(X_t)(1) + Γ(X_t)(2) + Γ(X_t)(3) = (5a + 8b + 5c) / 6
+
+Admissibility condition:
+
+    Q[X_t] = 1  iff  (5a + 8b + 5c) / 6 <= 1
+    Q[X_t] = 0  iff  (5a + 8b + 5c) / 6 > 1
+
+Equivalently:
+
+    Q[X_t] = 1  iff  5a + 8b + 5c <= 6
+    Q[X_t] = 0  iff  5a + 8b + 5c > 6
+
+
+4. σ — RECONSTRUCTION (Q-VIOLATION CASE)
+
+If Q[X_t] = 0, we project Γ(X_t) back onto a simplex:
+
+- Simplex in 3D:
+
+    Δ = { (y_1, y_2, y_3) | y_i >= 0, y_1 + y_2 + y_3 = 1 }
+
+Given Γ(X_t) = (g_1, g_2, g_3):
+
+    g_1 = (a + b)/2
+    g_2 = (a + b + c)/3
+    g_3 = (b + c)/2
+
+Let:
+
+    T = g_1 + g_2 + g_3 = (5a + 8b + 5c) / 6
+
+- If T <= 1 (admissible), we keep Γ(X_t).
+- If T > 1 (inadmissible), we scale down:
+
+    σ(Γ(X_t)) = ( g_1 / T , g_2 / T , g_3 / T )
+
+This is the 3-node analogue of the 2-node simplex projection:
+RDG "collapse" as constraint restoration.
+
+
+5. δ — BOUNDARY ENGINE
+
+By definition:
+
+    δ(X_t)(i) = X_t(i) - Γ(X_t)(i)
+
+Compute each component:
+
+- Node 1:
+
+    δ(X_t)(1) = a - (a + b)/2
+              = (2a - a - b)/2
+              = (a - b)/2
+
+- Node 2:
+
+    δ(X_t)(2) = b - (a + b + c)/3
+              = (3b - a - b - c)/3
+              = (2b - a - c)/3
+
+- Node 3:
+
+    δ(X_t)(3) = c - (b + c)/2
+              = (2c - b - c)/2
+              = (c - b)/2
+
+Check the sum:
+
+    δ(X_t)(1) + δ(X_t)(2) + δ(X_t)(3)
+      = (a - b)/2 + (2b - a - c)/3 + (c - b)/2
+
+Put over 6:
+
+    (a - b)/2       = 3(a - b)/6
+    (2b - a - c)/3  = 2(2b - a - c)/6
+    (c - b)/2       = 3(c - b)/6
+
+Sum numerator:
+
+    3(a - b) + 2(2b - a - c) + 3(c - b)
+  = 3a - 3b + 4b - 2a - 2c + 3c - 3b
+  = (3a - 2a) + (-3b + 4b - 3b) + (-2c + 3c)
+  = a + (-2b) + c
+  = a - 2b + c
+
+So in general:
+
+    δ(X_t)(1) + δ(X_t)(2) + δ(X_t)(3) = (a - 2b + c) / 6
+
+This shows:
+- δ is not necessarily sum-zero in this 3-node case.
+- The middle node’s deviation depends on the "interference" between a and c.
+
+
+6. CONCRETE NUMERICAL RUN (INTERFERENCE-LIKE PATTERN)
+
+We now choose values that mimic two "paths" interfering at the middle node.
+
+Case: symmetric paths, high middle intensity
+
+    X_t = (a, b, c) = (0.6, 0.2, 0.6)
+
+Interpretation:
+- Left and right paths: 0.6 each.
+- Middle: 0.2 (initially lower than the paths).
+
+Step 1: Compute Γ
+
+- Node 1:
+
+    Γ(X_t)(1) = (a + b)/2 = (0.6 + 0.2)/2 = 0.8/2 = 0.4
+
+- Node 2:
+
+    Γ(X_t)(2) = (a + b + c)/3 = (0.6 + 0.2 + 0.6)/3 = 1.4/3 ≈ 0.4667
+
+- Node 3:
+
+    Γ(X_t)(3) = (b + c)/2 = (0.2 + 0.6)/2 = 0.8/2 = 0.4
+
+So:
+
+    Γ(X_t) ≈ (0.4, 0.4667, 0.4)
+
+The middle node has accumulated contributions from both sides:
+- It is higher than its initial 0.2.
+- It is also higher than the endpoints (0.4 vs 0.4), forming a "bump" at the center.
+
+
+Step 2: Check Q
+
+Compute T:
+
+    T = Γ(X_t)(1) + Γ(X_t)(2) + Γ(X_t)(3)
+      ≈ 0.4 + 0.4667 + 0.4
+      ≈ 1.2667
+
+Since T > 1:
+
+    Q[X_t] = 0  (inadmissible)
+
+We have a Q-violation: total accumulated intensity exceeds the manifold bound.
+
+
+Step 3: Apply σ (reconstruction)
+
+We project onto the simplex:
+
+    σ(Γ(X_t)) = ( g_1 / T , g_2 / T , g_3 / T )
+
+Numerically:
+
+    g_1 ≈ 0.4
+    g_2 ≈ 0.4667
+    g_3 ≈ 0.4
+    T   ≈ 1.2667
+
+So:
+
+    σ(Γ(X_t))(1) ≈ 0.4     / 1.2667 ≈ 0.316
+    σ(Γ(X_t))(2) ≈ 0.4667  / 1.2667 ≈ 0.368
+    σ(Γ(X_t))(3) ≈ 0.4     / 1.2667 ≈ 0.316
+
+Thus:
+
+    X_{t+1} ≈ (0.316, 0.368, 0.316)
+
+We see:
+- The middle node remains the highest.
+- The pattern is "peaked" at the center, like a simple interference maximum.
+
+
+Step 4: Compute δ at the original step (optional observable)
+
+Recall:
+
+    δ(X_t)(1) = (a - b)/2
+    δ(X_t)(2) = (2b - a - c)/3
+    δ(X_t)(3) = (c - b)/2
+
+Plug in (a, b, c) = (0.6, 0.2, 0.6):
+
+- Node 1:
+
+    δ(X_t)(1) = (0.6 - 0.2)/2 = 0.4/2 = 0.2
+
+- Node 2:
+
+    δ(X_t)(2) = (2*0.2 - 0.6 - 0.6)/3
+              = (0.4 - 1.2)/3
+              = -0.8/3 ≈ -0.2667
+
+- Node 3:
+
+    δ(X_t)(3) = (0.6 - 0.2)/2 = 0.4/2 = 0.2
+
+So:
+
+    δ(X_t) ≈ (0.2, -0.2667, 0.2)
+
+Interpretation:
+- The middle node has a strong negative δ (it is below its accumulated value),
+  while the endpoints have positive δ.
+- This encodes a "curvature" or "bending" of the profile:
+  the center is where the strongest mismatch occurs.
+
+
+7. SUMMARY IN RDG INTERFERENCE LANGUAGE
+
+- Γ accumulation:
+    The middle node 2 aggregates contributions from both paths (1 and 3).
+    Starting from X_t = (0.6, 0.2, 0.6), Γ(X_t) ≈ (0.4, 0.4667, 0.4)
+    shows a central "bump" at node 2.
+
+- Q violation:
+    Total accumulated intensity T ≈ 1.2667 > 1.
+    This triggers Q[X_t] = 0, a Q-violation event.
+
+- σ projection:
+    The state is renormalized to the simplex:
+        Γ(X_t) ≈ (0.4, 0.4667, 0.4)
+      -> σ(Γ(X_t)) ≈ (0.316, 0.368, 0.316)
+    The central peak is preserved but scaled:
+    an interference-like maximum at the middle locus.
+
+- δ pattern:
+    δ(X_t) ≈ (0.2, -0.2667, 0.2)
+    captures the curvature / mismatch:
+    - positive at the endpoints,
+    - negative at the center,
+    indicating a "bowed" profile focused at node 2.
+
+Overall explicit evolution:
+
+    X_t        = (0.6, 0.2, 0.6)
+    Γ(X_t)     ≈ (0.4, 0.4667, 0.4)
+    Q[X_t]     = 0  (since T ≈ 1.2667 > 1)
+    σ(Γ(X_t))  ≈ (0.316, 0.368, 0.316)
+    X_{t+1}    ≈ (0.316, 0.368, 0.316)
+
+This 3-node example shows:
+- a middle locus receiving contributions from two paths,
+- a central peak emerging via Γ,
+- a Q-violation triggering σ-projection,
+- and δ encoding the interference-like curvature of the profile.

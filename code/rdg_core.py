@@ -73,7 +73,7 @@ def rdg_step(state: RDGState, adj: np.ndarray, params: RDGParams):
         'total_after': np.sum(new_x)
     }
 
-# === 2-Node Worked Example (matches your Pipeline.txt) ===
+# === 2-Node Worked Example (matches Pipeline.txt) ===
 if __name__ == "__main__":
     # Fully connected 2-node
     adj = np.array([[0, 1], [1, 0]], dtype=float)

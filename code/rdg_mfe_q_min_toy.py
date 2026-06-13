@@ -7,6 +7,15 @@
 #   - q_filter             → Q-admissibility restoration (σ-like)
 #   - rdg_mfe_q_step       → full Γ → Q → σ pipeline step
 #
+# Canonical flow:
+# Γ(X_t)          # accumulation via SID topology + PED flux
+# Q[Γ(X_t)]       # admissibility test (manifold bounds)
+# if Q == 1:
+#     X_{t+1} = Γ(X_t)
+# else:
+#     X_{t+1} = σ(Γ(X_t))   # projection / reconstruction to admissible simplex
+# δ(X_t)          # boundary / mismatch tracker (can be computed for diagnostics)
+#
 # For the full operator definitions and canonical update flow,
 # refer to the main specification:
 #

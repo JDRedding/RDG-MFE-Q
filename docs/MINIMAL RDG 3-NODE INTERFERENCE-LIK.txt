@@ -1,5 +1,8 @@
 MINIMAL RDG 3-NODE INTERFERENCE-LIKE EXAMPLE
 ===============================================
+(For the full relational update architecture—including Γ-accumulation,
+Q-admissibility, σ-projection, and δ-boundary extraction—see the
+primary specification: RDG-MFE-Q PIPELINE.)
 
 Goal:
 Show a tiny substrate where a "middle" locus receives contributions

@@ -1,6 +1,5 @@
 RDG-MFE-Q Pipeline
 
-
 [ Current State: X_t ]
                  |
                  v
@@ -35,3 +34,48 @@ RDG-MFE-Q Pipeline
                                |
                                v
                      [ Final State: X_t+1 ]
+
+Canonical Operator Form
+
+                 [ Current State: X_t ]
+                           |
+                           v
+        =====================================================
+        |                 Γ — ACCUMULATION                  |
+        |  Uses SID-topology + PED-flux to compute          |
+        |  Γ(X_t)(i) = Σ_j  f( X_t(j), SID[X_t], PED[X_t] ) |
+        =====================================================
+                           |
+                           v
+                 [ Virtual State: Γ(X_t) ]
+                           |
+                           v
+        =====================================================
+        |               Q — ADMISSIBILITY                   |
+        |  Tests local + global constraints:                |
+        |      Q[X_t] = 1  iff  Γ(X_t) ∈ M_admissible       |
+        |  (Manifold bounds, curvature limits, flux limits) |
+        =====================================================
+                     /                         \
+            (Admissible: Q=1)            (Violation: Q=0)
+                   /                               \
+                  v                                 v
+        [ Keep Γ(X_t) ]                 ============================
+                                       |     σ — RECONSTRUCTION     |
+                                       |  Scales/clips Γ(X_t) onto  |
+                                       |  admissible simplex;       |
+                                       |  restores constraints      |
+                                       ============================
+                                                   |
+                                                   v
+                                       [ Normalized State ]
+                                                   |
+                                                   v
+        =====================================================
+        |               δ — BOUNDARY ENGINE                 |
+        |  δ(X) = X - Γ(X)                                  |
+        |  Tracks gradient, mismatch, decoherence strength  |
+        =====================================================
+                           |
+                           v
+                 [ Final State: X_{t+1} ]

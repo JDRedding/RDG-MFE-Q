@@ -275,3 +275,9 @@ Overall explicit evolution:
 
 This is a fully specified RDG step on a 2-node substrate,
 with Γ, Q, σ, and δ all instantiated and computable.
+
+(See also: MINIMAL RDG 3-NODE INTERFERENCE-LIKE EXAMPLE,
+which demonstrates Γ-accumulation from two paths, Q-violation,
+σ-projection onto the 3-simplex, and δ-curvature producing an
+interference-like central peak.)
+

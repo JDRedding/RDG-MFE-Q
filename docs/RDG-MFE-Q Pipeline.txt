@@ -1,4 +1,6 @@
-RDG-MFE-Q Pipeline
+========================================
+RDG-MFE-Q PIPELINE
+========================================
 
 [ Current State: X_t ]
                  |
@@ -36,6 +38,7 @@ RDG-MFE-Q Pipeline
                      [ Final State: X_t+1 ]
 
 Canonical Operator Form
+========================================
 
                  [ Current State: X_t ]
                            |
@@ -79,3 +82,196 @@ Canonical Operator Form
                            |
                            v
                  [ Final State: X_{t+1} ]
+
+========================================
+MINIMAL RDG WORKED EXAMPLE (2-NODE CASE)
+========================================
+
+1. SUBSTRATE AND STATE
+
+Substrate S:
+- Loci: L = {1, 2}
+- Edges: fully connected, undirected: (1 <-> 2)
+
+State X_t:
+- X_t(1) = x_1
+- X_t(2) = x_2
+
+Interpretation: X_t(i) is "intensity" at locus i.
+
+2. SID, PED, AND Γ
+
+SID[X_t]:
+- Structure: the 2-node graph above
+- Local interaction rule: each node averages with its neighbor
+
+PED[X_t]:
+- For this minimal example, PED sets a scalar weight α = 1
+  (no hidden complexity; Γ is a pure structural average)
+
+Γ — Accumulation:
+- For each node i, with j the other node:
+
+    Γ(X_t)(i) = ( X_t(i) + X_t(j) ) / 2
+
+Explicitly:
+
+    Γ(X_t)(1) = (x_1 + x_2) / 2
+    Γ(X_t)(2) = (x_1 + x_2) / 2
+
+Let:
+
+    m = (x_1 + x_2) / 2
+
+Then:
+
+    Γ(X_t) = (m, m)
+
+This is the "virtual state" in the pipeline.
+
+
+3. Q — ADMISSIBILITY MANIFOLD
+
+Define a simple admissible manifold:
+
+- Constraint: total intensity <= 1
+
+    Sum_i X(i) <= 1
+
+We evaluate admissibility on Γ(X_t):
+
+    Q[X_t] = 1  iff  Γ(X_t)(1) + Γ(X_t)(2) <= 1
+
+But:
+
+    Γ(X_t)(1) + Γ(X_t)(2) = m + m = 2m = x_1 + x_2
+
+So:
+
+    Q[X_t] = 1  iff  x_1 + x_2 <= 1
+    Q[X_t] = 0  iff  x_1 + x_2 > 1
+
+This is the "manifold bounds" test in the pipeline.
+
+
+4. σ — RECONSTRUCTION (Q-VIOLATION CASE)
+
+If Q[X_t] = 0, we project Γ(X_t) back onto a simplex:
+
+- Simplex:
+
+    Δ = { (y_1, y_2) | y_1 >= 0, y_2 >= 0, y_1 + y_2 = 1 }
+
+Given Γ(X_t) = (m, m):
+
+- If 2m <= 1 (admissible), we keep Γ(X_t).
+- If 2m > 1 (inadmissible), we scale down to the simplex:
+
+    σ(Γ(X_t)) = ( m / (2m), m / (2m) ) = (1/2, 1/2)
+
+So:
+
+- Admissible case (Q = 1, x_1 + x_2 <= 1):
+
+    X_{t+1} = Γ(X_t) = (m, m)
+
+- Inadmissible case (Q = 0, x_1 + x_2 > 1):
+
+    X_{t+1} = σ(Γ(X_t)) = (1/2, 1/2)
+
+This is the RDG "collapse" as constraint restoration, not metaphysics.
+
+
+5. δ — BOUNDARY ENGINE
+
+By definition:
+
+    δ(X_t)(i) = X_t(i) - Γ(X_t)(i)
+
+So:
+
+    δ(X_t)(1) = x_1 - m
+    δ(X_t)(2) = x_2 - m
+
+Check the sum:
+
+    δ(X_t)(1) + δ(X_t)(2)
+      = (x_1 - m) + (x_2 - m)
+      = x_1 + x_2 - 2m
+      = x_1 + x_2 - (x_1 + x_2)
+      = 0
+
+So δ is a pure contrast / gradient:
+- It measures how far each locus is from the mean.
+- It has zero net sum (no change in total intensity, only redistribution).
+
+
+6. CONCRETE NUMERICAL RUN
+
+Choose a specific initial state:
+
+    X_t = (0.8, 0.6)
+
+Step 1: Compute Γ
+
+    m = (0.8 + 0.6) / 2
+      = 1.4 / 2
+      = 0.7
+
+    Γ(X_t) = (0.7, 0.7)
+
+Step 2: Check Q
+
+    x_1 + x_2 = 0.8 + 0.6 = 1.4
+
+    1.4 > 1  =>  Q[X_t] = 0  (inadmissible)
+
+We are outside the admissible manifold.
+
+Step 3: Apply σ (reconstruction)
+
+    σ(Γ(X_t)) = (1/2, 1/2)
+
+This is the "normalized state" on the simplex Δ.
+
+Step 4: Compute δ at the original step (optional observable)
+
+    δ(X_t)(1) = 0.8 - 0.7 =  0.1
+    δ(X_t)(2) = 0.6 - 0.7 = -0.1
+
+- δ encodes the gradient between loci.
+- |δ| measures boundary / contrast strength.
+
+Step 5: Final state
+
+    X_{t+1} = (1/2, 1/2)
+
+
+7. SUMMARY IN RDG LANGUAGE
+
+- Γ accumulation:
+    Both loci move toward the mean m = 0.7.
+
+- Q violation:
+    Total intensity 1.4 exceeds manifold bound 1.
+    In RDG terms, this is a Q-violation event (a "detection surface").
+
+- σ projection:
+    State is renormalized to the simplex:
+        (0.7, 0.7)  ->  (0.5, 0.5)
+    This is RDG "collapse" as constraint restoration.
+
+- δ magnitude:
+    δ = (0.1, -0.1) is a pure gradient.
+    It encodes boundary / contrast / decoherence strength.
+
+Overall explicit evolution:
+
+    X_t      = (0.8, 0.6)
+    Γ(X_t)   = (0.7, 0.7)
+    Q[X_t]   = 0  (since 0.8 + 0.6 = 1.4 > 1)
+    σ(Γ(X_t))= (0.5, 0.5)
+    X_{t+1}  = (0.5, 0.5)
+
+This is a fully specified RDG step on a 2-node substrate,
+with Γ, Q, σ, and δ all instantiated and computable.

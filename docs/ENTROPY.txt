@@ -245,7 +245,8 @@ UNIFIED RDG FORM
         S_PED = R_discard ∘ π_PED
         S_Q   = R_discard ∘ π_Q
 
-ASCII unification:
+      Unification:
+
           [ R_discard ]
          /      |      \
         v       v       v
@@ -299,7 +300,6 @@ S_PED = pi_PED circ R_discard, quad
 S_Q = pi_Q circ R_discard.
 
 ===================================================================
-
 ==================  RDG TRIANGLE WITH R_discard  ==================
 
                          ( SID )
@@ -319,7 +319,6 @@ S_Q = pi_Q circ R_discard.
         S_Q   = π_Q   ∘ R_discard        S_PED = π_PED ∘ R_discard
         S_Q   ≈ ∫ δQ_rev / T             S_PED ≈ -∑ p_i log p_i
 
-
 -------------------------- CENTER OPERATOR --------------------------
 
                        [   R_discard   ]
@@ -338,7 +337,7 @@ S_Q = pi_Q circ R_discard.
        PED:  S_PED  = π_PED  ( R_discard(f) )
        Q:    S_Q    = π_Q    ( R_discard(f) )
 
-FLOW:
+      FLOW:
 
                  S_SID
                    ▲

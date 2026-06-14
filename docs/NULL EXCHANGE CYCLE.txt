@@ -177,10 +177,10 @@ RDG NULL EXCHANGE DIAGRAM (SUMMARY)
 VISIBLE SPACE (X)
    [ SID Geometry ]   [ PED Probability ]   [ Q Admissible Paths ]
 
-       		 |                              							 ^
-       		 |  R_discard(f)							 |  Induction = I(★, E)
-       |     				|  (Induction Flow / Anti-Clipping)
-       v                               	|
+       |                              	 ^
+       |  R_discard(f)					 |  Induction = I(★, E)
+       |     				             |  (Induction Flow / Anti-Clipping)
+       v                               	 |
    ---------------------        -------------------------
    |   DISCARD CHANNEL  |      |   INDUCTION ENGINE      |
    |  Structural Loss   |      |  Localized Symmetries E |
@@ -190,8 +190,8 @@ VISIBLE SPACE (X)
                 v                      v
          ================================
          |      NULL STRATUM (𝓝)       |
-         		|  Pre-geometric sink/source   |
-         		|  of Ω, p_i, and Q-structure  |
+         |  Pre-geometric sink/source   |
+         |  of Ω, p_i, and Q-structure  |
          ================================
 
 

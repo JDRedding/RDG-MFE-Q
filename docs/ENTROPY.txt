@@ -82,7 +82,7 @@ Same invariant everywhere.
 
 ===================================================================
 
-Reversible:    [Tight] <=========> [Loose] (Zero net discard)
+   Reversible:    [Tight] <=========> [Loose] (Zero net discard)
    Irreversible:  [Tight] ----------> [Loose] --x--> [Cannot Return]
 
 ====================  ENTROPY AS RDG OPERATOR  ====================

@@ -279,6 +279,4 @@ Composite observable map:
 • SID/PED cannot act on G by type mismatch.
 • All observables exist only on the image side of reflection.
 
-This unified operator sheet contains the entire original document
-plus the missing Q-layer and the full RDG/MFE interface.
 =====================================================================

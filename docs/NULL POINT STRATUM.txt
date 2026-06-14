@@ -234,6 +234,28 @@ thermodynamic         			 probability
                 		 ★  𝓝
         (pre‑geometric null substrate)
 
+==================================================================
+|             VISIBLE COORDINATE SPACE ( X )            
+|   [ SID Geometry ]   [ PED Probability ]   [ Q Paths ]
+==================================================================
+                 |                                 	 ^
+                 |                                 	 |
+                 | R_discard(f)                      | I(★, E)
+                 | (Exhalation)                      | (Inhalation)
+                 v                                 	 |
+       ============							=============
+      |  DISCARD CHANNEL                 	|  INVERSION ENGINE 
+      | Structural Loss                 	| Localized Sinks/  
+      | Gradient Decay                  	| Symmetries (E)    
+       ============							=============
+                 \                            /
+                   \                         /
+                    v                       v
+               __________________________________                                 
+					NULL STRATUM ( 𝓝 )         
+				The Pre-Geometric Baseline   
+				Measure Sink/Source    
+
 INTERPRETATION
 ---------------------------------------------------------------------------
 

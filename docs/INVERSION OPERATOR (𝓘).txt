@@ -10,13 +10,13 @@ Global conservation:
 mu_X^total + mu_N^otal= constant
 
 Local balance:
-   Any increase in structured measure on X via I
-  corresponds to a decrease in available null measure 
+ Any increase in structured measure on X via I
+ corresponds to a decrease in available null measure 
  (or, more precisely, a re‑encoding of null measure into
  structured form).
 
 No free lunch:
-   I is always coupled to constraints, gradients, or
+  I is always coupled to constraints, gradients, or
   boundary conditions: localized energetic engines
 
 Extended space:
@@ -83,25 +83,25 @@ RDG diagram:
                  X (new structure)
 
 
-=================================
+==================================================================
 |             VISIBLE COORDINATE SPACE ( X )            
 |   [ SID Geometry ]   [ PED Probability ]   [ Q Paths ]
-=================================
-                 |                                 			^
-                 |                                 			|
-                 | R_discard(f)                      	| I(★, E)
+==================================================================
+                 |                                 	 ^
+                 |                                 	 |
+                 | R_discard(f)                      | I(★, E)
                  | (Exhalation)                      | (Inhalation)
-                 v                                 			|
-       ============			=============
+                 v                                 	 |
+       ============							=============
       |  DISCARD CHANNEL                 	|  INVERSION ENGINE 
       | Structural Loss                 	| Localized Sinks/  
-      | Gradient Decay                  		| Symmetries (E)    
-       ============			=============
-                 \                                 			  /
-                   \                               			 /
-                    v                             			v
+      | Gradient Decay                  	| Symmetries (E)    
+       ============							=============
+                 \                            /
+                   \                         /
+                    v                       v
                __________________________________                                 
-	NULL STRATUM ( 𝓝 )         
-	The Pre-Geometric Baseline   
-	Measure Sink/Source    
+					NULL STRATUM ( 𝓝 )         
+				The Pre-Geometric Baseline   
+				Measure Sink/Source    
  

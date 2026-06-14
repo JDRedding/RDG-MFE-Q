@@ -8,6 +8,19 @@ NULL EXCHANGE CYCLE
 
     with exact global conservation.
 
+THE RDG CLOSED CYCLE:
+    =================================================
+   |             VISIBLE COORDINATE SPACE            |
+   |     S_SID (Geometry) <-> S_PED (Probability)    |
+    =================================================
+        |                                       ^
+        | d_f (Clipping)                        | I_E (Induction)
+        v                                       |
+    =================================================
+   |            NULL POINT STRATUM ( 𝓝 )            |
+   |      Distinctions = 0  |  Global Conservation   |
+    =================================================
+
 SPACES, MEASURES, ENTROPY
 
 Visible state space:

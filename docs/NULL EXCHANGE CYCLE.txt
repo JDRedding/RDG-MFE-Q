@@ -289,3 +289,20 @@ Null Exchange Cycle
          |                                        |  I_E (Induction)
          v                                        |
      μ_𝓝(total) <--- Shunted Measure (D_f) ------+--- Pulls via Engine E
+
+Conservation:
+   μ_X(t_0) + μ_𝓝(t_0)  =  μ_X(t_1) + μ_𝓝(t_1)  =  constant
+
+---------------------------------------------------------------------------
+Visual intuition (N = 5 visible states)
+
+Visible X (states 0 → 4)                 Null 𝓝
+Initial:      ████  ████  ████  ████  ████        (empty)
+After cycles: ░░░   ░░    █████ ████  ████        ████ (growing)
+              ^^^   ^^^
+           clipped / weakened states
+---------------------------------------------------------------------------
+
+Operators:
+   • d_f / R_discard : X → X ⊔ 𝓝   (clipping / discard flow)
+   • I_E             : 𝓝 → X       (induction / engine-driven 

@@ -18,7 +18,7 @@ NULL POINT PROPERTIES
     • No geometry, no manifold, no metric
     • Pure relational zero: the collapse of all distinctions
 
-ASCII representation:
+Representation:
 
         +-----------------------------+
         |         NULL POINT          |
@@ -34,8 +34,6 @@ R_discard AS NULL‑POINT RETURN
     R_discard(f) = S(X) − S(Y)
 
 This measures how much structure flows back to the null stratum.
-
-ASCII:
 
         [Structured X]
               |
@@ -224,15 +222,15 @@ ASCII flow:
 UNIFIED RDG TRIANGLE WITH NULL SINK
 ---------------------------------------------------------------------------
 
-                     		 ( SID )
+                     	 ( SID )
             	microstate geometry
                      		▲
-                        		 |
+                            |
         ( Q ) ◄-- 	R_discard --► ( PED )
 thermodynamic         			 probability
-       cost                  				flux
-                         		|
-                        		v
+       cost                  		flux
+                         |
+                         v
                 		 ★  𝓝
         (pre‑geometric null substrate)
 

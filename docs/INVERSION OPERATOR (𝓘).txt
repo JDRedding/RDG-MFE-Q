@@ -1,0 +1,107 @@
+INVERSION OPERATOR (𝓘)  
+
+ 𝓘 formalizes how localized energetic engines pull raw measure
+    out of the Null Stratum (𝓝) and inject new distinctions into
+    visible geometry, probability, and thermodynamic structure.
+
+Constraints:
+
+Global conservation:
+mu_X^total + mu_N^otal= constant
+
+Local balance:
+   Any increase in structured measure on X via I
+  corresponds to a decrease in available null measure 
+ (or, more precisely, a re‑encoding of null measure into
+ structured form).
+
+No free lunch:
+   I is always coupled to constraints, gradients, or
+  boundary conditions: localized energetic engines
+
+Extended space:
+
+    X̃ = X ⊔ 𝓝
+
+Null Stratum:
+
+    𝓝 = { ★ }
+    S(𝓝) = 0
+    (no distinctions, no Ω, no p_i, no Q-path)
+
+Discard operator:
+
+    R_discard : X → Y + flow to 𝓝
+
+INVERSION OPERATOR
+
+Define:
+
+    𝓘 : 𝓝 × E → X
+
+where:
+
+ 𝓝 = Null Stratum (raw, undifferentiated measure)
+    E  = Engine parameters (constraints, symmetries, boundary conditions)
+    X  = Visible state space (SID / PED / Q geometry)
+
+Interpretation:
+    𝓘 uses E to re-encode null measure into structured measure on X.
+
+    ★ × [Engine E]  --𝓘-->  [Structured X]
+
+3. CONSERVATION
+
+Global:
+
+    μ_X(total) + μ_𝓝(total) = constant
+
+Local engine action:
+
+    Δμ_X = Φ(μ_𝓝, E)
+    (no creation ex nihilo; only re-encoding from 𝓝)
+
+4. RDG VIEW
+
+SID:
+    𝓘 creates new Ω-structure (microstate geometry) from null measure.
+
+PED:
+    𝓘 creates new probability distinctions (non-flat distributions).
+
+Q:
+    𝓘 creates new admissible paths and constraint surfaces.
+
+RDG diagram:
+
+       ★  𝓝 (Null Point Stratum)
+       |
+       |
+       𝓘 (Inversion)
+                   |
+                   v
+                 X (new structure)
+
+
+=================================
+|             VISIBLE COORDINATE SPACE ( X )            
+|   [ SID Geometry ]   [ PED Probability ]   [ Q Paths ]
+=================================
+                 |                                 			^
+                 |                                 			|
+                 | R_discard(f)                      	| I(★, E)
+                 | (Exhalation)                      | (Inhalation)
+                 v                                 			|
+       ============			=============
+      |  DISCARD CHANNEL                 	|  INVERSION ENGINE 
+      | Structural Loss                 	| Localized Sinks/  
+      | Gradient Decay                  		| Symmetries (E)    
+       ============			=============
+                 \                                 			  /
+                   \                               			 /
+                    v                             			v
+               __________________________________                                 
+	NULL STRATUM ( 𝓝 )         
+	The Pre-Geometric Baseline   
+	Measure Sink/Source    
+ 

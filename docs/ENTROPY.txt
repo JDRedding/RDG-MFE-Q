@@ -26,7 +26,6 @@ SID = microstate geometry (Ω = admissible microstates)
 
     S_SID ≈ k_B ln Ω
 
-ASCII view:
     Before: [ o o o o o o o o ]
     After : [ o o o o ]
     Entropy = ln(volume_before / volume_after)
@@ -41,7 +40,6 @@ PED = probability distribution flattening
 
     S_PED = −∑ p_i log p_i
 
-ASCII view:
     p = [0.8, 0.1, 0.1]  →  [0.33, 0.33, 0.33]
     Entropy = loss of sharpness in the distribution
 
@@ -55,7 +53,6 @@ Q = reversible heat cost
 
     ΔS = ∫ (δQ_rev / T)
 
-ASCII view:
     [tight constraint] → [looser constraint] → [cannot return]
 
 Interpretation:
@@ -70,7 +67,6 @@ All three are projections of the same operator:
     S_PED = π_PED ∘ R_discard
     S_Q   = π_Q   ∘ R_discard
 
-ASCII triangle:
 
                  ( SID )
             microstate geometry
@@ -108,7 +104,6 @@ Geometry of admissible microstates.
     Ω  = set of allowed micro-configurations
     S_SID  =  k_B * ln |Ω|
 
-ASCII geometry view:
     microstate-space:
         [ o o o o o o o o o ]
         [ o o o o o o o o o ]   <-- volume of admissible states
@@ -127,7 +122,6 @@ Flux of probability distributions.
     p_i  = probability over states
     S_PED  =  - Σ p_i log p_i
 
-ASCII probability flow:
         p(t) ---> p(t+dt)
         [spread]  [more spread]
           |           |
@@ -146,7 +140,7 @@ Compression, irreversibility, mixing.
 
     dS = δQ_rev / T
 
-ASCII constraint view:
+Constraint view:
     reversible path:
         [tight constraint] -> [looser constraint]
     irreversible path:
@@ -170,7 +164,7 @@ Where:
     R = relational discard operator
     π_* = projection into each RDG stratum
 
-ASCII unification diagram:
+Unification diagram:
 
           [  R  ]
          /   |   \
@@ -221,7 +215,6 @@ SID-PROJECTION  (geometry of admissible microstates)
     π_SID ∘ R_discard  =  k_B ln |Ω|
     where Ω = admissible microstate region
 
-ASCII intuition:
     Before: [ o o o o o o ]
     After : [ o o o ]
     R_discard = ln(volume_before / volume_after)
@@ -231,7 +224,6 @@ PED-PROJECTION  (flux of probability distributions)
 -------------------------------------------------------------------
     π_PED ∘ R_discard  =  - Σ p_i log p_i
 
-ASCII intuition:
     p = [0.7, 0.2, 0.1]  →  [0.33, 0.33, 0.33]
     R_discard = flattening cost of the distribution
 
@@ -240,7 +232,6 @@ Q-PROJECTION  (admissibility, irreversibility, compression)
 -------------------------------------------------------------------
     π_Q ∘ R_discard  =  ∫ δQ_rev / T
 
-ASCII intuition:
     reversible path:   [tight] → [loose]
     irreversible path: [tight] → [loose] → [cannot return]
     R_discard = minimal reversible cost of undoing the transformation
@@ -278,7 +269,6 @@ In the cleanest form,  “relational discard” is loss of distinguishability
 - Pushforward measure
 
 mu_Y = f_\* mu_X, mu_Y(B) = mu_X(f^-1(B))
-
 
 - Relational discard functional
 
@@ -348,7 +338,7 @@ S_Q = pi_Q circ R_discard.
        PED:  S_PED  = π_PED  ( R_discard(f) )
        Q:    S_Q    = π_Q    ( R_discard(f) )
 
-ASCII FLOW:
+FLOW:
 
                  S_SID
                    ▲

@@ -1,6 +1,47 @@
-# A concrete toy model with N=5 visible microstates in X, 
-# integer-friendly mass units (total conserved measure = 20),  
-# and alternating Discard → Induction steps.
+# ============================================================================
+#  NULL EXCHANGE CYCLE — DISCRETE SIMULATION (N = 5)
+#  --------------------------------------------------------------------------
+#  This script implements a minimal, operator-faithful model of the
+#  Null Exchange Cycle:
+#
+#      • R_discard : X → 𝓝   (clipping / discard flow)
+#      • Induction I_E : 𝓝 → X (anti-clipping)
+#      • Null Stratum 𝓝 : pre-geometric reservoir
+#      • Global conservation:  μ_X + μ_𝓝 = constant
+#      • SID / PED entropy tracking via SID_PED_Q
+#
+#  MODEL OVERVIEW
+#  --------------------------------------------------------------------------
+#  Visible space X has N = 5 microstates with an initial uniform measure.
+#  At each step:
+#
+#      1. DISCARD PHASE (R_discard):
+#         - Identify lowest-mass states.
+#         - Clip a fraction of their mass.
+#         - Shunt clipped mass into the null stratum 𝓝.
+#
+#      2. INDUCTION PHASE (I_E):
+#         - Engine E pulls a fraction of null mass back into X.
+#         - Re-encodes it with a bias toward low-index states.
+#         - Creates visible structure (PED entropy decreases).
+#
+#  ENTROPY MEASURES
+#  --------------------------------------------------------------------------
+#      • S_SID : log of support size (Boltzmann-like)
+#      • S_PED : Shannon entropy of μ_X
+#
+#  EXPECTED BEHAVIOR
+#  --------------------------------------------------------------------------
+#      • μ_𝓝 grows as discarded structure accumulates.
+#      • μ_X becomes increasingly skewed (engine-driven emergence).
+#      • S_PED decreases monotonically (visible ordering).
+#      • S_SID remains constant unless states are zeroed.
+#
+#  This simulation is the discrete, integer-friendly demonstration of the
+#  full Null Exchange Cycle: global conservation + visible irreversibility +
+#  engine-driven structure formation.
+#
+# ============================================================================
 
 # Simulation loop
 steps = 5

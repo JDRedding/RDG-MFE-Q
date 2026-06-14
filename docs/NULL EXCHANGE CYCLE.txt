@@ -270,9 +270,9 @@ Null Exchange Cycle
     • Has dual operators (discard/induction)
     • Conserves measure globally
 
-[State t_0]                          					 [State t_1]
+[State t_0]                          		 [State t_1]
      μ_X(total) ------ d_f (Clipping) ---->  μ_Y(retained)
-         |                                       						 ^
-         |                                       						 |  I_E (Induction)
-         v                                       						 |
+         |                                        ^
+         |                                        |  I_E (Induction)
+         v                                        |
      μ_𝓝(total) <--- Shunted Measure (D_f) ------+--- Pulls via Engine E

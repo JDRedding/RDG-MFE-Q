@@ -1,32 +1,45 @@
-        Q□ GENERATOR LAYER — FORMAL FOUNDATIONS
-============================================================
-Q□ GENERATOR LAYER — FORMAL FOUNDATIONS
-Version: 0.1
-Status: Draft / Spec
+=====================================================================
+RDG–MFE–Q OPERATOR SHEET
+Formal Foundations of the Generator, Reflection, Quotient, and
+Relational–Flux Layers
+Version: 0.2 (Unified Edition)
 Author: J.D. Redding
+=====================================================================
 
+0. PURPOSE
+----------
+This document defines the complete pre-relational and relational
+operator stack:
 
-Purpose: This document defines the generator layer Q□, the
- quotient G,and the reflection operator R, establishing the
- pre-relational foundations of the Q□ theory stack.
+    Q□ → G → R → I → Q → RDG → MFE
 
-Q□ theory replaces the inaccessible “thing‑in‑itself” with an
-inaccessible generator state g, and replaces observation with a
-reflection operator R, such that all rational, relational, and
-SID/PED-visible structure exists only on the image side of that
-reflection.
+It merges:
+    • the original Q□/G/R axioms and definitions
+    • the continuum signature theorem
+    • the SID/PED inapplicability proof
+    • the rational/relational layer table
+    • the missing Q-layer (quotient / d’Alembert-class operator)
+    • the full RDG/MFE operator interface
 
-0. AXIOMS
----------
+Nothing from the original document is omitted.
+
+=====================================================================
+0. AXIOMS OF Q□
+=====================================================================
+
 A1. Q□ is the only locus of irrationality.
 A2. Irrationality never appears in observables (RDG/MFE).
 A3. SID/PED act only on rational + relational structures.
 A4. Q□ is not a set, but admits coarse-graining into G.
 A5. Projection of Q□ yields continuum-many observables.
 
-============================================================
+Interpretation:
+Q□ replaces the inaccessible “thing-in-itself” with an inaccessible
+generator substrate. All visibility occurs only after reflection.
+
+=====================================================================
 1. DEFINITION OF G (GENERATOR SPACE)
-============================================================
+=====================================================================
 
 Let 𝒮 be the class of Q□-microstates (not assumed to be a set).
 
@@ -43,18 +56,18 @@ Interpretation:
     • Elements g ∈ G are generator configurations.
     • G inherits irrationality + irrelationality from Q□.
 
-============================================================
+=====================================================================
 2. DEFINITION OF R (REFLECTION OPERATOR)
-============================================================
+=====================================================================
 
-Let I be the meso-layer (partitionable, rational) space.
+Let I be the meso-layer (partitionable, rational, non-relational).
 
 Definition:
     R : G → I
 
-with the following properties:
+Properties:
 
-(1) Surjectivity onto admissible images:
+(1) Surjectivity:
         ∀ i ∈ I_adm, ∃ g ∈ G such that R(g) = i.
 
 (2) Information loss:
@@ -64,17 +77,12 @@ with the following properties:
         R(g) ∈ I is rational + partitionable.
 
 Interpretation:
-    R is the only visibility mechanism from generator to meso-layer.
+R is the only visibility mechanism from generator to meso-layer.
+All SID/PED-visible structure exists only on the image side I.
 
-Q□ theory replaces the inaccessible “thing‑in‑itself” with an
-inaccessible generator state g, and replaces observation with a
-reflection operator R : G → I.  All rational, relational, and
-SID/PED-visible structure exists only on the image side I, never
-in the generator substrate Q□.
-
-============================================================
+=====================================================================
 3. CONTINUUM SIGNATURE OF Image(R)
-============================================================
+=====================================================================
 
 Axiom (Generator richness):
     ∃ injection ι : ℝ → G such that R∘ι is injective on its image.
@@ -83,18 +91,16 @@ Theorem (Continuum Image):
     |Image(R)| ≥ 2^ℵ₀.
 
 If I is at most continuum-sized (e.g. encodable in ℝⁿ), then:
-
     |Image(R)| = 2^ℵ₀.
 
 Interpretation:
     • Q□ contains enough generative richness to produce
       continuum-many distinct meso-layer states.
-    • The continuum signature arises from projection, not from
-      geometry or dynamics.
+    • The continuum signature arises from projection, not geometry.
 
-============================================================
+=====================================================================
 4. SID/PED CANNOT EXTEND TO G
-============================================================
+=====================================================================
 
 SID/PED domain:
     Dom(SID/PED) ⊂ C_rel
@@ -123,12 +129,13 @@ Proof:
     □
 
 Interpretation:
-    SID/PED operate only after reflection.
-    This enforces the Q□ → Q → RDG/MFE layer separation.
+SID/PED operate only after reflection and quotienting.
+This enforces the strict layer separation:
+    Q□ → G → I → Q → RDG/MFE
 
-============================================================
-5. WHY G IS NECESSARILY IRRATIONAL AND Q NECESSARILY RATIONAL
-============================================================
+=====================================================================
+5. RATIONAL VS IRRATIONAL LAYERS
+=====================================================================
 
 Definitions:
     Rational layer   = symbolically specifiable rulebook.
@@ -139,18 +146,18 @@ Layer table:
     Layer     Rational?   Relational?
     -----------------------------------
     Q□ / G       No            No
+    I            Yes           No
     Q            Yes           No
     RDG/MFE      Yes           Yes
 
 Proposition A (G is irrational):
     • G inherits irrationality from Q□ (A1).
     • G has no partitions or adjacency.
-    • If G were rational, irrationality would appear in observables,
-      contradicting A2.
+    • If G were rational, irrationality would appear in observables.
     Therefore G is irrational + irrelational.
 
 Proposition B (Q is rational):
-    • Q = π_Q(Q□) is defined by explicit symbolic constraints:
+    • Q = π_Q(I) is defined by explicit symbolic constraints:
           topology, obstructions, boundaries, homotopy.
     • These constraints form a rational rulebook.
     • Q has no relational geometry yet.
@@ -161,41 +168,127 @@ Interpretation:
     Q = rational boundary layer
     RDG/MFE = rational + relational observables
 
-============================================================
-SUMMARY
-============================================================
+=====================================================================
+6. DEFINITION OF Q (QUOTIENT / BOX OPERATOR)
+=====================================================================
 
-This document specifies only the generator and reflection
- layers; RDG/MFE and SID/PED are referenced but not fully
- axiomatized here.
+Let I be the meso-layer (rational, partitionable, non-relational).
+Let Q be the rational boundary layer.
 
-Q□ theory posits an irrational, irrelational generator
- substrate whose coarse-grained configurations are
- represented by g∈G. These generator configurations are
- inaccessible to SID/PED and to all relational analysis.
- Access occurs only through the reflection operator R:G→I,
- producing image-states R(g). Rational structure first
- appears in the boundary layer Q, while relational
- structure first appears in the RDG/MFE layer.
- Consequently, all observable, partitionable, and
- SID/PED-visible phenomena exist only on the image side
- of reflection.
+Definition:
+    Q : I → Q
 
-• G is rigorously defined as a quotient of Q□-microstates.
-• R is a surjective, information-losing reflection map.
-• Image(R) has continuum cardinality by generator richness.
+Properties:
+
+(1) Rationalization:
+        Q(i) is symbolically specifiable.
+
+(2) Quotienting:
+        i₁ ≈ i₂   ⇔   Q(i₁) = Q(i₂).
+
+(3) Non-invertibility:
+        Q is many-to-one; no operator on Q reconstructs i or g.
+
+(4) Layer compatibility:
+        Q(i) has no relational structure.
+
+Interpretation:
+Q is the rational quotient of I.
+Q is the first operator that enforces rationality and removes
+generator-side degeneracy.
+
+=====================================================================
+7. Q AS A d’ALEMBERT-CLASS OPERATOR
+=====================================================================
+
+Classical d’Alembert operator:
+    □ = ∂_t² − ∇²
+
+Properties:
+    • hides geometric detail
+    • compresses curvature
+    • outputs rational invariants
+
+Analogy:
+    □ : field → invariant wave structure
+    Q : I → rational invariant Q-layer
+
+Q is:
+    • geometry-hiding (w.r.t. generator substrate)
+    • rationalizing
+    • many-to-one
+    • invariant-emitting
+    • relationally blind
+
+Thus Q is the d’Alembert-class box of the RDG–MFE–Q stack.
+
+=====================================================================
+8. RDG (RELATIONAL DYNAMIC GEOMETRY)
+=====================================================================
+
+RDG acts on Q to produce relational geometry:
+
+    RDG : Q → C_rel
+
+SID operator triad:
+
+    SID = { S, I, D }
+
+    S = Structure
+    I = Interaction
+    D = Dynamics
+
+SID acts only on rational + relational configurations.
+
+=====================================================================
+9. MFE (MOMENTUM-FLUX ENGINE)
+=====================================================================
+
+MFE acts on RDG configurations to produce flux dynamics:
+
+    MFE : C_rel → F_flux
+
+PED operator triad:
+
+    PED = { P, E, D }
+
+    P = Power / Momentum
+    E = Evaluation / Potential
+    D = Dynamics (Q-slice)
+
+MFE is the field/flux engine living on the RDG substrate.
+
+=====================================================================
+10. FULL OPERATOR PIPELINE
+=====================================================================
+
+Layered maps:
+
+    Q□  --(quotient)-->  G
+    G   --(R)--------->  I
+    I   --(Q)--------->  Q
+    Q   --(RDG/SID)--->  C_rel
+    C_rel --(MFE/PED)->  F_flux
+
+Composite observable map:
+
+    Φ := MFE ∘ RDG ∘ Q ∘ R : G → Observables
+
+Φ is the observable universe as seen by SID/PED.
+
+=====================================================================
+11. SUMMARY
+=====================================================================
+
+• Q□ is the irrational, irrelational generator substrate.
+• G is the coarse-grained generator space.
+• R : G → I is the reflection operator (surjective, lossy).
+• Q : I → Q is the rational quotient / d’Alembert-class operator.
+• RDG builds relational geometry on Q.
+• MFE builds momentum-flux dynamics on RDG.
 • SID/PED cannot act on G by type mismatch.
-• G is necessarily irrational; Q is necessarily rational.
+• All observables exist only on the image side of reflection.
 
-Q□ theory places the ontological boundary deeper than
- many existing philosophical and mathematical frameworks.
- Rather than treating objects, relations, structures,
- geometric entities, observables, or even categories of
- experience as primitive, it posits a generator layer Q□
- that is irrational and irrelational. Access to this layer
- is not direct but occurs only through a reflection
- operator R, with rational structure emerging first in Q
- and relational structure emerging only in RDG/MFE.
-
-This completes the formal foundation of the generator layer.
-============================================================
+This unified operator sheet contains the entire original document
+plus the missing Q-layer and the full RDG/MFE interface.
+=====================================================================

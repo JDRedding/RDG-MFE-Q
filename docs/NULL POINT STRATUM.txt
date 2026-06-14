@@ -1,0 +1,246 @@
+NULL POINT STRATUM 
+
+The Null Point is the pre‑geometric substrate.
+No Ω, no p_i, no Q‑path, no coordinates, no distinctions.
+
+It is the sink of all relational discard.
+
+When a process f : X → Y loses structure,
+the “lost” information returns here — not destroyed,
+but absorbed into the stratum where distinctions do not exist.
+
+
+NULL POINT PROPERTIES
+
+    • No microstates (Ω undefined)
+    • No probabilities (p_i undefined)
+    • No thermodynamic path (δQ_rev/T undefined)
+    • No geometry, no manifold, no metric
+    • Pure relational zero: the collapse of all distinctions
+
+ASCII representation:
+
+        +-----------------------------+
+        |         NULL POINT          |
+        |   [  no structure exists ]  |
+        |   [  no distinctions   ]    |
+        |   [  no coordinates    ]    |
+        +-----------------------------+
+
+This is the “ground state” of relational information.
+
+R_discard AS NULL‑POINT RETURN
+
+    R_discard(f) = S(X) − S(Y)
+
+This measures how much structure flows back to the null stratum.
+
+ASCII:
+
+        [Structured X]
+              |
+              |  f : X → Y
+              v
+        [Coarser Y] ----> (discard) ---->  ● Null Point
+
+Nothing is destroyed.
+Everything returns to the pre‑geometric layer.
+
+UNIFIED RDG VIEW
+
+                 ( SID )
+            microstate geometry
+                   ▲
+                   |
+        ( Q ) ◄-- R_discard --► ( PED )
+   thermodynamic          probability
+       cost                  flux
+                   |
+                   v
+              ● NULL POINT
+       (absorbing boundary of all discard)
+
+
+The Null Point Stratum (𝓝) is the pre‑geometric substrate where all
+discarded structure returns. It has no distinctions, no coordinates,
+no Ω, no p_i, no Q‑path. It is the absorbing boundary of RDG.
+
+Nothing is destroyed. All lost structure flows into 𝓝.
+
+	[ HIGHLY SPECIFIC SYSTEM STRUCTURE ]
+                           |
+                           |  Coarse Map Execution (f)
+                           v
+	[ RELATIONAL DISCARD OPERATOR ]
+                           |
+                           |  Shunting Map (d_f)
+                           v
+           	=================
+          	|       NULL POINT STRATUM        
+          	|       Trivial σ-algebra              
+          	|       Distinctions = 0                 
+          	|       Global Sink Reservoir     
+          	 =================
+---------------------------------------------------------------------------
+FORMAL DEFINITION
+---------------------------------------------------------------------------
+
+Let physical states live on a measurable space:
+
+    (X, 𝓕_X, μ_X)
+
+A process is a coarse map:
+
+    f : X → Y
+
+with pushforward:
+
+    μ_Y = f_* μ_X.
+
+Define the Null Stratum as a single-point 
+ boundary object:
+
+    𝓝 := { ★ }
+
+with trivial σ‑algebra:
+
+    𝓕_𝓝 = { ∅ , {★} }
+
+and zero internal entropy:
+
+    S(𝓝) = 0.
+
+Extend the state space:
+
+    X̃ := X ⊔ 𝓝
+
+(visible states plus the null boundary).
+
+DISCARD MAP
+---------------------------------------------------------------------------
+
+Every coarse process induces a discard map:
+
+    d_f : X → Y ⊔ 𝓝
+
+Partition X into:
+
+    R_f = retained region
+    D_f = discarded region = X \ R_f
+
+Define:
+
+    d_f(x) =
+        f(x)   if x ∈ R_f
+        ★      if x ∈ D_f
+
+Pushforward measure:
+
+    μ̃ = (d_f)_* μ_X
+
+Decompose:
+
+    μ_Y = μ̃ restricted to Y
+    μ_𝓝 = μ̃({★})
+
+CONSERVATION LAW (EXACT)
+---------------------------------------------------------------------------
+
+    μ_X(X) = μ_Y(Y) + μ_𝓝({★})
+
+No energy or information is destroyed.
+Discarded structure is relocated to the Null Stratum.
+
+
+ NULL STRATUM CONSERVATION MODEL  
+
+Irreversible processes don’t destroy energy or
+ information.
+They return it to the Null Point: the pre‑geometric
+ layer with no Ω, no p_i, no Q-path, no distinctions.
+
+This keeps conservation intact while allowing
+ entropy to rise.
+
+R_discard WITH NULL ACCOUNTING
+---------------------------------------------------------------------------
+
+The entropy operator:
+
+    R_discard(f) = S(X) − S(Y)
+
+becomes:
+
+    R_discard(f) = S_to_null(f)
+
+i.e. the entropy of structure that flowed into 𝓝.
+
+RDG PROJECTIONS
+---------------------------------------------------------------------------
+
+SID (Boltzmann geometry):
+    R_SID = k_B ln|Ω_X| − k_B ln|Ω_Y|
+    Lost Ω-volume → 𝓝
+
+PED (Shannon probability):
+    R_PED = −Σ p_i log p_i + Σ q_j log q_j
+    Lost sharpness → 𝓝
+
+Q (Thermodynamic):
+    R_Q = ∫ δQ_rev / T
+    Lost recoverability → 𝓝
+
+FLOW DIAGRAM
+---------------------------------------------------------------------------
+
+    X  --f-->  Y  --discard-->  ★
+                                 |
+                                 v
+                           NULL STRATUM (𝓝)
+                     (absorbing boundary of RDG)
+
+FLOW OF DISCARD INTO THE NULL STRATUM
+
+SID (microstate geometry):
+    Before: [ o o o o o o ]
+    After : [ o o o ]
+    Lost microstates → Null Point
+
+PED (probability flattening):
+    [0.8, 0.1, 0.1] → [0.33, 0.33, 0.33]
+    Lost sharpness → Null Point
+
+Q (thermodynamic irreversibility):
+    [tight] → [loose] → [cannot return]
+    Lost recoverability → Null Point
+
+ASCII flow:
+
+        X  --f-->  Y  --discard-->  ●
+                                    |
+                                    v
+                             NULL POINT
+
+UNIFIED RDG TRIANGLE WITH NULL SINK
+---------------------------------------------------------------------------
+
+                     		 ( SID )
+            	microstate geometry
+                     		▲
+                        		 |
+        ( Q ) ◄-- 	R_discard --► ( PED )
+thermodynamic         			 probability
+       cost                  				flux
+                         		|
+                        		v
+                		 ★  𝓝
+        (pre‑geometric null substrate)
+
+INTERPRETATION
+---------------------------------------------------------------------------
+
+• Entropy increase = growth of the null contribution.
+• Irreversibility = collapse of distinctions into 𝓝.
+• Conservation holds globally: nothing is destroyed.
+• 𝓝 is the universal reservoir of discarded structure.
+

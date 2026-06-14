@@ -13,16 +13,6 @@ operator stack:
 
     Q□ → G → R → I → Q → RDG → MFE
 
-It merges:
-    • the original Q□/G/R axioms and definitions
-    • the continuum signature theorem
-    • the SID/PED inapplicability proof
-    • the rational/relational layer table
-    • the missing Q-layer (quotient / d’Alembert-class operator)
-    • the full RDG/MFE operator interface
-
-Nothing from the original document is omitted.
-
 =====================================================================
 0. AXIOMS OF Q□
 =====================================================================

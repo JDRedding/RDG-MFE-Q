@@ -155,9 +155,9 @@ Without that theorem — even as a conjecture — the mapping reads as structura
 +----------------------	+------------------------------	+--------------------------------------
 | Quaternion potential 	| Q = φ + A                    	| Q_t = φ_t + A_t (quaternion field)   
 +----------------------	+------------------------------	+--------------------------------------
-| Gradient ∇Q 		| ∇_Q = ∂t + ∇			| Split across layers: ∇{Γ_t} 
-|			|(quaternionic, noncommutative)	| (RDG geometric) + quaternion coupling 
-|			|				| (MFE dynamic)      
+| Gradient ∇Q 		    | ∇_Q = ∂t + ∇			        | Split across layers: ∇{Γ_t} 
+|			            |(quaternionic, noncommutative)	| (RDG geometric) + quaternion coupling 
+|			            |				                | (MFE dynamic)      
 +----------------------	+------------------------------	+--------------------------------------
 | Wave operator □Q     	| □Q = J                    	| □_{Γ_t} Q_t = J_t                  
 |                      	| Standard d’Alembertian       	| RDG Laplacian + time difference      
@@ -173,7 +173,7 @@ Without that theorem — even as a conjecture — the mapping reads as structura
 | Interpretation       	| Fields on fixed space        	| Fields + geometry co-evolve          
 |                      	|                              	| (Maxwell-like MFE on emergent Γ_t)   
 +----------------------	+------------------------------	+-------------------------------------- 
-| Condition   		| Classical Maxwell (ℝ³ fixed) 	| RDG–MFE (Γ_t generated/evolving)     
+| Condition   		    | Classical Maxwell (ℝ³ fixed) 	| RDG–MFE (Γ_t generated/evolving)     
 +----------------------	+------------------------------	+--------------------------------------+
 | Continuum / limit    	| —                            	| Γ_t frozen to ℝ³;                    
 |                      	|                              	| RDG → identity;                      

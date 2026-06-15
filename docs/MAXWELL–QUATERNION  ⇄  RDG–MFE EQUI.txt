@@ -131,9 +131,13 @@ An explicit definition: □_{Γ_t} = ∂t² - L{Γ_t}, or
 An honest note that this discretization is an open formal problem
 
 Without it, the central equation of the mapping is a placeholder.
+
 2. Quaternion algebra vs. quaternion-valued fields.
+
 There's a subtle but important distinction. Maxwell's original formulation uses quaternion multiplication — the non-commutativity is doing real work in coupling E and B. Your mapping uses quaternion-valued fields (Q_t = φ_t + A_t) but the evolution equation Q_{t+1} = Q_t + Δ_t is additive. Is quaternion multiplication present in Δ_t? If not, you have quaternion-valued fields on a graph, which is weaker than a true quaternion field theory. This needs to be stated explicitly — either show where the non-commutative product appears in MFE, or acknowledge the mapping is to the structure of Maxwell's formulation rather than the full algebra.
+
 3. The recovery claim needs to be stated as a theorem.
+
 You have all the pieces for:
 
 Theorem: When Γ_t ≡ Γ_{ℝ³} (frozen), φ_t and A_t are smooth, and □_{Γ_t} is the standard d'Alembertian, RDG–MFE recovers Maxwell's equations exactly.

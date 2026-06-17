@@ -1,0 +1,171 @@
+PED SPECIFICATION (POWER – EVALUATION – DYNAMIC‑SLICE)
+============================================================
+
+0. SCOPE
+--------
+Purpose: define the PED triad as the internal field‑engine
+representation used by the MFE (Momentum–Flux Engine).
+PED is *inside* MFE; SID is *outside* MFE; RDG is the base.
+
+PED(E) = ( P(E), Eval(E), D_slice(E) )
+
+where E is the MFE state:
+    E = ( M, F, M̄, F̄ )
+
+------------------------------------------------------------
+1. INPUT DOMAIN
+------------------------------------------------------------
+
+1.1. ENGINE STATE
+-----------------
+PED operates on the 4‑tuple:
+
+    E = ( M, F, M̄, F̄ )
+
+where:
+    M   = momentum
+    F   = flux
+    M̄  = counter‑momentum
+    F̄  = counter‑flux
+
+1.2. DOMAIN CONSTRAINTS
+-----------------------
+E ∈ D_MFE ⊆ ℝ⁴
+
+Optional constraints:
+    - boundedness
+    - bipolar symmetry
+    - saturation thresholds
+
+------------------------------------------------------------
+2. POWER COMPONENT  P(E)
+------------------------------------------------------------
+
+P(E) measures the *radial engine strength*.
+
+Canonical form:
+    P(E) = ½ ( M² + F² )
+
+Interpretation:
+    - magnitude of the active engine
+    - high P → strong drive
+    - low P → weak or stalled engine
+
+Axioms:
+    (P1) P(E) ≥ 0
+    (P2) P increases with |M| or |F|
+    (P3) P decreases when M̄ or F̄ activate
+    (P4) P is smooth and differentiable (optional)
+
+Optional alternative forms:
+    P(E) = √(M² + F²)
+    P(E) = |M| + |F|
+
+------------------------------------------------------------
+3. EVALUATION COMPONENT  Eval(E)
+------------------------------------------------------------
+
+Eval(E) is the *potential landscape* the engine sits in.
+
+General form:
+    Eval(E) = V(M, F, M̄, F̄)
+
+Typical structure:
+    V = α e^{-|M|}
+      + β cos(F)
+      + γ sin²(M̄)
+      + δ F̄
+
+Interpretation:
+    - exponential term → damping
+    - cosine term → oscillatory wells
+    - sine² term → counter‑force activation
+    - linear term → flux penalty
+
+Axioms:
+    (E1) Eval(E) is bounded below
+    (E2) Eval(E) determines stable/unstable regions
+    (E3) Eval(E) modulates MFE update rules
+    (E4) Eval(E) is differentiable (optional)
+
+------------------------------------------------------------
+4. DYNAMIC‑SLICE COMPONENT  D_slice(E)
+------------------------------------------------------------
+
+D_slice(E) is the *local admissible change mode* extracted
+from the engine state.
+
+General form:
+    D_slice(E) = Φ(E)
+
+where Φ is the MFE update operator.
+
+Interpretation:
+    - D_slice is the “instantaneous dynamic direction”
+    - It is the *Q‑slice precursor* but without Q‑layer
+    - It determines how the engine moves next
+
+Axioms:
+    (D1) D_slice(E) ∈ D_MFE
+    (D2) D_slice respects bipolar structure
+    (D3) D_slice is modulated by P(E) and Eval(E)
+    (D4) D_slice is minimal: no extra structure added
+
+Optional explicit form:
+    D_slice(E) = ( ∂P/∂M - ∂Eval/∂M ,
+                   ∂P/∂F - ∂Eval/∂F ,
+                   ∂P/∂M̄ - ∂Eval/∂M̄ ,
+                   ∂P/∂F̄ - ∂Eval/∂F̄ )
+
+------------------------------------------------------------
+5. PED COUPLING RULES
+------------------------------------------------------------
+
+PED influences MFE through:
+
+    M(t+1)   = f_M( E ; P, Eval )
+    F(t+1)   = f_F( E ; P, Eval )
+    M̄(t+1)  = f_M̄( E ; P, Eval )
+    F̄(t+1)  = f_F̄( E ; P, Eval )
+
+Coupling principles:
+    (C1) P(E) amplifies drive
+    (C2) Eval(E) shapes potential wells
+    (C3) D_slice(E) determines admissible flow
+    (C4) All three must remain bounded
+
+------------------------------------------------------------
+6. PED INVARIANTS
+------------------------------------------------------------
+
+Define:
+
+    |P|      = magnitude of power
+    |Eval|   = depth of potential
+    |D|      = magnitude of dynamic-slice
+
+Axioms:
+    (I1) |P|, |Eval|, |D| remain finite
+    (I2) |D| increases when |P| is high
+    (I3) |D| decreases when Eval has deep wells
+    (I4) PED preserves bipolar symmetry
+
+------------------------------------------------------------
+7. MINIMAL EXAMPLES
+------------------------------------------------------------
+
+Example A: radial power + cosine potential
+------------------------------------------
+P(E)    = ½(M² + F²)
+Eval(E) = cos(F)
+D_slice(E) = Φ(E)
+
+Example B: counter‑force activation
+-----------------------------------
+P(E)    = |M| + |F|
+Eval(E) = sin²(M̄) + sin²(F̄)
+D_slice(E) = gradient of (P - Eval)
+
+------------------------------------------------------------
+END OF FILE
+============================================================

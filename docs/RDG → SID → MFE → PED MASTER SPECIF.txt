@@ -1,0 +1,226 @@
+RDG → SID → MFE → PED MASTER SPECIFICATION  
+============================================================
+
+0. SCOPE
+--------
+This document defines the full four‑layer architecture:
+
+    RDG  = Relational Directed Geometry
+    SID  = Structure–Interaction–Dynamics (geometry slice)
+    MFE  = Momentum–Flux Engine (dynamic engine)
+    PED  = Power–Evaluation–Dynamic-slice (internal engine field)
+
+The flow of the architecture is:
+
+        RDG  →  SID  →  MFE  →  PED
+
+SID is the geometric decomposition of RDG.  
+PED is the internal field decomposition of MFE.
+
+No Q-layer, no Γ, no continuum limit.
+
+============================================================
+1. RDG — RELATIONAL DIRECTED GEOMETRY
+============================================================
+
+1.1. RDG OBJECT
+---------------
+An RDG is:
+    G = (Obj, Rel)
+
+Obj = set of nodes  
+Rel ⊆ Obj × Obj (directed edges)
+
+1.2. SUB-RDG
+------------
+G ⊆ H means Obj(G) ⊆ Obj(H) and Rel(G) ⊆ Rel(H).
+
+1.3. MORPHISMS
+--------------
+A morphism f : G → H satisfies:
+    (M1) a→b in G implies f(a)→f(b) in H
+    (M2) no extra edges created
+
+RDG is the base relational substrate for SID and MFE.
+
+============================================================
+2. SID — STRUCTURE / INTERACTION / DYNAMICS
+============================================================
+
+SID(G) = ( S(G), I(G), D(G) )
+
+Each is an RDG with its own closure rules.
+
+2.1. STRUCTURE LAYER  S(G)
+--------------------------
+Rel_S ⊆ Rel(G)
+
+Interpretation:
+    invariant edges, definitional skeleton
+
+Axioms:
+    S(G) ⊆ G  
+    S closed under structural rules  
+    minimality
+
+2.2. INTERACTION LAYER  I(G)
+----------------------------
+Rel_I ⊆ Rel(G)
+
+Interpretation:
+    operational links, OP/STR/LOOP relations
+
+Axioms:
+    S(G) ⊆ I(G) ⊆ G  
+    I closed under interaction rules  
+    minimality
+
+2.3. DYNAMICS LAYER  D(G)
+-------------------------
+Rel_D ⊆ Rel(G)
+
+Interpretation:
+    inferred transitions, path completion
+
+Axioms:
+    I(G) ⊆ D(G) ⊆ G  
+    D closed under dynamic rules  
+    minimality
+
+2.4. SID CONSISTENCY
+--------------------
+S(G) ⊆ I(G) ⊆ D(G) ⊆ G  
+Monotone, idempotent, compatible.
+
+============================================================
+3. MFE — MOMENTUM–FLUX ENGINE
+============================================================
+
+MFE is the 2×2 bipolar engine:
+
+        ( M , F )
+        ( M̄ , F̄ )
+
+3.1. ENGINE STATE
+-----------------
+E(t) = ( M(t), F(t), M̄(t), F̄(t) )
+
+3.2. ENGINE DOMAIN
+------------------
+D_MFE ⊆ ℝ⁴  
+Optional: boundedness, saturation, bipolar symmetry.
+
+3.3. UPDATE RULES
+-----------------
+E(t+1) = Φ(E(t))
+
+Component form:
+    M(t+1)   = f_M( M, F, M̄, F̄ )
+    F(t+1)   = f_F( M, F, M̄, F̄ )
+    M̄(t+1)  = f_M̄( M, F, M̄, F̄ )
+    F̄(t+1)  = f_F̄( M, F, M̄, F̄ )
+
+3.4. BIPOLAR PAIRS
+------------------
+(M, M̄) and (F, F̄) enforce:
+    - no runaway  
+    - no dead‑stall  
+    - bounded oscillation  
+
+============================================================
+4. PED — POWER / EVALUATION / DYNAMIC-SLICE
+============================================================
+
+PED(E) = ( P(E), Eval(E), D_slice(E) )
+
+PED is *inside* MFE.
+
+4.1. POWER  P(E)
+----------------
+Radial engine strength:
+    P(E) = ½(M² + F²)
+
+4.2. EVALUATION  Eval(E)
+------------------------
+Potential landscape:
+    Eval(E) = V(M, F, M̄, F̄)
+
+Typical:
+    α e^{-|M|} + β cos(F) + γ sin²(M̄) + δ F̄
+
+4.3. DYNAMIC-SLICE  D_slice(E)
+------------------------------
+Local admissible flow:
+    D_slice(E) = Φ(E)
+or gradient form:
+    ∂P - ∂Eval
+
+============================================================
+5. SID → MFE COUPLING
+============================================================
+
+SID outputs geometric signals:
+
+    σ(G) = structural pressure
+    ρ(G) = relational tension
+
+These modulate MFE parameters:
+
+    θ_M = θ_M⁰ + α_σ σ(G)
+    θ_F = θ_F⁰ + β_ρ ρ(G)
+
+And PED coefficients:
+
+    λ_P = λ_P⁰ + κ_Pσ σ(G)
+    λ_E = λ_E⁰ + κ_Eρ ρ(G)
+
+Interpretation:
+    RDG geometry shapes engine thresholds and gain.
+
+============================================================
+6. MFE → PED COUPLING
+============================================================
+
+MFE update rules depend on PED:
+
+    M(t+1)   = f_M( E ; P, Eval )
+    F(t+1)   = f_F( E ; P, Eval )
+    M̄(t+1)  = f_M̄( E ; P, Eval )
+    F̄(t+1)  = f_F̄( E ; P, Eval )
+
+Coupling principles:
+    P(E) amplifies drive  
+    Eval(E) shapes wells  
+    D_slice(E) determines flow  
+
+============================================================
+7. ENGINE INVARIANTS
+============================================================
+
+B(t) = M - F  
+C(t) = M̄ + F̄  
+T(t) = M + F + M̄ + F̄  
+
+Axioms:
+    T bounded  
+    C activates when |B| large  
+    P and Eval regulate T  
+
+============================================================
+8. MINIMAL EXAMPLES
+============================================================
+
+Example A: PED-modulated oscillator
+-----------------------------------
+P(E) = ½(M² + F²)  
+Eval(E) = cos(F) + sin²(M̄)  
+D_slice(E) = Φ(E)
+
+Example B: threshold-triggered engine
+-------------------------------------
+If M > θ_M:  M̄ += α P(E)  
+If F < θ_F:  F̄ += β P(E)  
+
+============================================================
+END OF MASTER SPEC
+============================================================

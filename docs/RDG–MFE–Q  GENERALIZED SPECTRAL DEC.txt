@@ -1,0 +1,120 @@
+RDG–MFE–Q : GENERALIZED SPECTRAL DECOMPOSITION OF Q□
+============================================================
+
+SETUP
+-----
+Let H be a Hilbert space of relational fields (e.g. polar radii r(θ)).
+Let G be a symmetry group acting unitarily on H:
+
+    U : G → U(H)
+    (U(g)f)(x) = f(g^{-1}·x)
+
+Admissible geometry = G-invariant sector.
+Defect = everything orthogonal to that sector.
+
+------------------------------------------------------------
+1. RELATIONAL PROJECTOR (GROUP AVERAGE)
+------------------------------------------------------------
+
+Finite G:
+    Π_rel f = (1/|G|) Σ_{g∈G} U(g) f
+
+Compact Lie G:
+    Π_rel f = ∫_G U(g) f  dμ(g)      (Haar measure)
+
+Properties:
+    Π_rel^2 = Π_rel
+    Π_rel^* = Π_rel
+    Range(Π_rel) = H_triv   (trivial irrep)
+    Ker(Π_rel)   = ⊕_{α≠triv} H_α
+
+------------------------------------------------------------
+2. DEFECT OPERATOR Q□
+------------------------------------------------------------
+
+Definition:
+    Q□(f) = f − Π_rel f
+
+Since Π_rel is linear:
+    J_Q□ = DQ□ = I − Π_rel
+
+Thus:
+    Q□ = projector onto nontrivial representation content.
+
+------------------------------------------------------------
+3. SPECTRAL DECOMPOSITION (IRREP FORM)
+------------------------------------------------------------
+
+Representation decomposition:
+    H = ⊕_α H_α
+    where each H_α carries irrep ρ_α of G.
+
+Trivial irrep:
+    H_triv = { f | U(g)f = f  ∀g∈G }
+
+Nontrivial sector:
+    H_def = ⊕_{α≠triv} H_α
+
+Action of Π_rel:
+    Π_rel|_{H_triv} = I
+    Π_rel|_{H_α≠triv} = 0
+
+Action of Q□:
+    Q□|_{H_triv} = 0
+    Q□|_{H_α≠triv} = I
+
+Therefore:
+    H_admissible = H_triv
+    H_Q-slice    = H_def
+
+------------------------------------------------------------
+4. MULTIPLE COMMUTING SYMMETRIES
+------------------------------------------------------------
+
+If G = G1 × G2 × ... × Gk with commuting actions:
+
+    Π_rel = Π_rel^(1) Π_rel^(2) ... Π_rel^(k)
+
+Joint spectral decomposition:
+    H = ⊕_{λ1,...,λk} H_(λ1,...,λk)
+
+Admissible = joint (λ1=+1, λ2=+1, ..., λk=+1) sector.
+Q-slice    = all other joint eigensectors.
+
+------------------------------------------------------------
+5. RDG–MFE–Q INTERPRETATION
+------------------------------------------------------------
+
+SID / Structure:
+    H is the relational configuration space.
+    G encodes structural symmetries (reflection, rotation, periodicity).
+
+Q□ layer:
+    Π_rel projects onto admissible geometry.
+    Q□ extracts symmetry-violating components.
+
+    Ker(Q□) = H_adm   (legal geometry)
+    Im(Q□)  = H_def   (defect directions)
+
+PED / Flux:
+    Flux and evaluation computed on Π_rel f.
+    Stability/penalty computed on Q□ f.
+
+Γ-flow:
+    Evolution respects the decomposition:
+        f_t = f_{+,t} + f_{-,t}
+        f_{+,t} = Π_rel f_t
+        f_{-,t} = Q□ f_t
+
+------------------------------------------------------------
+6. SUMMARY (ONE-LINE OPERATOR FORM)
+------------------------------------------------------------
+
+    Q□ = I − Π_rel
+    Π_rel = projector onto trivial irrep of G
+    Q□ = projector onto ⊕_{α≠triv} H_α
+
+    ==> Q-slice = nontrivial representation content.
+    ==> Admissible manifold = trivial representation content.
+
+============================================================

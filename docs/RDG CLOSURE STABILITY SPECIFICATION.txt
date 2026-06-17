@@ -1,0 +1,151 @@
+RDG CLOSURE STABILITY SPECIFICATION  (standalone RDG slice)
+============================================================
+
+0. SCOPE
+--------
+Purpose: define the minimal RDG ontology required to state the
+Closure Stability Conjecture.  No MFE, no PED, no Q, no Γ.
+This file is RDG-only.
+
+Objects covered:
+  - RDG primitives
+  - Reading-closure operator Cl_read
+  - Closure-admissible morphisms
+  - Closure Stability Conjecture
+  - Minimal test fixtures
+
+------------------------------------------------------------
+1. RDG PRIMITIVES
+------------------------------------------------------------
+
+1.1. RDG OBJECT
+---------------
+An RDG is a pair:
+    RDG = (Obj, Rel)
+
+where:
+    Obj = finite or countable set of nodes
+    Rel ⊆ Obj × Obj  (directed edges)
+
+Notation:
+    a → b  means (a,b) ∈ Rel.
+
+1.2. MORPHISMS
+--------------
+A morphism f : G → H is a pair of maps:
+    f_Obj : Obj(G) → Obj(H)
+    f_Rel : Rel(G) → Rel(H)
+
+subject to:
+    (M1) If a → b in G, then f(a) → f(b) in H.
+    (M2) f_Rel is induced by f_Obj (no extra edges created).
+
+We write simply f(a) for f_Obj(a).
+
+1.3. SUB-RDG
+------------
+For RDGs G and H:
+    G ⊆ H  means Obj(G) ⊆ Obj(H) and Rel(G) ⊆ Rel(H).
+
+------------------------------------------------------------
+2. READING CLOSURE OPERATOR
+------------------------------------------------------------
+
+2.1. DEFINITION
+---------------
+A reading-closure operator is a map:
+    Cl_read : RDG → RDG
+
+satisfying for all G:
+
+  (C1) EXTENSIVE:
+        G ⊆ Cl_read(G)
+
+  (C2) IDEMPOTENT:
+        Cl_read(Cl_read(G)) = Cl_read(G)
+
+  (C3) MONOTONE:
+        If G ⊆ H then Cl_read(G) ⊆ Cl_read(H)
+
+Interpretation:
+    Cl_read(G) is the smallest RDG containing G that is
+    closed under the reading rules (path completion,
+    OP/STR/LOOP completion, or whatever rules the RDG
+    implementation declares — but not specified here).
+
+2.2. FUNCTORIAL EXTENSION (optional)
+------------------------------------
+If desired, define Cl_read on morphisms:
+
+Given f : G → H, define Cl_read(f) : Cl_read(G) → Cl_read(H)
+such that:
+    Cl_read(f) ∘ η_G = η_H ∘ f
+
+where η_G : G → Cl_read(G) is the inclusion.
+
+This is optional; the conjecture does not require it.
+
+------------------------------------------------------------
+3. CLOSURE-ADMISSIBLE MORPHISMS
+------------------------------------------------------------
+
+A morphism f : G → H is closure-admissible if:
+
+    f( Cl_read(G) ) ⊆ Cl_read(H)
+
+Equivalent stronger form (if Cl_read(f) is defined):
+
+    f( Cl_read(G) ) = Cl_read( f(G) )
+
+Interpretation:
+    f does not break reading-closure; applying f after
+    closure is equivalent to closing after applying f.
+
+------------------------------------------------------------
+4. CLOSURE STABILITY CONJECTURE
+------------------------------------------------------------
+
+CONJECTURE (Closure Stability):
+--------------------------------
+For any RDG G and any closure-admissible morphism f : G → H:
+
+    f( Cl_read(G) ) ⊆ Cl_read(H)
+
+Stronger form:
+    f( Cl_read(G) ) = Cl_read( f(G) )
+
+Internal categorical form:
+    The full subcategory of closure-stable RDGs is reflective
+    in RDG, with reflector Cl_read.
+
+------------------------------------------------------------
+5. MINIMAL TEST FIXTURES
+------------------------------------------------------------
+
+Example A:
+----------
+G:
+    Obj = {a,b}
+    Rel = {a→b}
+
+Cl_read(G):
+    Obj = {a,b}
+    Rel = {a→b, (any inferred edges)}
+
+Example B:
+----------
+G:
+    Obj = {x,y,z}
+    Rel = {x→y, y→z}
+
+Cl_read(G):
+    Obj = {x,y,z}
+    Rel = {x→y, y→z, x→z}   (path completion example)
+
+Test:
+    For any morphism f : G → H,
+        check f(Cl_read(G)) ⊆ Cl_read(H).
+
+------------------------------------------------------------
+END OF FILE
+============================================================

@@ -1,0 +1,409 @@
+MFE–PED SPECIFICATION 
+(MOMENTUM–FLUX ENGINE WITH POWER–EVALUATION–DYNAMIC-SLICE)
+============================================================
+
+0. SCOPE
+--------
+Purpose: define the Momentum–Flux Engine (MFE) together with
+its internal PED triad.  This file is standalone and contains
+no Q, no Γ, no continuum limit.
+
+MFE is the 2×2 bipolar engine:
+        ( M , F )
+        ( M̄ , F̄ )
+
+PED is the internal triad:
+        P(E)     = Power
+        Eval(E)  = Evaluation
+        D_slice  = Dynamic-slice
+
+PED is *inside* the MFE.  
+SID is *outside* the MFE.  
+RDG is the base relational substrate.
+
+------------------------------------------------------------
+1. ENGINE STATE
+------------------------------------------------------------
+
+1.1. STATE VECTOR
+-----------------
+At discrete time t:
+
+    E(t) = ( M(t), F(t), M̄(t), F̄(t) )
+
+where:
+    M(t)   = momentum
+    F(t)   = flux
+    M̄(t)  = counter-momentum
+    F̄(t)  = counter-flux
+
+1.2. ENGINE DOMAIN
+------------------
+D_MFE ⊆ ℝ⁴ is the allowable state space.
+
+Optional constraints:
+    - boundedness
+    - saturation thresholds
+    - bipolar symmetry
+
+------------------------------------------------------------
+2. INTERNAL PED TRIAD
+------------------------------------------------------------
+
+PED(E) = ( P(E), Eval(E), D_slice(E) )
+
+Each component is a functional of the MFE state E.
+
+------------------------------------------------------------
+2.1. POWER  P(E)
+------------------------------------------------------------
+
+P(E) measures *radial engine strength*.
+
+Canonical form:
+    P(E) = ½ ( M² + F² )
+
+Interpretation:
+    - high P → strong drive
+    - low P → weak or stalled engine
+
+Axioms:
+    (P1) P(E) ≥ 0
+    (P2) P increases with |M| or |F|
+    (P3) P decreases when M̄ or F̄ activate
+
+------------------------------------------------------------
+2.2. EVALUATION  Eval(E)
+------------------------------------------------------------
+
+Eval(E) is the *potential landscape* the engine sits in.
+
+General form:
+    Eval(E) = V(M, F, M̄, F̄)
+
+Typical structure:
+    V = α e^{-|M|}
+      + β cos(F)
+      + γ sin²(M̄)
+      + δ F̄
+
+Interpretation:
+    - exponential → damping
+    - cosine → oscillatory wells
+    - sine² → counter-force activation
+    - linear → flux penalty
+
+Axioms:
+    (E1) Eval(E) is bounded below
+    (E2) Eval(E) determines stable/unstable regions
+    (E3) Eval(E) modulates MFE update rules
+
+------------------------------------------------------------
+2.3. DYNAMIC-SLICE  D_slice(E)
+------------------------------------------------------------
+
+D_slice(E) is the *local admissible flow direction*.
+
+General form:
+    D_slice(E) = Φ(E)
+
+where Φ is the MFE update operator.
+
+Interpretation:
+    - instantaneous dynamic direction
+    - precursor to Q-slice (without Q-layer)
+    - determines how the engine moves next
+
+Axioms:
+    (D1) D_slice(E) ∈ D_MFE
+    (D2) D_slice respects bipolar structure
+    (D3) D_slice is modulated by P(E) and Eval(E)
+
+Optional explicit form:
+    D_slice(E) = ( ∂P/∂M - ∂Eval/∂M ,
+                   ∂P/∂F - ∂Eval/∂F ,
+                   ∂P/∂M̄ - ∂Eval/∂M̄ ,
+                   ∂P/∂F̄ - ∂Eval/∂F̄ )
+
+------------------------------------------------------------
+3. MFE UPDATE RULES (WITH PED COUPLING)
+------------------------------------------------------------
+
+The engine evolves by:
+
+    E(t+1) = Φ( E(t), P(E), Eval(E), D_slice(E) )
+
+Explicitly:
+
+    M(t+1)   = f_M( M, F, M̄, F̄ ; P, Eval )
+    F(t+1)   = f_F( M, F, M̄, F̄ ; P, Eval )
+    M̄(t+1)  = f_M̄( M, F, M̄, F̄ ; P, Eval )
+    F̄(t+1)  = f_F̄( M, F, M̄, F̄ ; P, Eval )
+
+Coupling principles:
+    (C1) P(E) amplifies drive
+    (C2) Eval(E) shapes potential wells
+    (C3) D_slice(E) determines admissible flow
+
+------------------------------------------------------------
+4. BIPOLAR PAIRS
+------------------------------------------------------------
+
+4.1. MOMENTUM PAIR (M, M̄)
+--------------------------
+M̄ activates when M exceeds threshold θ_M.
+
+4.2. FLUX PAIR (F, F̄)
+----------------------
+F̄ activates when F falls below threshold θ_F.
+
+Axioms:
+    (BP1) M̄ opposes M
+    (BP2) F̄ supports F
+    (BP3) bipolar pairs prevent runaway or stall
+
+------------------------------------------------------------
+5. ENGINE MODES
+------------------------------------------------------------
+
+5.1. DRIVE MODE
+---------------
+High M, low M̄.
+
+5.2. COLLAPSE MODE
+------------------
+High F, low F̄.
+
+5.3. RECOVERY MODE
+------------------
+High M̄ or high F̄.
+
+------------------------------------------------------------
+6. ENGINE INVARIANTS
+------------------------------------------------------------
+
+Define:
+
+    B(t) = M - F        (balance index)
+    C(t) = M̄ + F̄      (counter index)
+    T(t) = M + F + M̄ + F̄   (total engine energy)
+
+Axioms:
+    (I1) T(t) remains bounded
+    (I2) C(t) activates when |B(t)| is too large
+    (I3) P(E) and Eval(E) regulate T(t)
+
+------------------------------------------------------------
+7. MFE–PED–RDG INTERFACE
+------------------------------------------------------------
+
+7.1. INPUT FROM RDG/SID
+-----------------------
+RDG provides structural signals:
+
+    σ(G) = structural pressure
+    ρ(G) = relational tension
+
+These modulate:
+    - thresholds θ_M, θ_F
+    - coefficients of Eval(E)
+    - gain of P(E)
+
+7.2. OUTPUT TO RDG/SID
+----------------------
+MFE outputs:
+    ω(t) = engine wave state
+    κ(t) = collapse/recovery indicator
+
+These influence:
+    - SID dynamics
+    - reading closure
+    - RDG morphism selection
+
+------------------------------------------------------------
+8. MINIMAL EXAMPLES
+------------------------------------------------------------
+
+Example A: PED-modulated oscillator
+-----------------------------------
+P(E) = ½(M² + F²)
+Eval(E) = cos(F) + sin²(M̄)
+D_slice(E) = Φ(E)
+
+Updates:
+    M(t+1)   = M + 1 - M̄ - ∂Eval/∂M
+    F(t+1)   = F - 1 + F̄ - ∂Eval/∂F
+    M̄(t+1)  = max(0, M - θ_M)
+    F̄(t+1)  = max(0, θ_F - F)
+
+Example B: threshold-triggered PED engine
+-----------------------------------------
+If M > θ_M:  M̄ += α P(E)
+If F < θ_F:  F̄ += β P(E)
+
+Then update M and F using Eval(E).
+
+------------------------------------------------------------
+OPTIONAL ENHANCEMENTS
+------------------------------------------------------------
+
+A. Explicit PED → MFE coupling  
+B. RDG → MFE signal mapping  
+C. Softened induction (v4.1)  
+D. Energy‑shaping extension  
+E. Canonical normal form  
+
+OPTIONAL ENHANCEMENTS FOR MFE + PED
+============================================================
+
+A. EXPLICIT PED → MFE COUPLING EQUATIONS
+------------------------------------------------------------
+Purpose:
+    Make the influence of P(E) and Eval(E) on the update
+    rules mathematically explicit.
+
+Define baseline (uncoupled) updates:
+    M⁰(t+1), F⁰(t+1), M̄⁰(t+1), F̄⁰(t+1)
+
+Then the PED‑coupled updates are:
+
+    M(t+1)  = M⁰(t+1)
+              + λ_P * ∂P/∂M
+              - λ_E * ∂Eval/∂M
+
+    F(t+1)  = F⁰(t+1)
+              + λ_P * ∂P/∂F
+              - λ_E * ∂Eval/∂F
+
+    M̄(t+1) = M̄⁰(t+1)
+              + λ_P̄ * ∂P/∂M̄
+              - λ_Ē * ∂Eval/∂M̄
+
+    F̄(t+1) = F̄⁰(t+1)
+              + λ_P̄ * ∂P/∂F̄
+              - λ_Ē * ∂Eval/∂F̄
+
+Interpretation:
+    - Power Pow(E) amplifies the engine’s drive.
+    - Evaluation Eval(E) shapes the potential wells.
+    - λ coefficients tune the strength of coupling.
+
+============================================================
+
+B. RDG → MFE SIGNAL MAPPING
+------------------------------------------------------------
+Purpose:
+    Formalize how RDG structural signals influence MFE
+    thresholds and PED coefficients.
+
+Let:
+    σ(G) = structural pressure
+    ρ(G) = relational tension
+
+Define threshold modulation:
+
+    θ_M = θ_M⁰ + α_σ * σ(G)
+    θ_F = θ_F⁰ + β_ρ * ρ(G)
+
+Define PED coefficient modulation:
+
+    λ_P   = λ_P⁰   + κ_Pσ * σ(G)
+    λ_E   = λ_E⁰   + κ_Eρ * ρ(G)
+
+Interpretation:
+    - High σ(G) raises momentum threshold.
+    - High ρ(G) raises flux threshold.
+    - RDG geometry directly shapes engine behavior.
+
+============================================================
+
+C. SOFTENED INDUCTION (v4.1 MODE)
+------------------------------------------------------------
+Purpose:
+    Replace hard threshold activation with smooth,
+    differentiable activation functions.
+
+Replace:
+    M̄(t+1) = max(0, M - θ_M)
+    F̄(t+1) = max(0, θ_F - F)
+
+with softened activators:
+
+    M̄(t+1) = S_M( M - θ_M )
+    F̄(t+1) = S_F( θ_F - F )
+
+where S_M and S_F are smooth sigmoids:
+
+    S(x) = 1 / (1 + e^{-k x})
+
+or smooth ReLU:
+
+    S(x) = ½ ( x + sqrt(x² + ε²) )
+
+Parameters:
+    k  = steepness
+    ε  = smoothing constant
+
+Interpretation:
+    - Eliminates discontinuities.
+    - Produces smoother limit cycles.
+    - Makes the engine compatible with gradient‑based
+      analysis and Q‑layer integration later.
+
+============================================================
+
+D. ENERGY‑SHAPING EXTENSION
+------------------------------------------------------------
+Purpose:
+    Add a tunable energy functional that governs long‑term
+    stability and oscillation amplitude.
+
+Define total shaped energy:
+
+    H(E) = T(E) + μ * Eval(E) + ν * P(E)
+
+where:
+    T(E) = M + F + M̄ + F̄
+
+Energy‑shaped update rule:
+
+    E(t+1) = E(t) - η * ∇H(E(t))
+
+Interpretation:
+    - η controls dissipation.
+    - μ, ν control how Eval and Power influence stability.
+    - Produces controlled oscillations or convergence.
+
+============================================================
+
+E. CANONICAL NORMAL FORM (OPTIONAL)
+------------------------------------------------------------
+Purpose:
+    Provide a simplified, universal representation of the
+    MFE+PED engine for analysis or simulation.
+
+Define canonical state:
+
+    X = (M, F, M̄, F̄)
+
+Define canonical flow:
+
+    Ẋ = A X + B tanh(C X)
+
+where:
+    A = linear stability matrix
+    B = nonlinear gain matrix
+    C = activation matrix
+
+Interpretation:
+    - Linear part controls baseline oscillation.
+    - Nonlinear tanh term enforces bipolar saturation.
+    - This form is universal for all MFE engines.
+
+============================================================
+END OF OPTIONAL ENHANCEMENTS
+============================================================
+------------------------------------------------------------
+END OF FILE
+============================================================
+

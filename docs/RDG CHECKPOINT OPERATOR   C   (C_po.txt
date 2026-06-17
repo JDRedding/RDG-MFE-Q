@@ -1,0 +1,111 @@
+ RDG CHECKPOINT OPERATOR   C   (C_point^check)
+====================================================================
+
+Purpose:
+    Provide PRACTICAL REVERSAL of an IRREVERSIBLE closure step
+    by storing the full pre-closure SID/PED state.
+
+    NOTE:
+        C does NOT invert φ_Q.
+        C restores the saved state (checkpoint replay).
+
+--------------------------------------------------------------------
+ OPERATOR SIGNATURE
+--------------------------------------------------------------------
+
+    C_point^check : (SID, PED) → H_entry
+
+    where H_entry is the checkpoint tuple:
+
+        H_entry =
+        (
+            SID_before,
+            PED_before,
+            SID_after,
+            R_discard,
+            Δlog_p,
+            Δlog_Z
+        )
+
+--------------------------------------------------------------------
+ CHECKPOINT ENTRY DEFINITION
+--------------------------------------------------------------------
+
+    SID_before   = SID_k
+    PED_before   = PED_k
+
+    SID_after    = φ_Q( SID_k , PED_k )
+
+    R_discard    = invariant loss under φ_Q
+
+    Δlog_p       = log p_before  - log p_after
+    Δlog_Z       = log Z_before - log Z_after
+
+--------------------------------------------------------------------
+ HISTORY ARRAY
+--------------------------------------------------------------------
+
+    H = { H_entry[k] }  for k = 0 ... N-1
+
+    Each entry is a complete reversible snapshot
+    (workflow-reversible, operator-irreversible).
+
+====================================================================
+ INTEGRATION WITH Ξ_entwine  (irreversible closure-fusion)
+====================================================================
+
+    Ξ_entwine performs irreversible closure-fusion:
+
+        Ξ_entwine(Ξ1, Ξ2) =
+            φ_Q( Ξ1 ⊗ Ξ2 )
+            with R_discard > 0 generally
+
+    C_point^check is applied BEFORE φ_Q:
+
+        H_entry   = C_point^check( SID_before , PED_before )
+        SID_after = Ξ_entwine( SID_before , PED_before )
+
+    Reversible workflow:
+
+        (1) expose hidden info
+        (2) C_point^check stores SID_before, PED_before
+        (3) apply Ξ_entwine  (irreversible)
+        (4) restore via H_entry if needed
+
+====================================================================
+ INTEGRATION WITH Ξ_intertwine  (reversible morphism identity)
+====================================================================
+
+    Ξ_intertwine is reversible:
+
+        f ∘ A = B ∘ f
+
+    No closure, no clipping, no R_discard.
+
+    C_point^check is OPTIONAL:
+
+        H_entry = C_point^check( SID , PED )   # if logging desired
+
+    Structural contrast:
+
+        Ξ_intertwine     : reversible morphism identity
+        Ξ_entwine        : irreversible closure-fusion
+        C_point^check    : reversible checkpoint log
+
+====================================================================
+ SUMMARY
+====================================================================
+
+    C_point^check does NOT invert φ_Q.
+    It restores the saved state.
+
+    This yields PRACTICAL REVERSAL of an IRREVERSIBLE operator.
+
+    Required for:
+        - verification
+        - branching
+        - transformation
+        - replay
+        - invariant testing
+
+====================================================================

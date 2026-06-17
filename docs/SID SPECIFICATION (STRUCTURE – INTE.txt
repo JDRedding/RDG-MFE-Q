@@ -1,0 +1,214 @@
+SID SPECIFICATION (STRUCTURE – INTERACTION – DYNAMICS)
+============================================================
+
+0. SCOPE
+--------
+Purpose: define the SID triad as the geometric decomposition
+of an RDG object.  SID is the geometry-side triad; MFE/PED
+is the engine-side triad.  This file is RDG-only.
+
+SID(G) = ( S(G), I(G), D(G) )
+
+Each component is an RDG with specific closure rules.
+
+------------------------------------------------------------
+1. RDG PRIMITIVES
+------------------------------------------------------------
+
+1.1. RDG OBJECT
+---------------
+An RDG is:
+    G = (Obj, Rel)
+
+Obj = set of nodes
+Rel ⊆ Obj × Obj  (directed edges)
+
+Notation:
+    a → b  means (a,b) ∈ Rel.
+
+1.2. SUB-RDG
+------------
+G ⊆ H means:
+    Obj(G) ⊆ Obj(H)
+    Rel(G) ⊆ Rel(H)
+
+1.3. MORPHISMS
+--------------
+A morphism f : G → H satisfies:
+    (M1) a → b in G implies f(a) → f(b) in H
+    (M2) f does not create edges not induced by f(a)→f(b)
+
+------------------------------------------------------------
+2. SID TRIAD
+------------------------------------------------------------
+
+SID(G) = ( S(G), I(G), D(G) )
+
+with:
+    S(G) = structural layer
+    I(G) = interaction layer
+    D(G) = dynamic layer
+
+Each layer is an RDG with its own closure rules.
+
+------------------------------------------------------------
+2.1. STRUCTURE LAYER  S(G)
+------------------------------------------------------------
+
+S(G) = (Obj(G), Rel_S)
+
+Rel_S ⊆ Rel(G)
+
+Interpretation:
+    - invariant edges
+    - definitional relations
+    - geometric skeleton
+
+Axioms:
+    (S1) S(G) ⊆ G
+    (S2) S(G) is closed under structural rules
+    (S3) S(G) is minimal satisfying (S1)-(S2)
+
+------------------------------------------------------------
+2.2. INTERACTION LAYER  I(G)
+------------------------------------------------------------
+
+I(G) = (Obj(G), Rel_I)
+
+Rel_I ⊆ Rel(G)
+
+Interpretation:
+    - operational links
+    - functional dependencies
+    - OP/STR/LOOP relations
+
+Axioms:
+    (I1) S(G) ⊆ I(G) ⊆ G
+    (I2) I(G) is closed under interaction rules
+    (I3) I(G) is minimal satisfying (I1)-(I2)
+
+------------------------------------------------------------
+2.3. DYNAMICS LAYER  D(G)
+------------------------------------------------------------
+
+D(G) = (Obj(G), Rel_D)
+
+Rel_D ⊆ Rel(G)
+
+Interpretation:
+    - inferred transitions
+    - path completion
+    - dynamic propagation
+
+Axioms:
+    (D1) I(G) ⊆ D(G) ⊆ G
+    (D2) D(G) is closed under dynamic rules
+    (D3) D(G) is minimal satisfying (D1)-(D2)
+
+------------------------------------------------------------
+3. SID CONSISTENCY CONDITIONS
+------------------------------------------------------------
+
+(C1) NESTING:
+        S(G) ⊆ I(G) ⊆ D(G) ⊆ G
+
+(C2) MONOTONICITY:
+        If G ⊆ H then:
+            S(G) ⊆ S(H)
+            I(G) ⊆ I(H)
+            D(G) ⊆ D(H)
+
+(C3) IDENTITY:
+        S(S(G)) = S(G)
+        I(I(G)) = I(G)
+        D(D(G)) = D(G)
+
+(C4) COMPATIBILITY:
+        S(G) constrains I(G)
+        I(G) constrains D(G)
+
+------------------------------------------------------------
+4. SID MORPHISMS
+------------------------------------------------------------
+
+A morphism f : G → H is SID-preserving if:
+
+    f(S(G)) ⊆ S(H)
+    f(I(G)) ⊆ I(H)
+    f(D(G)) ⊆ D(H)
+
+Stronger form:
+    f(S(G)) = S(f(G))
+    f(I(G)) = I(f(G))
+    f(D(G)) = D(f(G))
+
+Interpretation:
+    f respects the tri-mode geometry.
+
+------------------------------------------------------------
+5. SID OPERATORS
+------------------------------------------------------------
+
+Define three operators:
+
+    S : RDG → RDG
+    I : RDG → RDG
+    D : RDG → RDG
+
+Axioms:
+    - extensive
+    - idempotent
+    - monotone
+
+Interpretation:
+    S extracts the structural core.
+    I adds interaction closure.
+    D adds dynamic closure.
+
+------------------------------------------------------------
+6. SID INVARIANTS
+------------------------------------------------------------
+
+Define:
+
+    |S| = structural complexity
+    |I| = interaction complexity
+    |D| = dynamic complexity
+
+Axioms:
+    |S| ≤ |I| ≤ |D|
+
+Optional:
+    curvature_S(G)   = measure of structural rigidity
+    tension_I(G)     = measure of interaction density
+    drift_D(G)       = measure of dynamic propagation
+
+------------------------------------------------------------
+7. MINIMAL EXAMPLES
+------------------------------------------------------------
+
+Example A:
+----------
+G:
+    Obj = {a,b,c}
+    Rel = {a→b, b→c, a→c}
+
+SID:
+    S(G) = {a→b}
+    I(G) = {a→b, b→c}
+    D(G) = {a→b, b→c, a→c}
+
+Example B:
+----------
+G:
+    Obj = {x,y}
+    Rel = {x→y}
+
+SID:
+    S(G) = {x→y}
+    I(G) = {x→y}
+    D(G) = {x→y}
+
+------------------------------------------------------------
+END OF FILE
+============================================================

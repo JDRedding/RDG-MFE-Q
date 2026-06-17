@@ -1,0 +1,144 @@
+RDG–SID SPECIFICATION  (STRUCTURE–INTERACTION–DYNAMICS)
+============================================================
+
+0. SCOPE
+--------
+Purpose: define the SID triad as the structural decomposition
+of an RDG object.  This file is RDG-only and contains no MFE,
+no PED, no Q, no Γ.
+
+SID = (S, I, D) is a tri-mode decomposition of an RDG G.
+
+------------------------------------------------------------
+1. RDG PRIMITIVES
+------------------------------------------------------------
+
+1.1. RDG OBJECT
+---------------
+An RDG is a pair:
+    G = (Obj, Rel)
+
+Obj = set of nodes
+Rel ⊆ Obj × Obj  (directed edges)
+
+Notation:
+    a → b  means (a,b) ∈ Rel.
+
+1.2. SUB-RDG
+------------
+For RDGs G and H:
+    G ⊆ H  means Obj(G) ⊆ Obj(H) and Rel(G) ⊆ Rel(H).
+
+1.3. MORPHISMS
+--------------
+A morphism f : G → H satisfies:
+    (M1) a → b in G implies f(a) → f(b) in H.
+    (M2) f does not create edges not induced by f(a)→f(b).
+
+------------------------------------------------------------
+2. SID TRIAD
+------------------------------------------------------------
+
+SID decomposes an RDG G into three layers:
+
+    SID(G) = (S(G), I(G), D(G))
+
+Each layer is itself an RDG with specific constraints.
+
+------------------------------------------------------------
+2.1. STRUCTURE LAYER  S(G)
+------------------------------------------------------------
+
+S(G) = (Obj(G), Rel_S)
+
+Rel_S ⊆ Rel(G)
+
+Interpretation:
+    S(G) contains the “structural skeleton” of G:
+      - invariant edges
+      - definitional relations
+      - non-negotiable topology
+
+Axioms:
+    (S1) S(G) ⊆ G
+    (S2) S(G) is closed under structural inheritance rules
+         (implementation-defined)
+    (S3) S(G) is minimal among RDGs satisfying (S1)-(S2)
+
+------------------------------------------------------------
+2.2. INTERACTION LAYER  I(G)
+------------------------------------------------------------
+
+I(G) = (Obj(G), Rel_I)
+
+Rel_I ⊆ Rel(G)
+
+Interpretation:
+    I(G) contains the “interaction edges”:
+      - operational links
+      - functional dependencies
+      - context-sensitive relations
+
+Axioms:
+    (I1) S(G) ⊆ I(G) ⊆ G
+    (I2) I(G) is closed under interaction rules
+         (e.g., composition, adjacency, or OP/STR/LOOP rules)
+    (I3) I(G) is minimal satisfying (I1)-(I2)
+
+------------------------------------------------------------
+2.3. DYNAMICS LAYER  D(G)
+------------------------------------------------------------
+
+D(G) = (Obj(G), Rel_D)
+
+Rel_D ⊆ Rel(G)
+
+Interpretation:
+    D(G) contains the “dynamic edges”:
+      - time-evolving relations
+      - inferred transitions
+      - closure under dynamic propagation
+
+Axioms:
+    (D1) I(G) ⊆ D(G) ⊆ G
+    (D2) D(G) is closed under dynamic propagation rules
+         (e.g., path completion, loop closure)
+    (D3) D(G) is minimal satisfying (D1)-(D2)
+
+------------------------------------------------------------
+3. SID CONSISTENCY CONDITIONS
+------------------------------------------------------------
+
+SID layers must satisfy:
+
+(C1) NESTING:
+        S(G) ⊆ I(G) ⊆ D(G) ⊆ G
+
+(C2) MONOTONICITY:
+        If G ⊆ H then
+            S(G) ⊆ S(H)
+            I(G) ⊆ I(H)
+            D(G) ⊆ D(H)
+
+(C3) IDENTITY:
+        S(S(G)) = S(G)
+        I(I(G)) = I(G)
+        D(D(G)) = D(G)
+
+(C4) COMPATIBILITY:
+        S(G) determines the allowable I(G)
+        I(G) determines the allowable D(G)
+
+------------------------------------------------------------
+4. SID MORPHISMS
+------------------------------------------------------------
+
+A morphism f : G → H is SID-preserving if:
+
+    f(S(G)) ⊆ S(H)
+    f(I(G)) ⊆ I(H)
+    f(D(G)) ⊆ D(H)
+
+Stronger form:
+    f(S(G)) = S(f(G))
+    f(I(G)) = I(f(G

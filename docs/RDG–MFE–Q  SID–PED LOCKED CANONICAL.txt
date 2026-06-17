@@ -1,0 +1,71 @@
+RDG–MFE–Q / SID–PED LOCKED CANONICAL OPERATOR FORM
+====================================================
+
+1. Q□ LAYER — Quotient Admissibility Operator (Locked)
+   Q□ : (r,θ) ↦ (r',θ')
+   Q□(r,θ) = r(θ) − Π_rel[r(θ)]
+
+   Π_rel enforces:
+     • 24π periodicity:   r(θ) ≡ r(θ + 24π)
+     • Y-axis reflection: r(θ) ≡ r(π − θ)
+     • Manifold bound:    r ≥ 0
+
+   This is the clean Q-slice: the butterfly exists only as a quotient object.
+
+2. RDG LAYER — SID Triad (Fully Operatorized)
+
+   S — Structure Operator
+      Substrate: C_rel = {(r,θ) | r≥0, θ∈[0,24π]}
+      Adjacency: 
+        ∂_local = θ ↔ θ+Δθ
+        ∂_refl  = θ ↔ −θ
+
+   I — Interaction Operator (Generalized Kernel)
+      r(θ) := exp(cos(aθ)) − A cos(bθ) + sin^B(θ/c)
+      Decomposition:
+        exp(cos(aθ))   → global envelope operator
+        −A cos(bθ)     → harmonic modulation operator
+        sin^B(θ/c)     → feathering (nonlinear wing-filling) operator
+
+   D — Dynamics Operator (Fay Flow)
+      R(t) = exp(cos t) − 2 cos(4t) − sin^5(t/12)
+      x(t) = sin(t) · R(t)
+      y(t) = cos(t) · R(t)      ∀ t ∈ [0, 12π]
+
+3. MFE LAYER — PED Triad (Momentum-Flux Engine)
+
+   P — Power Operator (Flux Density)
+      P(θ) = (1/2) r(θ)^2          // polar area element generator
+
+   E — Evaluation Operator (Potential)
+      V(θ) = exp(cos(aθ)) − A cos(bθ)
+      W(θ) = sin^B(θ/c)
+      E = V + W                    // total shaping potential
+
+   Dp — Dynamic-Slice Operator (Γ-flow)
+      Γ: r_t ↦ r_{t+Δt}
+      Moderated flow: r_{t+Δt} ← Q□(r_{t+Δt})   // admissibility filter
+
+4. FULL GENERATIVE PIPELINE (Operator Chain)
+   (r0,θ0) 
+     →[Q□] 
+     →[SID] (structure + interaction kernel + parametric drive) 
+     →[PED] (P-flux + E-potential + Γ-slice) 
+     → Butterfly Locus ∈ C_rel
+
+5. Algebraic Sextic Variant (Parallel RDG–MFE–Q Branch)
+   Constraint operator: 
+     x^6 + y^6 − x²y²(x² + y² − 1) = 0
+   SID: algebraic manifold + constraint interaction + locus traversal
+   PED: P = 4∫_0^1 y dx   (wing area flux)
+        E = algebraic potential on sextic
+        Dp = Γ restricted to sextic zero-set
+
+6. Regulator Map (SID/PED Control Knobs)
+   a : envelope frequency
+   b : harmonic wing multiplicity
+   A : momentum scaling / wing separation
+   B : feathering exponent (flux density)
+   c : long-period modulation
+
+This form is now fully locked, residue-free, and operator-clean. Every layer is an explicit RDG–MFE–Q triad. The butterfly emerges strictly as the fixed-point attractor of the SID→PED pipeline under Q□ admissibility.

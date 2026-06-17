@@ -1,0 +1,242 @@
+EMF_RDG SPECIFICATION  (EXPECTATION–FRAME–MEASURE )
+============================================================
+
+0. SCOPE
+--------
+Purpose: define the EMF_RDG layer as a measurable structure
+associated to an RDG. This file introduces EMF_RDG as such:
+
+    EMF_RDG(G) = (X, F, μ, E)
+
+where:
+    X   = underlying space
+    F   = σ-algebra (frame)
+    μ   = measure
+    E   = expectation operator
+
+This file is EMF_RDG-only with a minimal RDG hook; no Q, no Γ.
+
+------------------------------------------------------------
+1. RDG–TO–EMF_RDG HOOK
+------------------------------------------------------------
+
+1.1. RDG OBJECT (REFERENCE ONLY)
+--------------------------------
+An RDG is:
+    G = (Obj, Rel)
+
+Obj = set of nodes
+Rel ⊆ Obj × Obj
+
+We do not constrain G further here; we only require that
+each RDG G admits an associated EMF_RDG structure.
+
+1.2. ASSOCIATED MFE STRUCTURE
+-----------------------------
+To each RDG G we associate:
+
+    EMF_RDG(G) = (X_G, F_G, μ_G, E_G)
+
+where:
+    X_G   = underlying set (state/configuration space)
+    F_G   = σ-algebra on X_G
+    μ_G   = measure on (X_G, F_G)
+    E_G   = expectation operator on integrable functions
+
+The construction of X_G from G is implementation-defined
+(e.g., paths, configurations, or node-label states).
+
+------------------------------------------------------------
+2. MEASURE SPACE
+------------------------------------------------------------
+
+2.1. MEASURABLE SPACE
+---------------------
+For each G:
+
+    (X_G, F_G)
+
+where:
+    X_G   = nonempty set
+    F_G   = σ-algebra on X_G
+
+Axioms:
+    (MS1) ∅ ∈ F_G and X_G ∈ F_G
+    (MS2) If A ∈ F_G then X_G \ A ∈ F_G
+    (MS3) If {A_i} is a countable family in F_G,
+          then ⋃_i A_i ∈ F_G
+
+2.2. MEASURE
+------------
+μ_G : F_G → [0, ∞]
+
+Axioms:
+    (M1) μ_G(∅) = 0
+    (M2) Countable additivity:
+         If {A_i} are pairwise disjoint in F_G, then
+             μ_G(⋃_i A_i) = Σ_i μ_G(A_i)
+
+Optional normalization:
+    (M3) Probability measure:
+         μ_G(X_G) = 1
+
+------------------------------------------------------------
+3. EXPECTATION OPERATOR
+------------------------------------------------------------
+
+3.1. INTEGRABLE FUNCTIONS
+-------------------------
+Let L¹(G) be the set of μ_G-integrable functions:
+
+    L¹(G) = { f : X_G → ℝ  |  ∫ |f| dμ_G < ∞ }
+
+3.2. EXPECTATION
+----------------
+E_G : L¹(G) → ℝ
+
+defined by:
+    E_G[f] = ∫_X_G f dμ_G
+
+Axioms:
+    (E1) Linearity:
+         E_G[αf + βg] = αE_G[f] + βE_G[g]
+    (E2) Monotonicity:
+         If f ≥ g pointwise, then E_G[f] ≥ E_G[g]
+    (E3) Normalization:
+         E_G[1] = μ_G(X_G)  (often = 1)
+
+------------------------------------------------------------
+4. EMF_RDG MORPHISMS
+------------------------------------------------------------
+
+4.1. MEASURABLE MAPS
+--------------------
+Given RDG morphism f : G → H, an EMF_RDG-morphism is a map:
+
+    T_f : X_G → X_H
+
+such that:
+    (MM1) T_f is measurable:
+          For all B ∈ F_H, T_f⁻¹(B) ∈ F_G.
+
+4.2. MEASURE-PRESERVING (OPTIONAL)
+----------------------------------
+T_f is measure-preserving if:
+
+    μ_G(T_f⁻¹(B)) = μ_H(B)   for all B ∈ F_H.
+
+In this case, expectations satisfy:
+
+    E_G[f ∘ T_f] = E_H[f]   for all integrable f on X_H.
+
+Interpretation:
+    EMF_RDG respects the RDG morphism via a measurable map
+    that may or may not preserve measure.
+
+------------------------------------------------------------
+5. EMF_RDG OPERATORS AND FUNCTIONALS
+------------------------------------------------------------
+
+5.1. OBSERVABLES
+----------------
+An observable on G is any f ∈ L¹(G).
+
+Examples:
+    - cost, energy, or weight of a configuration
+    - length or complexity of a path
+    - indicator of a property: 1_A(x) for A ∈ F_G
+
+5.2. EXPECTED VALUE
+-------------------
+For observable f:
+
+    E_G[f] = ∫ f dμ_G
+
+Special cases:
+    - Indicator: E_G[1_A] = μ_G(A)
+    - Centered observable: f - E_G[f]
+
+5.3. VARIANCE (OPTIONAL)
+------------------------
+Var_G[f] = E_G[(f - E_G[f])²]
+
+5.4. ENTROPY (OPTIONAL, DISCRETE CASE)
+--------------------------------------
+If X_G is countable and μ_G is a probability measure:
+
+    H(G) = - Σ_{x ∈ X_G} μ_G({x}) log μ_G({x})
+
+This is not required for EMF_RDG, but commonly used.
+
+------------------------------------------------------------
+6. COMPATIBILITY WITH RDG STRUCTURE
+------------------------------------------------------------
+
+6.1. STRUCTURAL DEPENDENCE
+--------------------------
+The construction of (X_G, F_G, μ_G) from G must be:
+
+    (C1) Functorial (optional):
+         RDG morphisms induce measurable maps T_f.
+
+    (C2) Monotone:
+         If G ⊆ H, then there is a natural embedding
+         X_G ↪ X_H and F_G ↪ F_H, with μ_G derived
+         from μ_H via restriction or marginalization.
+
+6.2. INVARIANTS
+---------------
+EMF_RDG can define invariants of G such as:
+
+    - total mass: μ_G(X_G)
+    - entropy: H(G)
+    - expected cost: E_G[f_cost]
+
+These invariants are required to be:
+
+    (I1) Isomorphism-invariant:
+         If G ≅ H (as RDGs) and EMF_RDG respects the
+         isomorphism, then invariants coincide.
+
+------------------------------------------------------------
+7. MINIMAL EXAMPLES
+------------------------------------------------------------
+
+Example A: finite configuration space
+-------------------------------------
+G:
+    Obj = {a,b}
+    Rel = {a→b}
+
+Choose:
+    X_G = {x1, x2}
+    F_G = power set of X_G
+    μ_G({x1}) = p, μ_G({x2}) = 1 - p
+
+Observable:
+    f(x1) = c1
+    f(x2) = c2
+
+Then:
+    E_G[f] = p c1 + (1 - p) c2
+
+Example B: path-based space
+---------------------------
+G:
+    Obj = {a,b,c}
+    Rel = {a→b, b→c}
+
+Let X_G be the set of directed paths:
+    X_G = { (a), (b), (c), (a→b), (b→c), (a→b→c) }
+
+F_G = power set of X_G
+μ_G = any probability distribution on X_G
+
+Define f(path) = length(path)
+
+Then:
+    E_G[f] = Σ_{path} length(path) μ_G({path})
+
+------------------------------------------------------------
+END OF FILE
+============================================================

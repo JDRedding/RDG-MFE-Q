@@ -1,0 +1,243 @@
+Moduli Stabilization via Q + Γ on the 7-Mode Foundation
+RDG-MFE-Q Substrate — Exact A1–A4′ Derivation → Unique Lawful Vacua {3,4}
+
+================================================================
+MODULI SELECTION AS Q-FILTERED Γ-CLOSURE
+RDG-MFE-Q Substrate — Exact A1–A4′ Derivation
+================================================================
+
+I.  Neutral 7-Mode Substrate (Fixed Foundation)
+
+M = {1,2,3,4,5,6,7}
+A = {1,2,3}          // triadic primitive (T-modes)
+B = {4,5,6,7}        // complementary 4-cycle (C-modes)
+
+Relational Signature R = {T(x), C(x), E(x,y), Tri(x,y,z)}
+
+- T(i) ⇔ i ∈ A
+- C(i) ⇔ i ∈ B
+- E on A: full K3
+- E on B: C4
+- E between A↔B: complete K3,4
+- Tri(x,y,z) on all 6 permutations of (1,2,3)
+
+Automorphism Group:
+G = Aut(M,R) ≅ S₃ × D₄    (|G| = 48)
+
+================================================================
+II.  A Modulus m as Deformation
+
+X(m) = X⁰ + m · δX     // intensities or edge weights deformed
+                       // while preserving role classes under G
+
+This induces a family of partitions π(m) of M (via intensity thresholding or relation clustering).
+
+================================================================
+III.  Key Definitions (Clarified)
+
+Pure Refinement (exact definition):
+A partition π' is a pure refinement of π (denoted π' ≺ π) if:
+  • every block of π' is contained in some block of π, and
+  • at least one block of π is strictly split (i.e., |π'| > |π|).
+
+σ-Reconstruction (explicit):
+σ maps an inadmissible state X(m) to the nearest admissible X(m') such that
+the induced partition π(m') satisfies A1–A4′.  
+Formally: minimize ‖X(m) − X(m')‖₂ subject to role-symmetry preservation under G.
+
+================================================================
+IV.  Structural Constraints (A1–A3)
+
+A1  Mesoscopic Nontriviality
+    1 < |π| < 7
+
+A2  Explicit Triadic Realization
+    ∃ B ∈ π with |B| = 3
+
+A3  Anti-Monolith Symmetry
+    ∀ B ∈ π, |B| ≤ 3
+
+Candidates after A1–A3: block cardinalities k ∈ {3,4,5}
+
+================================================================
+V.  Role-Symmetry Minimality (A4′) — The Deciding Filter
+
+A partition π is admissible (Q(π) = 1) only if there does **not** exist
+a pure refinement π' ≺ π such that:
+   (i)   π' satisfies A1–A3
+   (ii)  [π'] = [π]     (same G-orbit / same role-symmetry class)
+
+================================================================
+VI.  Derivation of Lawful Cardinalities K_lawful = {3,4}
+
+Apply A4′:
+
+• 5-block patterns (e.g. 3+1+1+1+1)
+  → admit pure refinements (e.g. to 3+2+1+1) in the same G-orbit
+  → eliminated by A4′
+
+• 4-block patterns (e.g. 3+2+1+1)
+  → minimal: no qualifying pure refinement in same orbit
+  → survives
+
+• 3-block patterns (3+3+1, 3+2+2)
+  → minimal in their respective role classes
+  → survive
+
+Theorem (derived from G, R, and A1–A4′):
+K_lawful = {3,4}
+
+================================================================
+VII.  Full Γ + Q Pipeline on Moduli
+
+1. Γ-accumulation
+   X_virt ← weighted neighbor average of X(m) on SID + PED topology
+
+2. Q-admissibility check
+   Compute induced π(m)
+   Q(m) = 1  iff  π(m) satisfies A1–A3 + A4′   (|blocks| ∈ {3,4})
+
+3. σ-reconstruction (if needed)
+   If Q(m) = 0, apply σ: project X(m) → nearest X(m') with Q(m')=1
+   (minimize distance under G-symmetry)
+
+4. δ ← residual mismatch (gradient signal)
+
+Closed admissible vacua:
+M_closed = { m | Q(m) = 1  ∧  Γ yields unique fixed-point role-class under G }
+
+================================================================
+VIII.  Unique Vacuum Selection
+
+Because only {3,4} survive the full filter:
+
+- |blocks| = 3  → RDG (relational geometry treatment)
+- |blocks| = 4  → MFE (momentum-flux-equilibrium treatment)
+
+All other deformations are either rejected by Q or projected by σ onto these lawful classes.
+
+Thus the “landscape” of possible treatments collapses to the discrete lawful fork {RDG, MFE} — uniquely determined by the substrate’s own symmetry and closure rules.
+
+================================================================
+Punchline (RDGMFEQ notation)
+
+G_string(m)   :  deformed 7-mode generator
+Q(m)          :  A1–A4′ filter on induced partitions (with pure refinement)
+Γ(G_string(m)):  closure + σ-projection to role-symmetric fixed class
+
+M_closed = { m | Q(m)=1 ∧ Γ(G_string(m)) exists & unique under G }
+
+→ Relational closure achieved natively.
+
+-----------
+
+import numpy as np
+
+# Simple simulation of 7-mode intensities
+modes = np.array([1,2,3,4,5,6,7])
+
+# Base intensities X0 (balanced)
+X0 = np.array([1.0, 1.0, 1.0, 0.8, 0.8, 0.8, 0.8])
+
+def induce_partition(X, threshold=0.1):
+    """Simple clustering: group modes if |Xi - Xj| < threshold"""
+    sorted_idx = np.argsort(X)
+    sorted_X = X[sorted_idx]
+    blocks = []
+    current_block = [sorted_idx[0]]
+    for i in range(1, len(X)):
+        if abs(sorted_X[i] - sorted_X[i-1]) < threshold:
+            current_block.append(sorted_idx[i])
+        else:
+            blocks.append(current_block)
+            current_block = [sorted_idx[i]]
+    blocks.append(current_block)
+    return [sorted(b) for b in blocks], len(blocks)
+
+# Function to check A1-A3
+def check_A1_A3(blocks):
+    k = len(blocks)
+    if not (1 < k < 7):
+        return False
+    sizes = [len(b) for b in blocks]
+    if 3 not in sizes:
+        return False  # A2
+    if any(s > 3 for s in sizes):
+        return False  # A3
+    return True
+
+print("Demo: Varying m")
+
+for m in np.linspace(-0.4, 0.6, 6):
+    X = X0 + m * np.array([0.5, 0.5, 0.5, -0.3, -0.3, -0.3, -0.3])
+    X = np.clip(X, 0.1, 2.0)  # prevent negatives
+    pi, k = induce_partition(X, threshold=0.15)
+    q_val = check_A1_A3(pi)
+    print(f"m = {m:.2f} | X = {np.round(X,3)} | blocks={k} | partition={pi} | Q={q_val}")
+
+-----------
+
+import numpy as np
+
+modes = list(range(1,8))
+
+def induce_partition(X, eps=0.05):
+    """More flexible clustering for demo: sort and group with dynamic gaps"""
+    idx = np.argsort(X)
+    sorted_X = X[idx]
+    blocks = []
+    current = [idx[0]]
+    for i in range(1, len(X)):
+        if abs(sorted_X[i] - sorted_X[i-1]) <= eps:
+            current.append(idx[i])
+        else:
+            blocks.append(sorted(current))
+            current = [idx[i]]
+    blocks.append(sorted(current))
+    return blocks, len(blocks)
+
+# Better deformation to hit different cardinalities
+X0 = np.array([1.0, 1.0, 1.05, 0.8, 0.85, 1.2, 0.9], dtype=float)
+
+print("Concrete Numerical Demo\n")
+print("m | X values | #blocks | partition | A1-A3 | Q | notes")
+
+for m_val in [-0.3, -0.1, 0.0, 0.2, 0.35, 0.5]:
+    delta = np.array([0.3, 0.3, 0.3, -0.4, -0.2, 0.6, -0.1])
+    X = X0 + m_val * delta
+    X = np.clip(X, 0.4, 1.6)
+    pi, k = induce_partition(X, eps=0.08)
+    sizes = [len(b) for b in pi]
+    has3 = 3 in sizes
+    max3 = all(s <= 3 for s in sizes)
+    a1a3 = (1 < k < 7) and has3 and max3
+    q = a1a3 and (k in [3,4])  # simplified Q for demo (A4' would need full G)
+    print(f"{m_val:5.2f} | {np.round(X,3)} | {k:1d} blocks | sizes={sizes} | A1-A3={a1a3} | Q={q}")
+
+-----------
+
+Moduli Stabilization: X(m) → π(m) → Q-filter + σ-snap
+
+================================================================
+CONCRETE DEMO: One modulus m deforming 7-mode intensities
+================================================================
+
+7 modes: [1,2,3,4,5,6,7]
+Base X⁰ ≈ [1.00, 1.00, 1.05, 0.80, 0.85, 1.20, 0.90]
+
+Deformation direction δ = [0.3, 0.3, 0.3, -0.4, -0.2, 0.6, -0.1]
+X(m) = clip(X⁰ + m·δ, 0.4, 1.6)
+
+Partition induction (simple clustering: group if |Xi–Xj| ≤ 0.08 after sorting)
+
+A1–A3 checked exactly as defined.
+Q = A1–A3 AND |blocks| ∈ {3,4}   (A4′ simplified for demo; full G-orbit check would be stricter)
+
+m     | X(m) rounded          | #blocks | sizes     | A1-A3 | Q   | Outcome
+------|-----------------------|---------|-----------|-------|-----|--------------------
+-0.30 | [0.91,0.91,0.96,0.92,0.91,1.02,0.93] | 1     | [7]       | False | False | Monolith → rejected
+-0.10 | [0.97,0.97,1.02,0.84,0.87,1.14,0.91] | 2     | [6,1]     | False | False | No explicit triad
+ 0.00 | [1.00,1.00,1.05,0.80,0.85,1.20,0.90] | 3     | [3,3,1]   | True  | True  | Lawful 3-block → kept
+ 0.20 | [1.06,1.06,1.11,0.72,0.81,1.32,0.88] | 4     | [1,2,3,1] | True  | True  | Lawful 4-block → kept
+ 0.35 | [1.105,1.105,1.155,0.66,0.78,1.41,0.865] | 5   | [1,1,1,3,1] | True | False | 5-block → Q kills
+ 0.50 | [1.15,1.15,1.20,0.60,0.75,1.50,0.85] | 5     | [1,1,1,3,1] | True | False | 5-block → Q kills

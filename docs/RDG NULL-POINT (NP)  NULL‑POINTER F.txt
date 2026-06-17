@@ -1,0 +1,88 @@
+RDG NULL-POINT (NP) : NULL‑POINTER FOUNDATION  
+
+1.  NULL-POINT (NP)
+    ---------------------------------------------------------------------
+    NP := the relational analogue of [nullptr](ca://s?q=Explain_null_pointer)
+          • no objects
+          • no background
+          • no coordinates
+          • no location
+          • valid generative state
+          • participates only via relations
+
+    Formal:  NP ≡ ∅_role  (role-bearing emptiness, not object-emptiness)
+
+
+2.  Γ-MIXING (Gamma-Mixing)
+    ---------------------------------------------------------------------
+    Γ : NP → R*
+        where R* is the minimal set of admissible relations.
+
+    Γ-mixing produces the first nontrivial relational spread:
+        Γ(NP) = { r_i | r_i are proto-relations with no objects attached }
+
+
+3.  Q-ADMISSIBILITY
+    ---------------------------------------------------------------------
+    Q : R* → R*_Q
+        Q enforces admissible relational transformations.
+
+    Q-admissibility is the RDG equivalent of:
+        • type safety
+        • pointer validity
+        • non-degenerate relational transitions
+
+    Structural invariant:
+        |R*_Q| ≥ 3   (dyads cannot close)
+
+
+4.  σ-ROLE SYMMETRY
+    ---------------------------------------------------------------------
+    σ : R*_Q → SID
+        SID = { Structure, Interaction, Dynamics }
+
+    σ enforces triadic role symmetry:
+        • point
+        • counterpoint
+        • relation
+
+    This is the first closure-capable relational triad.
+
+
+5.  G-CLOSURE (Closed Class C)
+    ---------------------------------------------------------------------
+    G : SID → C
+        C = minimal G-closed class of stable relational modes.
+
+    G-closure yields:
+        • emergent geometry (RDG)
+        • emergent fields (MFE)
+        • emergent amplitudes (Q-slice)
+
+    C is the substrate from which QM and GR appear as shadows.
+
+
+====================  SUMMARY FLOW  ====================================
+
+    NP (null point)
+        → Γ-mixing
+        → Q-admissibility
+        → σ-role symmetry (triad)
+        → G-closed class C (emergent physics)
+
+
+====================  NULLPTR ANALOGY  =================================
+
+    In programming:
+        nullptr → relation (pointer assignment) → object emerges
+
+    In RDG:
+        NP → Γ → Q → σ → G → universe emerges
+
+    Both are:
+        • non-entities
+        • valid states
+        • generators of structure only through relations
+
+
+

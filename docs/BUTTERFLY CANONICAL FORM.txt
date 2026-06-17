@@ -80,7 +80,10 @@ Everything is formalized as operators acting on a
    B : feathering exponent (flux density)
    c : long-period modulation
 
-This form is now fully locked, residue-free, and operator-clean. Every layer is an explicit RDG–MFE–Q triad. The butterfly emerges strictly as the fixed-point attractor of the SID→PED pipeline under Q□ admissibility.
+This form is now fully locked, residue-free, and operator-clean.
+Every layer is an explicit RDG–MFE–Q triad. The butterfly emerges
+strictly as the fixed-point attractor of the SID→PED pipeline
+under Q□ admissibility.
 
 import numpy as np
 import matplotlib.pyplot as plt

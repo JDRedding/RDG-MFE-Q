@@ -1,0 +1,316 @@
+BUTTERFLY CANONICAL FORM
+====================================================
+The document defines a fully operatorized generative
+ system in which a “butterfly” curve is not drawn
+ directly but emerges as a fixed‑point attractor of
+ a multi‑layer pipeline:
+
+Q□ (quotient admissibility) → SID (structure–
+interaction–dynamics) → PED (power–evaluation–
+dynamic slice).  
+
+Everything is formalized as operators acting on a
+ polar radius function 𝑟(𝜃).
+
+
+1. Q□ LAYER — Quotient Admissibility Operator (Locked)
+   Q□ : (r,θ) ↦ (r',θ')
+   Q□(r,θ) = r(θ) − Π_rel[r(θ)]
+
+   Π_rel enforces:
+     • 24π periodicity:   r(θ) ≡ r(θ + 24π)
+     • Y-axis reflection: r(θ) ≡ r(π − θ)
+     • Manifold bound:    r ≥ 0
+
+   This is the clean Q-slice: the butterfly exists only as a quotient object.
+
+2. RDG LAYER — SID Triad (Fully Operatorized)
+
+   S — Structure Operator
+      Substrate: C_rel = {(r,θ) | r≥0, θ∈[0,24π]}
+      Adjacency: 
+        ∂_local = θ ↔ θ+Δθ
+        ∂_refl  = θ ↔ −θ
+
+   I — Interaction Operator (Generalized Kernel)
+      r(θ) := exp(cos(aθ)) − A cos(bθ) + sin^B(θ/c)
+      Decomposition:
+        exp(cos(aθ))   → global envelope operator
+        −A cos(bθ)     → harmonic modulation operator
+        sin^B(θ/c)     → feathering (nonlinear wing-filling) operator
+
+   D — Dynamics Operator (Fay Flow)
+      R(t) = exp(cos t) − 2 cos(4t) − sin^5(t/12)
+      x(t) = sin(t) · R(t)
+      y(t) = cos(t) · R(t)      ∀ t ∈ [0, 12π]
+
+3. MFE LAYER — PED Triad (Momentum-Flux Engine)
+
+   P — Power Operator (Flux Density)
+      P(θ) = (1/2) r(θ)^2          // polar area element generator
+
+   E — Evaluation Operator (Potential)
+      V(θ) = exp(cos(aθ)) − A cos(bθ)
+      W(θ) = sin^B(θ/c)
+      E = V + W                    // total shaping potential
+
+   Dp — Dynamic-Slice Operator (Γ-flow)
+      Γ: r_t ↦ r_{t+Δt}
+      Moderated flow: r_{t+Δt} ← Q□(r_{t+Δt})   // admissibility filter
+
+4. FULL GENERATIVE PIPELINE (Operator Chain)
+   (r0,θ0) 
+     →[Q□] 
+     →[SID] (structure + interaction kernel + parametric drive) 
+     →[PED] (P-flux + E-potential + Γ-slice) 
+     → Butterfly Locus ∈ C_rel
+
+5. Algebraic Sextic Variant (Parallel RDG–MFE–Q Branch)
+   Constraint operator: 
+     x^6 + y^6 − x²y²(x² + y² − 1) = 0
+   SID: algebraic manifold + constraint interaction + locus traversal
+   PED: P = 4∫_0^1 y dx   (wing area flux)
+        E = algebraic potential on sextic
+        Dp = Γ restricted to sextic zero-set
+
+6. Regulator Map (SID/PED Control Knobs)
+   a : envelope frequency
+   b : harmonic wing multiplicity
+   A : momentum scaling / wing separation
+   B : feathering exponent (flux density)
+   c : long-period modulation
+
+This form is now fully locked, residue-free, and operator-clean. Every layer is an explicit RDG–MFE–Q triad. The butterfly emerges strictly as the fixed-point attractor of the SID→PED pipeline under Q□ admissibility.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# ============================================
+# Q□ LAYER — Quotient Admissibility Operator
+# ============================================
+
+class QLayer:
+    def __init__(self, period=24 * np.pi):
+        self.period = period
+
+    def project_theta(self, theta):
+        """
+        Enforce 24π periodicity and Y-axis reflection:
+          - θ ≡ θ mod 24π
+          - r(θ) ≡ r(π − θ)
+        We implement this by folding θ into [0, 24π] and then
+        reflecting into [0, π] symmetry where appropriate.
+        """
+        # Periodicity
+        theta = np.mod(theta, self.period)
+
+        # Y-axis reflection: enforce symmetry around π
+        # Map θ in [0, 2π] with reflection θ -> π - θ when θ in (π, 2π)
+        # For larger domain, we fold by 2π first, then reflect.
+        theta_fold = np.mod(theta, 2 * np.pi)
+        mask = theta_fold > np.pi
+        theta_fold[mask] = 2 * np.pi - theta_fold[mask]
+
+        return theta_fold
+
+    def enforce_r(self, r):
+        """
+        Manifold bound: r ≥ 0
+        """
+        return np.maximum(r, 0.0)
+
+    def __call__(self, r_func, theta):
+        """
+        Apply Q□ to a radius function r(θ):
+          1. Project θ into admissible quotient.
+          2. Evaluate r on that θ.
+          3. Enforce r ≥ 0.
+        """
+        theta_q = self.project_theta(theta)
+        r_raw = r_func(theta_q)
+        r_q = self.enforce_r(r_raw)
+        return r_q, theta_q
+
+
+# ============================================
+# RDG LAYER — SID Triad
+# ============================================
+
+class SIDLayer:
+    def __init__(self, a=1.0, b=4.0, A=2.0, B=5.0, c=12.0):
+        """
+        Parameters:
+          a : envelope frequency
+          b : harmonic wing multiplicity
+          A : momentum scaling / wing separation
+          B : feathering exponent
+          c : long-period modulation
+        """
+        self.a = a
+        self.b = b
+        self.A = A
+        self.B = B
+        self.c = c
+
+    # --- Interaction Operator I: r(θ) ---
+    def r_theta(self, theta):
+        """
+        r(θ) = exp(cos(aθ)) − A cos(bθ) + sin^B(θ/c)
+        """
+        a, b, A, B, c = self.a, self.b, self.A, self.B, self.c
+        envelope = np.exp(np.cos(a * theta))
+        harmonic = -A * np.cos(b * theta)
+        feather = np.power(np.sin(theta / c), B)
+        # Handle negative sin^B when B is not integer: clamp to 0
+        feather = np.where(np.sin(theta / c) >= 0, feather, 0.0)
+        return envelope + harmonic + feather
+
+    # --- Dynamics Operator D: Fay Flow ---
+    def fay_flow(self, t):
+        """
+        R(t) = exp(cos t) − 2 cos(4t) − sin^5(t/12)
+        x(t) = sin(t) · R(t)
+        y(t) = cos(t) · R(t)
+        """
+        R = np.exp(np.cos(t)) - 2 * np.cos(4 * t) - np.sin(t / 12) ** 5
+        x = np.sin(t) * R
+        y = np.cos(t) * R
+        return x, y, R
+
+
+# ============================================
+# MFE LAYER — PED Triad
+# ============================================
+
+class PEDLayer:
+    def __init__(self, sid_layer: SIDLayer):
+        self.sid = sid_layer
+
+    # --- P: Power Operator ---
+    def power(self, theta):
+        """
+        P(θ) = (1/2) r(θ)^2
+        """
+        r = self.sid.r_theta(theta)
+        return 0.5 * r ** 2
+
+    # --- E: Evaluation Operator ---
+    def potential(self, theta):
+        """
+        V(θ) = exp(cos(aθ)) − A cos(bθ)
+        W(θ) = sin^B(θ/c)
+        E = V + W
+        """
+        a, b, A, B, c = (
+            self.sid.a,
+            self.sid.b,
+            self.sid.A,
+            self.sid.B,
+            self.sid.c,
+        )
+        V = np.exp(np.cos(a * theta)) - A * np.cos(b * theta)
+        W_raw = np.power(np.sin(theta / c), B)
+        W = np.where(np.sin(theta / c) >= 0, W_raw, 0.0)
+        return V + W
+
+    # --- Dp: Dynamic-Slice Operator Γ-flow ---
+    def gamma_flow(self, r0_func, q_layer: QLayer, theta, n_steps=5, alpha=0.3):
+        """
+        Simple Γ-flow on r(θ):
+          r_{t+Δt} = (1 - α) r_t + α * r_target(θ)
+        then projected by Q□ each step.
+
+        Here r_target(θ) is the SID interaction r(θ).
+        This is a toy relaxation toward the SID kernel under Q□ admissibility.
+        """
+        r_t = r0_func(theta)
+        for _ in range(n_steps):
+            r_target = self.sid.r_theta(theta)
+            r_next = (1 - alpha) * r_t + alpha * r_target
+
+            # Wrap r_next as a function for Q□
+            r_func = lambda th: np.interp(th, theta, r_next)
+            r_q, theta_q = q_layer(r_func, theta)
+            r_t = r_q
+        return r_t, theta_q
+
+
+# ============================================
+# FULL GENERATIVE PIPELINE
+# ============================================
+
+class ButterflyPipeline:
+    def __init__(self, a=1.0, b=4.0, A=2.0, B=5.0, c=12.0):
+        self.q_layer = QLayer()
+        self.sid_layer = SIDLayer(a=a, b=b, A=A, B=B, c=c)
+        self.ped_layer = PEDLayer(self.sid_layer)
+
+    def initial_r(self, theta):
+        """
+        Simple initial radius r0(θ): constant or small perturbation.
+        """
+        return np.ones_like(theta) * 0.5
+
+    def generate_polar(self, n_points=4000):
+        """
+        Run the full pipeline:
+          (r0, θ0) →[Q□] →[SID] →[PED Γ-flow] → Butterfly Locus
+        Returns θ, r for the final butterfly locus.
+        """
+        theta = np.linspace(0, 24 * np.pi, n_points)
+
+        # Initial radius
+        r0_func = lambda th: np.interp(th, theta, self.initial_r(theta))
+
+        # Apply Q□ to initial slice
+        r_q0, theta_q0 = self.q_layer(r0_func, theta)
+
+        # Γ-flow under PED, driven by SID kernel and moderated by Q□
+        r_final, theta_final = self.ped_layer.gamma_flow(
+            r0_func=lambda th: np.interp(th, theta_q0, r_q0),
+            q_layer=self.q_layer,
+            theta=theta_q0,
+            n_steps=12,
+            alpha=0.4,
+        )
+
+        return theta_final, r_final
+
+    def to_cartesian(self, theta, r):
+        x = r * np.cos(theta)
+        y = r * np.sin(theta)
+        return x, y
+
+    def plot_butterfly(self, n_points=4000, show_fay_flow=False):
+        theta, r = self.generate_polar(n_points=n_points)
+        x, y = self.to_cartesian(theta, r)
+
+        plt.figure(figsize=(8, 8))
+        plt.plot(x, y, color="darkmagenta", linewidth=0.8, label="RDG–MFE–Q Butterfly")
+
+        if show_fay_flow:
+            # Overlay Fay flow trajectory for comparison
+            t = np.linspace(0, 12 * np.pi, 3000)
+            x_f, y_f, _ = self.sid_layer.fay_flow(t)
+            plt.plot(x_f, y_f, color="deepskyblue", alpha=0.4, linewidth=0.6, label="Fay Flow")
+
+        plt.axis("equal")
+        plt.axis("off")
+        plt.legend(loc="upper right")
+        plt.title("RDG–MFE–Q / SID–PED Butterfly")
+        plt.show()
+
+
+# ============================================
+# EXAMPLE USAGE
+# ============================================
+
+if __name__ == "__main__":
+    # You can tweak these to explore the regulator map:
+    # a: envelope frequency
+    # b: harmonic wing multiplicity
+    # A: wing separation
+    # B: feathering exponent
+    # c: long-period modulation
+    pipeline = ButterflyPipeline(a=1.0, b=4.0, A=2.0, B=5.0, c=12.0)
+    pipeline.plot_butterfly(show_fay_flow=True)

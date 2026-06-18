@@ -1,4 +1,7 @@
-UNIVERSAL COMPLEX DECOMPOSITION
+============================================================
+                 UNIVERSAL COMPLEX DECOMPOSITION
+============================================================
+
 Ψ = A + i B
 
 A = real component
@@ -9,7 +12,10 @@ This yields the unit circle:
 Ψ(t) = e^(iθ) = cos(θ) + i sin(θ)
 
 
-RDGMFEQ GENERALIZED FORM
+============================================================
+                 RDGMFEQ GENERALIZED FORM
+============================================================
+
 Ψ_Q = SID + Q·PED
 
 SID = structural component
@@ -20,8 +26,11 @@ i is the special case:
 Q = i  → pure rotation (unit circle)
 
 
-INTERPRETATION OF Q
-i : constant, fixed orthogonality
+============================================================
+                 INTERPRETATION OF Q
+============================================================
+
+i : constant, fixed orthogonality  
 Q : adaptive, moderated orthogonality
 
 Q = i      
@@ -31,10 +40,13 @@ Q = i + δ
 → moderated rotation (SID integral curve)
 
 
-SUMMARY
+============================================================
+                 SUMMARY
+============================================================
+
 Q‑mod is the generalized i.
 
-i gives perfect orthogonality.
+i gives perfect orthogonality.  
 Q introduces modulation, drift, stretch, damping, bias.
 
 Ψ = A + i B        
@@ -42,3 +54,4 @@ Q introduces modulation, drift, stretch, damping, bias.
 
 Ψ_Q = SID + Q·PED  
 → RDGMFEQ moderated dynamics
+============================================================

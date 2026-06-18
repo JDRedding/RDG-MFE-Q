@@ -1,0 +1,44 @@
+UNIVERSAL COMPLEX DECOMPOSITION
+Ψ = A + i B
+
+A = real component
+B = orthogonal component
+i = fixed 90° rotation operator (pure orthogonality)
+
+This yields the unit circle:
+Ψ(t) = e^(iθ) = cos(θ) + i sin(θ)
+
+
+RDGMFEQ GENERALIZED FORM
+Ψ_Q = SID + Q·PED
+
+SID = structural component
+PED = field/dynamic component
+Q   = generalized rotation/moderation operator
+
+i is the special case:
+Q = i  → pure rotation (unit circle)
+
+
+INTERPRETATION OF Q
+i : constant, fixed orthogonality
+Q : adaptive, moderated orthogonality
+
+Q = i      
+→ Euler rotation (Lockwood’s left diagram)
+
+Q = i + δ  
+→ moderated rotation (SID integral curve)
+
+
+SUMMARY
+Q‑mod is the generalized i.
+
+i gives perfect orthogonality.
+Q introduces modulation, drift, stretch, damping, bias.
+
+Ψ = A + i B        
+→ static complex plane
+
+Ψ_Q = SID + Q·PED  
+→ RDGMFEQ moderated dynamics

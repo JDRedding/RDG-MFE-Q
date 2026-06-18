@@ -16,41 +16,41 @@ This yields the unit circle:
                  RDGMFEQ GENERALIZED FORM
 ============================================================
 
-Ψ_Q = SID + Q·PED
+Ψ_QA = SID + Q_A(PED)
 
 SID = structural component
 PED = field/dynamic component
-Q   = generalized rotation/moderation operator
+Q_A = admissibility generator (rule A)
 
 i is the special case:
-Q = i  → pure rotation (unit circle)
+Q_A = i  → pure rotation (unit circle)
 
 
 +-----------------------------------------------------------------------+
 |                    RDGMFEQ COMPLEX FIELD INVERSION                    |
 +-----------------------------------------------------------------------+
 |                                                                       |
-|   [SID: Real Axis]  <---------- Q ---------->  [PED: Orthogonal]      |
+|   [SID: Real Axis]  <-------- Q_A -------->  [PED: Orthogonal]        |
 |    (Structural/RDG)     (Adaptive Operator)     (Field-Flux/MFE)      |
 |                                                                       |
 |               i-state: Fixed 90°  --->  Rigid Dyad (Euler)            |
-|               Q-state: i + δ      --->  Triadic Admissibility         |
+|               Q_A-state: i + δ_A --->  Triadic Admissibility          |
 |                                                                       |
 +-----------------------------------------------------------------------+
 
 
 ============================================================
-     GEOMETRIC DEFORMATION: DYAD → TRIAD (Q = i → i + δ)
+     GEOMETRIC DEFORMATION: DYAD → TRIAD (Q_A = i → i + δ_A)
 ============================================================
 
-DYADIC RIGIDNESS (Q = i)              TRIADIC ADMISSIBILITY (Q = i + δ)
-────────────────────────────────      ────────────────────────────────
+DYADIC RIGIDNESS (Q_A = i)           TRIADIC ADMISSIBILITY (Q_A = i + δ_A)
+────────────────────────────────      ─────────────────────────────────────
 
             ▲ PED (Field)                         ▲ PED (Field)
             │                                      │
         .---+---.                                  │      .---.
        /    │    \                                 │     /     \
-      |     │     |                                │    |   o---->  δ (Drift Vector)
+      |     │     |                                │    |   o---->  δ_A (Drift Vector)
        \    │    /                                 │     \     /
         '---+---'                                  │      '---' \
             │                                      │             `----.
@@ -64,21 +64,21 @@ DYADIC RIGIDNESS (Q = i)              TRIADIC ADMISSIBILITY (Q = i + δ)
 
 
 ============================================================
-                 INTERPRETATION OF Q
+                 INTERPRETATION OF Q_A
 ============================================================
 
 i : constant, fixed orthogonality  
-Q : adaptive, moderated orthogonality
+Q_A : adaptive, admissibility-based orthogonality
 
-Q = i      
+Q_A = i      
 → Euler rotation (pure dyad)
 
-Q = i + δ  
+Q_A = i + δ_A  
 → moderated rotation (SID integral curve)
 
 
 ============================================================
-                 COMPLEX vs Q-MOD SUMMARY
+                 COMPLEX vs Q_A-MOD SUMMARY
 ============================================================
 
 Attribute        Classical Complex Plane (Ψ=A+iB)       
@@ -88,36 +88,36 @@ Trajectory Type  Perfect Circles / Flat Planes
 System Phase     Static / Conservatively Cyclic          
 Core Engine      Closed Analytical Function              
 
-                          ┌─── Ψ_Q MASTER COMPLEX STATE ───┐
-                          │                                │
-                 ┌────────┴────────┐              ┌────────┴────────┐
-                 │    REAL AXIS    │              │ ORTHOGONAL AXIS │
-                 │  Structural Mode│              │ Evaluative Mode │
-                 └────────┬────────┘              └────────┬────────┘
-                          │                                │
-                       [ SID ]                          [ PED ]
-                     (RDG Engine)                     (MFE Engine)
-                          │                                │
-                          └───────────────┬────────────────┘
+                          ┌─── Ψ_QA MASTER COMPLEX STATE ───┐
+                          │                                 │
+                 ┌────────┴────────┐               ┌────────┴────────┐
+                 │    REAL AXIS    │               │ ORTHOGONAL AXIS │
+                 │  Structural Mode│               │ Evaluative Mode │
+                 └────────┬────────┘               └────────┬────────┘
+                          │                                 │
+                       [ SID ]                           [ PED ]
+                     (RDG Engine)                      (MFE Engine)
+                          │                                 │
+                          └───────────────┬─────────────────┘
                                           │
-                                   [ Q = i + δ ]
-                              Adaptive Rotation Hinge
+                                   [ Q_A = i + δ_A ]
+                              Admissibility Rotation Hinge
                                (Moderation Layer)
 
-Q‑mod is the generalized i.
+Q_A‑mod is the generalized i.
 
 i gives perfect orthogonality.  
-Q introduces modulation, drift, stretch, damping, bias.
+Q_A introduces modulation, drift, stretch, damping, bias.
 
 Ψ = A + i B        
 → static complex plane
 
-Ψ_Q = SID + Q·PED  
+Ψ_QA = SID + Q_A(PED)  
 → RDGMFEQ moderated dynamics
 
 
 ============================================================
-                 RDG / MFE / Q  —  TRIAD-ALIGNED FORM
+                 RDG / MFE / Q_A  —  TRIAD-ALIGNED FORM
 ============================================================
 
 Ψ = A + i B
@@ -137,43 +137,43 @@ This is the LM Euler case:
                  RDGMFEQ GENERALIZED TRIAD FORM
 ============================================================
 
-Ψ_Q = SID + Q·PED
+Ψ_QA = SID + Q_A(PED)
 
 SID = structural mode (RDG)
 PED = field/evaluative mode (MFE)
-Q   = admissibility / moderation mode (Q-layer)
+Q_A = admissibility generator (Q-layer)
 
 i is the special case:
-Q = i  → pure SID–PED orthogonality
-        → unit circle 
+Q_A = i  → pure SID–PED orthogonality
+          → unit circle 
 
 
 ============================================================
-                 ROLE OF Q IN THE TRIAD
+                 ROLE OF Q_A IN THE TRIAD
 ============================================================
 
 i : constant rotation
     → fixed orthogonality
     → dyadic system (RDG–MFE only)
 
-Q : moderated rotation
+Q_A : admissibility rotation
     → adaptive orthogonality
-    → triadic system (RDG–MFE–Q)
+    → triadic system (RDG–MFE–Q_A)
 
-Q = i      
+Q_A = i      
 → Euler rotation (pure dyad)
 
-Q = i + δ  
+Q_A = i + δ_A  
 → moderated SID trajectory
-→ admissible curve (Q-layer active)
+→ admissible curve (Q_A-layer active)
 
 
 ============================================================
                  TRIAD SUMMARY
 ============================================================
 
-Attribute           Triad-Aligned Form (Ψ_Q = SID + Q·PED)
-Operator Nature     Dynamic Variable / Operator Layer (Q = i + δ)
+Attribute           Triad-Aligned Form (Ψ_QA = SID + Q_A(PED))
+Operator Nature     Dynamic Variable / Operator Layer (Q_A = i + δ_A)
 Orthogonality       Adaptive / Moderated Coupling
 Trajectory Type     Bounded State Rotations / Non-Linear Admissible Curves
 System Phase        Self-Sustaining, Self-Correcting Flow
@@ -181,16 +181,16 @@ Core Engine         Interlocking Triadic Field Dynamics
 
 RDG  = SID axis (real / structural)
 MFE  = PED axis (orthogonal / field)
-Q    = moderation axis (admissibility / drift)
+Q_A  = admissibility axis (drift / moderation)
 
 i is the LM rotation.
-Q is the generalized rotation.
+Q_A is the admissibility rotation.
 
-Q‑mod is the generalized i.
+Q_A‑mod is the generalized i.
 
 Ψ = SID + i·PED        
 → pure RDG–MFE dyad
 
-Ψ_Q = SID + Q·PED      
-→ full RDG–MFE–Q triad
+Ψ_QA = SID + Q_A(PED)      
+→ full RDG–MFE–Q_A triad
 ============================================================

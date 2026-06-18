@@ -55,3 +55,75 @@ Q introduces modulation, drift, stretch, damping, bias.
 Ψ_Q = SID + Q·PED  
 → RDGMFEQ moderated dynamics
 ============================================================
+============================================================
+                 RDG / MFE / Q  —  TRIAD-ALIGNED FORM
+============================================================
+
+Ψ = A + i B
+↓       ↓
+SID     PED
+(RDG)   (MFE)
+
+i = fixed 90° rotation operator
+    → pure orthogonality
+    → pure dyad (SID ⟂ PED)
+
+This is the LM Euler case:
+Ψ(t) = e^(iθ) = cos(θ) + i sin(θ)
+
+
+============================================================
+                 RDGMFEQ GENERALIZED TRIAD FORM
+============================================================
+
+Ψ_Q = SID + Q·PED
+
+SID = structural mode (RDG)
+PED = field/evaluative mode (MFE)
+Q   = admissibility / moderation mode (Q-layer)
+
+i is the special case:
+Q = i  → pure SID–PED orthogonality
+        → unit circle (Lockwood’s header)
+
+
+============================================================
+                 ROLE OF Q IN THE TRIAD
+============================================================
+
+i : constant rotation
+    → fixed orthogonality
+    → dyadic system (RDG–MFE only)
+
+Q : moderated rotation
+    → adaptive orthogonality
+    → triadic system (RDG–MFE–Q)
+
+Q = i      
+→ Euler rotation (pure dyad)
+
+Q = i + δ  
+→ moderated SID trajectory
+→ admissible curve (Q-layer active)
+
+
+============================================================
+                 TRIAD SUMMARY
+============================================================
+
+RDG  = SID axis (real / structural)
+MFE  = PED axis (orthogonal / field)
+Q    = moderation axis (admissibility / drift)
+
+i is the LM rotation.
+Q is the generalized rotation.
+
+Q‑mod is the generalized i.
+
+Ψ = SID + i·PED        
+→ pure RDG–MFE dyad
+
+Ψ_Q = SID + Q·PED      
+→ full RDG–MFE–Q triad
+============================================================
+

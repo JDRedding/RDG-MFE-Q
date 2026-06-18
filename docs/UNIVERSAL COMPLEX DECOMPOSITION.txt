@@ -50,6 +50,17 @@ Q = i
 Q = i + δ  
 → moderated rotation (SID integral curve)
 
+▲ Orthogonal Axis (PED / Field-Flux Engine)
+          │
+          │         .---.  <- Pure Euler Unit Circle (Q = i, δ = 0)
+          │       /       \
+          │      |    o----> [Adaptive Drift Vector δ]
+          │       \       /
+          │         `---' \
+          │                `---> Admissible Trajectory (Q = i + δ)
+──────────┼────────────────────────────────────────► Real Axis
+          │                                 (SID / Structural Geometry)
+          │
 
 ============================================================
                  SUMMARY
@@ -61,6 +72,22 @@ Orthogonality    Rigid 90° Separation
 Trajectory Type  Flat Geometric Planes / Perfect Circles 
 System Phase     Static / Conservatively Cyclic          
 Core Engine      Closed Analytical Function              
+
+                          ┌─── Ψ_Q MASTER COMPLEX STATE ───┐
+                          │                                │
+                 ┌────────┴────────┐              ┌────────┴────────┐
+                 │    REAL AXIS    │              │ ORTHOGONAL AXIS │
+                 │  Structural Mode│              │ Evaluative Mode │
+                 └────────┬────────┘              └────────┬────────┘
+                          │                                │
+                       [ SID ]                          [ PED ]
+                     (RDG Engine)                     (MFE Engine)
+                          │                                │
+                          └───────────────┬────────────────┘
+                                          │
+                                   [ Q = i + δ ]
+                              Adaptive Rotation Hinge
+                               (Moderation Layer)
 
 Q‑mod is the generalized i.
 

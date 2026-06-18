@@ -88,6 +88,21 @@ Q introduces modulation, drift, stretch, damping, bias.
 Ψ_Q = SID + Q·PED  
 → RDGMFEQ moderated dynamics
 
+                          ┌─── Ψ_Q MASTER COMPLEX STATE ───┐
+                          │                                │
+                 ┌────────┴────────┐              ┌────────┴────────┐
+                 │    REAL AXIS    │              │ ORTHOGONAL AXIS │
+                 │  Structural Mode│              │ Evaluative Mode │
+                 └────────┬────────┘              └────────┬────────┘
+                          │                                │
+                       [ SID ]                          [ PED ]
+                     (RDG Engine)                     (MFE Engine)
+                          │                                │
+                          └───────────────┬────────────────┘
+                                          │
+                                   [ Q = i + δ ]
+                             Adaptive Rotation Hinge
+                               (Moderation Layer)
 
 ============================================================
                  RDG / MFE / Q  —  TRIAD-ALIGNED FORM

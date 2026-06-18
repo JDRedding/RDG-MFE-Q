@@ -25,6 +25,17 @@ Q   = generalized rotation/moderation operator
 i is the special case:
 Q = i  → pure rotation (unit circle)
 
++-----------------------------------------------------------------------+
+|                    RDGMFEQ COMPLEX FIELD INVERSION                    |
++-----------------------------------------------------------------------+
+|                                                                       |
+|   [SID: Real Axis]  <---------- Q ---------->  [PED: Orthogonal]      |
+|    (Structural/RDG)     (Adaptive Operator)     (Field-Flux/MFE)      |
+|                                                                       |
+|               i-state: Fixed 90°  --->  Rigid Dyad (Euler)            |
+|               Q-state: i + delta  --->  Triadic Admissibility         |
+|                                                                       |
++-----------------------------------------------------------------------+
 
 ============================================================
                  INTERPRETATION OF Q
@@ -34,7 +45,7 @@ i : constant, fixed orthogonality
 Q : adaptive, moderated orthogonality
 
 Q = i      
-→ Euler rotation (Lockwood’s left diagram)
+→ Euler rotation 
 
 Q = i + δ  
 → moderated rotation (SID integral curve)
@@ -43,6 +54,13 @@ Q = i + δ
 ============================================================
                  SUMMARY
 ============================================================
+
+Attribute        Classical Complex Plane (Ψ=A+iB)       
+Operator Nature  Invariant Constant (i=−1​)               
+Orthogonality    Rigid 90° Separation                    
+Trajectory Type  Flat Geometric Planes / Perfect Circles 
+System Phase     Static / Conservatively Cyclic          
+Core Engine      Closed Analytical Function              
 
 Q‑mod is the generalized i.
 
@@ -84,8 +102,7 @@ Q   = admissibility / moderation mode (Q-layer)
 
 i is the special case:
 Q = i  → pure SID–PED orthogonality
-        → unit circle (Lockwood’s header)
-
+        → unit circle 
 
 ============================================================
                  ROLE OF Q IN THE TRIAD
@@ -110,6 +127,13 @@ Q = i + δ
 ============================================================
                  TRIAD SUMMARY
 ============================================================
+
+Attribute           Triad-Aligned Form (ΨQ​=SID+Q⋅PED)
+Operator Nature     Dynamic Variable / Operator Layer (Q=i+δ)
+Orthogonality       Adaptive / Moderated Coupling
+Trajectory Type     Bounded State Rotations / Non-Linear Admissible Curves
+System Phase        Self-Sustaining, Self-Correcting Flow
+Core Engine         Interlocking Triadic Field Dynamics
 
 RDG  = SID axis (real / structural)
 MFE  = PED axis (orthogonal / field)

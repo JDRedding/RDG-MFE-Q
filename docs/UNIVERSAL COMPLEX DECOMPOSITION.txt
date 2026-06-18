@@ -18,8 +18,8 @@ This yields the unit circle:
 
 Ψ_Q = SID + Q·PED
 
-SID = structural component (RDG)
-PED = field/dynamic component (MFE)
+SID = structural component
+PED = field/dynamic component
 Q   = generalized rotation/moderation operator
 
 i is the special case:
@@ -40,6 +40,30 @@ Q = i  → pure rotation (unit circle)
 
 
 ============================================================
+     GEOMETRIC DEFORMATION: DYAD → TRIAD (Q = i → i + δ)
+============================================================
+
+DYADIC RIGIDNESS (Q = i)              TRIADIC ADMISSIBILITY (Q = i + δ)
+────────────────────────────────      ────────────────────────────────
+
+            ▲ PED (Field)                         ▲ PED (Field)
+            │                                      │
+        .---+---.                                  │      .---.
+       /    │    \                                 │     /     \
+      |     │     |                                │    |   o---->  δ (Drift Vector)
+       \    │    /                                 │     \     /
+        '---+---'                                  │      '---' \
+            │                                      │             `----.
+            │                                      │                   \
+────────────┼──────────────► SID                   ┼────────────────────► SID
+ (Structural / Real Axis)                           (Structural / Real Axis)
+            │                                      │
+            │                                      │
+   [Unit Circle Orbit]                     [Non-Linear Admissible Curve]
+   (Rigid Orthogonality)                   (Moderated Rotation / Hysteresis)
+
+
+============================================================
                  INTERPRETATION OF Q
 ============================================================
 
@@ -53,19 +77,6 @@ Q = i + δ
 → moderated rotation (SID integral curve)
 
 
-▲ Orthogonal Axis (PED / Field-Flux Engine)
-          │
-          │         .---.   <- Pure Euler Unit Circle (Q = i)
-          │       /       \
-          │      |    o----> [Adaptive Drift Vector δ]
-          │       \       /
-          │         `---' \
-          │                `---> Admissible Trajectory (Q = i + δ)
-──────────┼────────────────────────────────────────► Real Axis
-          │                                 (SID / Structural Geometry)
-          │
-
-
 ============================================================
                  COMPLEX vs Q-MOD SUMMARY
 ============================================================
@@ -76,17 +87,6 @@ Orthogonality    Rigid 90° Separation
 Trajectory Type  Perfect Circles / Flat Planes 
 System Phase     Static / Conservatively Cyclic          
 Core Engine      Closed Analytical Function              
-
-Q‑mod is the generalized i.
-
-i gives perfect orthogonality.  
-Q introduces modulation, drift, stretch, damping, bias.
-
-Ψ = A + i B        
-→ static complex plane
-
-Ψ_Q = SID + Q·PED  
-→ RDGMFEQ moderated dynamics
 
                           ┌─── Ψ_Q MASTER COMPLEX STATE ───┐
                           │                                │
@@ -101,8 +101,20 @@ Q introduces modulation, drift, stretch, damping, bias.
                           └───────────────┬────────────────┘
                                           │
                                    [ Q = i + δ ]
-                             Adaptive Rotation Hinge
+                              Adaptive Rotation Hinge
                                (Moderation Layer)
+
+Q‑mod is the generalized i.
+
+i gives perfect orthogonality.  
+Q introduces modulation, drift, stretch, damping, bias.
+
+Ψ = A + i B        
+→ static complex plane
+
+Ψ_Q = SID + Q·PED  
+→ RDGMFEQ moderated dynamics
+
 
 ============================================================
                  RDG / MFE / Q  —  TRIAD-ALIGNED FORM

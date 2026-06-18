@@ -18,12 +18,13 @@ This yields the unit circle:
 
 Ψ_Q = SID + Q·PED
 
-SID = structural component
-PED = field/dynamic component
+SID = structural component (RDG)
+PED = field/dynamic component (MFE)
 Q   = generalized rotation/moderation operator
 
 i is the special case:
 Q = i  → pure rotation (unit circle)
+
 
 +-----------------------------------------------------------------------+
 |                    RDGMFEQ COMPLEX FIELD INVERSION                    |
@@ -33,9 +34,10 @@ Q = i  → pure rotation (unit circle)
 |    (Structural/RDG)     (Adaptive Operator)     (Field-Flux/MFE)      |
 |                                                                       |
 |               i-state: Fixed 90°  --->  Rigid Dyad (Euler)            |
-|               Q-state: i + delta  --->  Triadic Admissibility         |
+|               Q-state: i + δ      --->  Triadic Admissibility         |
 |                                                                       |
 +-----------------------------------------------------------------------+
+
 
 ============================================================
                  INTERPRETATION OF Q
@@ -45,14 +47,15 @@ i : constant, fixed orthogonality
 Q : adaptive, moderated orthogonality
 
 Q = i      
-→ Euler rotation 
+→ Euler rotation (pure dyad)
 
 Q = i + δ  
 → moderated rotation (SID integral curve)
 
+
 ▲ Orthogonal Axis (PED / Field-Flux Engine)
           │
-          │         .---.  <- Pure Euler Unit Circle (Q = i, δ = 0)
+          │         .---.   <- Pure Euler Unit Circle (Q = i)
           │       /       \
           │      |    o----> [Adaptive Drift Vector δ]
           │       \       /
@@ -62,32 +65,17 @@ Q = i + δ
           │                                 (SID / Structural Geometry)
           │
 
+
 ============================================================
-                 SUMMARY
+                 COMPLEX vs Q-MOD SUMMARY
 ============================================================
 
 Attribute        Classical Complex Plane (Ψ=A+iB)       
-Operator Nature  Invariant Constant (i=−1​)               
+Operator Nature  Invariant Constant (i)                
 Orthogonality    Rigid 90° Separation                    
-Trajectory Type  Flat Geometric Planes / Perfect Circles 
+Trajectory Type  Perfect Circles / Flat Planes 
 System Phase     Static / Conservatively Cyclic          
 Core Engine      Closed Analytical Function              
-
-                          ┌─── Ψ_Q MASTER COMPLEX STATE ───┐
-                          │                                │
-                 ┌────────┴────────┐              ┌────────┴────────┐
-                 │    REAL AXIS    │              │ ORTHOGONAL AXIS │
-                 │  Structural Mode│              │ Evaluative Mode │
-                 └────────┬────────┘              └────────┬────────┘
-                          │                                │
-                       [ SID ]                          [ PED ]
-                     (RDG Engine)                     (MFE Engine)
-                          │                                │
-                          └───────────────┬────────────────┘
-                                          │
-                                   [ Q = i + δ ]
-                              Adaptive Rotation Hinge
-                               (Moderation Layer)
 
 Q‑mod is the generalized i.
 
@@ -99,7 +87,8 @@ Q introduces modulation, drift, stretch, damping, bias.
 
 Ψ_Q = SID + Q·PED  
 → RDGMFEQ moderated dynamics
-============================================================
+
+
 ============================================================
                  RDG / MFE / Q  —  TRIAD-ALIGNED FORM
 ============================================================
@@ -131,6 +120,7 @@ i is the special case:
 Q = i  → pure SID–PED orthogonality
         → unit circle 
 
+
 ============================================================
                  ROLE OF Q IN THE TRIAD
 ============================================================
@@ -155,8 +145,8 @@ Q = i + δ
                  TRIAD SUMMARY
 ============================================================
 
-Attribute           Triad-Aligned Form (ΨQ​=SID+Q⋅PED)
-Operator Nature     Dynamic Variable / Operator Layer (Q=i+δ)
+Attribute           Triad-Aligned Form (Ψ_Q = SID + Q·PED)
+Operator Nature     Dynamic Variable / Operator Layer (Q = i + δ)
 Orthogonality       Adaptive / Moderated Coupling
 Trajectory Type     Bounded State Rotations / Non-Linear Admissible Curves
 System Phase        Self-Sustaining, Self-Correcting Flow
@@ -177,4 +167,3 @@ Q‑mod is the generalized i.
 Ψ_Q = SID + Q·PED      
 → full RDG–MFE–Q triad
 ============================================================
-

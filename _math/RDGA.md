@@ -256,6 +256,28 @@ Implementation detail (symbolic): Gröbner bases or other elimination methods.
 
 ---
 
+### Closure Under Operator Lifting
+
+RDGA requires that the carrier mapping \( \Phi \) is closed under all relational operators:
+
+
+
+\[
+\Phi(R \ \text{op} \ S) = \Phi(R) \ \widehat{\text{op}} \ \Phi(S)
+\]
+
+
+
+where \( \widehat{\text{op}} \) is the corresponding algebraic operator:
+
+- intersection → ideal sum  
+- union → ideal intersection  
+- composition → elimination  
+- projection → elimination  
+
+This closure property is what makes RDGA an operator algebra rather than a symbolic geometry layer.
+
+
 ## 6. Dynamic update (Γ‑mode)
 
 RDGA becomes dynamic when tied to an update operator:

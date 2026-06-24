@@ -11,6 +11,24 @@ R_discard.
    Localized          Flattened
    Probability        Distribution
 
+Entropy is not a thing but a constraint on allowable flows in the
+PED lane. Entropy is not disorder. Entropy is degeneracy of
+relational support.
+
+Entropy is the projection of a single operator:
+
+    𝓔  =  R_discard
+
+Entropy measures how much distinguishability is lost when a system is
+coarse‑grained, compressed, mixed, or evolved irreversibly.
+
+    E(X) = deficit( X , Γ(X) )
+
+Γ = coarse‑graining map
+deficit = loss of relational support
+
+Entropy is degeneracy of relational support, not disorder.
+
 -----------------------  CORE MAPPING  ---------------------------
 
 A process f : X → Y discards some microstate detail.
@@ -19,6 +37,44 @@ The amount discarded = entropy increase.
     R_discard(f) = S(X) − S(Y)
 
 This is the invariant behind all classical entropy formulas.
+
+This is the invariant behind:
+    • Boltzmann entropy
+    • Shannon entropy
+    • Thermodynamic entropy
+    • All RDG‑lane entropies
+
+---------------------  FUNCTORIAL DEFECT  ------------------------
+
+R_discard is a functorial defect:
+
+    R_discard(f ∘ g) ≥ R_discard(f) + R_discard(g)
+
+Irreversibility compounds.
+Coarse‑grainings cannot cancel each other.
+
+--------------------  MINIMALITY PROPERTY  -----------------------
+
+R_discard is the unique minimal invariant that is:
+
+    • monotone under coarse maps
+    • additive on product systems
+    • invariant under isomorphism
+
+All classical entropy formulas are projections of this minimal
+operator.
+
+--------------------  Γ‑CLOSURE HIERARCHY  -----------------------
+
+Coarse‑graining is iterative:
+
+    X → Γ(X) → Γ²(X) → Γ³(X) → …
+
+Entropy is the fixed‑point defect:
+
+    E(X) = inf_n deficit( X , Γⁿ(X) )
+
+Irreversibility = failure to reach a Γ‑fixed point in one step.
 
 -----------------------  SID GEOMETRY  --------------------------
 
@@ -79,6 +135,22 @@ All three are projections of the same operator:
 One operator.
 Three coordinate systems.
 Same invariant everywhere.
+
+
+             ┌──────────────────────────────┐
+             │        ENTROPY OPERATOR      │
+             │          𝓔 = R_discard       │
+             └──────────────────────────────┘
+                     /     |      \
+                    /      |       \
+                   /       |        \
+        ┌────────────┐ ┌──────────────┐ ┌────────────────┐
+        │ SID-proj   │ │ PED-proj     │ │ Q-proj         │
+        │ geometry   │ │ uncertainty  │ │ admissibility  │
+        └────────────┘ └──────────────┘ └────────────────┘
+              |               |                 |
+        ln|support|     -Σ p log p       Γ-closure deficit
+
 
 ===================================================================
 
@@ -154,6 +226,7 @@ Q interprets entropy as:
 -------------------------------------------------------------------
 UNIFICATION (RDG)
 -------------------------------------------------------------------
+
 Entropy = R projected into three coordinate systems:
 
     S_SID  =  R ∘ π_SID
@@ -293,7 +366,6 @@ R_discard(f)
 depending on which projection (pi_SID, pi_PED, pi_Q) choosen.
 
 Equivalently, as a single invariant with projections:
-
 
 S_SID = pi_SID circ R_discard, quad
 S_PED = pi_PED circ R_discard, quad

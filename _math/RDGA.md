@@ -595,33 +595,48 @@ These flags feed back into higher‑level logic (e.g., simulation, search, or op
 
 ---
 
+
 ## 11. Implementation Notes
 
-RDGA is symbolic‑friendly but does not mandate a specific CAS.  
-Gröbner bases, resultants, or numeric solvers with symbolic wrappers are all acceptable.
+RDGA is **symbolic-friendly** but does not mandate a specific CAS.  
+Gröbner bases, resultants, triangular sets, or numeric solvers with symbolic wrappers are all acceptable.
 
 The key contract between layers:
 
-- RDG provides relational structure and dependency graphs.
-- RDGA provides algebraic carriers and operator lifting.
-- MFE attaches and evolves fields on solution sets.
-- Q evaluates admissibility and flags configurations.
+- **RDG** provides relational structure and dependency graphs.  
+- **RDGA** provides algebraic carriers and operator lifting.  
+- **MFE** attaches and evolves fields on solution sets.  
+- **Q** evaluates admissibility and flags configurations.
 
-Below is a minimal SymPy demonstration of RDGA carriers and operator lifting.
+### Representation Note
+
+In the code examples below, carriers are represented as Python **lists of polynomials**:
+
+```python
+I_Inc = [poly1]
+I_On  = [poly2]
+```
+
+**Conceptually**, RDGA treats these lists as **generators of ideals** in  
+$\mathbb{R}[x_1,\dots,x_n]$.  
+The list representation is simply a convenient CAS-friendly encoding. All operator liftings (sum, intersection, elimination) are performed at the ideal level.
+
+---
+
+### Minimal SymPy Demonstration
 
 ```python
 import sympy as sp
-from sympy import groebner, resultant, symbols, Eq
+from sympy import groebner, resultant, symbols
+import networkx as nx
 from itertools import chain
-import networkx as nx   # for dependency graph
 
 # ===================================================================
 # 1. Variables & Object Representations
 # ===================================================================
-# Primitives
-xA, yA, xB, yB = symbols('xA yA xB yB', real=True)   # Line defined by A,B
-xP, yP = symbols('xP yP', real=True)                 # Point P
-xO, yO, r = symbols('xO yO r', real=True)            # Circle
+xA, yA, xB, yB = symbols('xA yA xB yB', real=True)   # Line AB
+xP, yP         = symbols('xP yP', real=True)          # Point P
+xO, yO, r      = symbols('xO yO r', real=True)        # Circle
 
 # ===================================================================
 # 2. Relational Carriers (D-mode)
@@ -641,21 +656,20 @@ def carrier_On_P_Circle(P_vars, O_vars, r):
     return [(xP - xO)**2 + (yP - yO)**2 - r**2]
 
 def carrier_Collinear(A_vars, B_vars, P_vars):
-    """Collinear(A, B, P) — three points"""
+    """Collinear(A, B, P)"""
     xA, yA = A_vars
     xB, yB = B_vars
     xP, yP = P_vars
-    # Area of triangle = 0
-    return [(xA*(yB - yP) + xB*(yP - yA) + xP*(yA - yB))]
+    return [xA*(yB - yP) + xB*(yP - yA) + xP*(yA - yB)]
 
 # Instantiate
-I_Inc   = carrier_Inc_P_Line((xP,yP), (xA,yA), (xB,yB))
-I_On    = carrier_On_P_Circle((xP,yP), (xO,yO), r)
-I_Col   = carrier_Collinear((xA,yA), (xB,yB), (xP,yP))
+I_Inc = carrier_Inc_P_Line((xP, yP), (xA, yA), (xB, yB))
+I_On  = carrier_On_P_Circle((xP, yP), (xO, yO), r)
+I_Col = carrier_Collinear((xA, yA), (xB, yB), (xP, yP))
 
-print("I_Inc   :", I_Inc[0])
-print("I_On    :", I_On[0])
-print("I_Col   :", I_Col[0])
+print("I_Inc :", I_Inc[0])
+print("I_On  :", I_On[0])
+print("I_Col :", I_Col[0])
 ```
 
 ### Operator Lifting Examples
@@ -664,39 +678,32 @@ print("I_Col   :", I_Col[0])
 # -------------------------------------------------------------------
 # Intersection: R ∩ S  →  I_R + I_S
 # -------------------------------------------------------------------
-I_intersection = I_Inc + I_On
-print("\nIntersection carrier (line-circle):", len(I_intersection), "polys")
+I_inter = I_Inc + I_On                     # line–circle intersection
 
 # -------------------------------------------------------------------
-# Composition: "P on line AB" composed with other relations
-# Example: Collinearity via elimination (relational composition style)
+# Composition & Elimination
 # -------------------------------------------------------------------
 def eliminate(polys, vars_to_elim):
-    """Simple Groebner elimination wrapper"""
+    """Groebner-based elimination"""
     G = groebner(polys, *vars_to_elim, domain=sp.RR, order='lex')
     return [p for p in G if not any(v in p.free_symbols for v in vars_to_elim)]
 
-# Eliminate P to get condition on A,B (should be trivial 0==0 for any A,B)
-# but more useful: eliminate line parameters conceptually
-collinear_via_P = eliminate(I_Inc + I_Col, [xP, yP])   # should be empty or 0
-print("Collinear condition after elim P:", collinear_via_P)
+# Eliminate P → condition on remaining variables
+collinear_via_P = eliminate(I_Inc + I_Col, [xP, yP])
 
 # -------------------------------------------------------------------
-# Projection example (π_P of incidence)
+# Projection example
 # -------------------------------------------------------------------
-# Projecting incidence onto P variables = whole plane (no constraint)
-proj_P = eliminate(I_Inc, [xA, yA, xB, yB])   # keep only xP,yP
-print("Projection onto P:", proj_P)
+proj_P = eliminate(I_Inc, [xA, yA, xB, yB])   # should leave no constraint on P
 ```
 
-### Basic Q-Layer Checks
+### Basic Q-Layer Checks (Γ-mode ready)
 
 ```python
 def quick_q_check(I, expected_dim, vars_list):
-    """Very lightweight Q-layer"""
+    """Lightweight dimensionality check"""
     try:
         G = groebner(I, *vars_list, domain=sp.RR)
-        # Rough dimension estimate: codimension ≈ number of independent eqs
         rank_est = len([p for p in G if p != 0])
         dim_est = len(vars_list) - rank_est
         status = "Q_OK" if dim_est == expected_dim else "Q_DEGEN"
@@ -704,37 +711,33 @@ def quick_q_check(I, expected_dim, vars_list):
     except:
         return "Q_UNCHECKED", -1, expected_dim
 
-vars_all = [xA,yA,xB,yB,xP,yP,xO,yO,r]
+vars_P = [xP, yP]
 
-print("\nQ-check line-circle intersection (expect 0-dim points):")
-print(quick_q_check(I_intersection, 0, [xP,yP]))   # local vars for point
+print("\nQ-check line-circle intersection (expect 0-dim):",
+      quick_q_check(I_inter, 0, vars_P))
 
-print("Q-check collinearity (expect 1-dim curve):")
-print(quick_q_check(I_Col, 1, [xP,yP]))            # fix A,B, vary P
+print("Q-check collinearity (expect 1-dim curve):",
+      quick_q_check(I_Col, 1, vars_P))
 ```
 
-### Dependency Graph (Γ-mode skeleton)
+### Dependency Graph Skeleton (Γ-mode)
 
 ```python
 G = nx.DiGraph()
 
-# Nodes: objects + relations
+# Nodes
 G.add_node("A", type="Point")
 G.add_node("B", type="Point")
 G.add_node("P", type="Point")
 G.add_node("Line_AB", type="Line")
 G.add_node("Circle_O", type="Circle")
 G.add_node("Rel_Inc", type="Relation", carrier=I_Inc)
-G.add_node("Rel_On", type="Relation", carrier=I_On)
+G.add_node("Rel_On",  type="Relation", carrier=I_On)
 
-# Dependencies
-G.add_edge("A", "Line_AB")
-G.add_edge("B", "Line_AB")
-G.add_edge("Line_AB", "Rel_Inc")
-G.add_edge("P", "Rel_Inc")
-G.add_edge("Circle_O", "Rel_On")
-G.add_edge("P", "Rel_On")
+# Edges
+G.add_edges_from([("A", "Line_AB"), ("B", "Line_AB"),
+                  ("Line_AB", "Rel_Inc"), ("P", "Rel_Inc"),
+                  ("Circle_O", "Rel_On"), ("P", "Rel_On")])
 
-print("\nDependency graph nodes:", list(G.nodes))
-# When A moves → propagate to Line_AB → Rel_Inc → re-solve
+print("Dependency graph ready for propagation.")
 ```

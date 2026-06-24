@@ -281,7 +281,7 @@ When a primitive changes (e.g., dragging `A`):
 +-----------------+---------------------------+-------------------------------+
 ```
 
-Common geometric relations
+### 7.2 Common geometric relations
 
 ```text
 +----------------+---------------------------+-----------------------------------------------+
@@ -295,3 +295,136 @@ Common geometric relations
 | Map(T,X,Y)     | (Transform, Obj, Obj)    | coordinates(Y) - T(coordinates(X)) = 0         |
 +----------------+---------------------------+-----------------------------------------------+
 ```
+
+---
+
+## 8. RDGA → MFE mapping (fields on relational carriers)
+
+MFE (Metric/Field Engine) attaches **fields** to the **solution sets** of RDGA carriers.
+
+### 8.1 Conceptual mapping
+
+- RDGA gives:  
+  \[
+  I_R \subseteq \mathbb{R}[x_1,\dots,x_n]
+  \]
+  whose solution set \( \mathcal{S}_R \) is a geometric locus or configuration space.
+
+- MFE defines fields on \( \mathcal{S}_R \):
+  - Scalar fields: \( \phi : \mathcal{S}_R \to \mathbb{R} \)
+  - Vector fields: \( \mathbf{F} : \mathcal{S}_R \to T\mathcal{S}_R \)
+  - Tensor fields: etc.
+
+### 8.2 Attachment rule
+
+Given a relation \( R \) with carrier \( I_R \):
+
+1. Compute (or represent) its solution set \( \mathcal{S}_R \).
+2. Define field(s) restricted to \( \mathcal{S}_R \):
+   - Example: a potential field along a line, or a flow along a curve.
+3. When RDGA updates \( I_R \) (due to motion), MFE:
+   - Updates the domain \( \mathcal{S}_R \).
+   - Re‑expresses fields in the new coordinates/geometry.
+
+### 8.3 Examples
+
+- **Field along a line:**  
+  `Inc(P,L)` defines a line locus; MFE attaches a 1D field \( \phi(s) \) along the line parameter \( s \).
+
+- **Field on intersection curve:**  
+  `R = R_1 ∩ R_2` with carrier \( I_R = I_{R_1} + I_{R_2} \); MFE attaches a field to the intersection locus (e.g., a flow along a circle‑line intersection).
+
+- **Transform‑induced fields:**  
+  `Map(T,X,Y)` defines how fields are pushed forward or pulled back via `T`.
+
+---
+
+## 9. RDGA → Q admissibility rules
+
+Q‑layer enforces **admissibility** and, later, **quantization** on top of RDGA+MFE.
+
+### 9.1 Admissibility types
+
+1. **Geometric consistency:**
+   - No contradictory constraints (e.g., over‑constrained systems with no real solutions).
+   - Non‑degeneracy conditions (e.g., distinct points where required, non‑zero radius, etc.).
+
+2. **Topological/structural consistency:**
+   - Correct dimensionality of solution sets (e.g., expecting a curve vs. a discrete set).
+   - Avoiding pathological configurations unless explicitly allowed.
+
+3. **Field compatibility:**
+   - Fields defined by MFE must be well‑posed on \( \mathcal{S}_R \) (no undefined singularities unless flagged).
+
+### 9.2 Q‑rules over RDGA
+
+Let \( I_R \) be a carrier and \( \mathcal{S}_R \) its solution set.
+
+**Q1 — Existence:**
+
+- Require \( \mathcal{S}_R \neq \emptyset \) unless the relation is explicitly allowed to be empty.
+- If empty, mark relation as **inadmissible** or **void**.
+
+**Q2 — Dimensionality:**
+
+- Expected dimension \( \dim_{\text{exp}}(R) \) vs. actual dimension \( \dim(\mathcal{S}_R) \).
+- If mismatch is not allowed (e.g., expecting a point but getting a line), mark as inadmissible or degenerate.
+
+**Q3 — Non‑degeneracy:**
+
+- Enforce inequalities (e.g., \( r > 0 \), \( A \neq B \)) as part of admissibility.
+- These are not polynomial equalities, but can be tracked as side‑constraints.
+
+**Q4 — Field regularity:**
+
+- For fields \( \phi, \mathbf{F} \) attached via MFE:
+  - Check for forbidden singularities or discontinuities on \( \mathcal{S}_R \).
+  - If present and not allowed, mark configuration as inadmissible.
+
+### 9.3 Q‑flags
+
+Q‑layer can annotate each relation \( R \) with flags:
+
+```text
+Q_OK        : admissible, non-degenerate
+Q_EMPTY     : no real solutions
+Q_DEGEN     : degenerate (dimension mismatch, collapsed geometry)
+Q_SINGULAR  : field singularities present
+Q_UNCHECKED : not yet evaluated
+```
+
+These flags feed back into higher‑level logic (e.g., simulation, search, or optimization).
+
+---
+
+## 10. Minimal example: line–circle intersection with fields and Q
+
+1. **RDGA (S/I/D):**
+   - Relations: `Inc(P,L)`, `On(P,C)`
+   - Carrier: \( I_P = I_{\text{Inc}} + I_{\text{Circ}} \)
+   - Solutions: intersection points \( \{P_1, P_2\} \) (or fewer in degenerate cases).
+
+2. **MFE:**
+   - Attach a scalar field \( \phi(P) \) (e.g., potential) defined at each intersection point.
+   - As `A` or `O` moves, \( I_P \) changes, and so do the positions of \( P_1, P_2 \) and the field values.
+
+3. **Q:**
+   - Check if \( I_P \) has real solutions:
+     - If none: `Q_EMPTY`.
+   - Check if the intersection is tangential (double root):
+     - If tangency is allowed: `Q_OK` with a `DEGEN` note.
+     - If not: `Q_DEGEN`.
+   - Check field regularity at \( P_i \):
+     - If singular: `Q_SINGULAR`.
+
+---
+
+## 11. Implementation notes
+
+- RDGA is **symbolic‑friendly** but does not mandate a specific CAS:
+  - Gröbner bases, resultants, or numeric solvers with symbolic wrappers are all acceptable.
+- The key contract:
+  - **RDG** provides relational structure and dependency graphs.
+  - **RDGA** provides algebraic carriers and operator lifting.
+  - **MFE** attaches and evolves fields on solution sets.
+  - **Q** evaluates admissibility and flags configurations.

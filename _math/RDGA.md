@@ -403,6 +403,39 @@ Q‑layer enforces **admissibility** and, later, **quantization** on top of RDGA
 3. **Field compatibility:**
    - Fields defined by MFE must be well‑posed on \( \mathcal{S}_R \) (no undefined singularities unless flagged).
 
+### Dimensionality Expectations
+
+For each relation \( R \), RDGA assigns an expected geometric dimension \( \dim_{\text{exp}}(R) \).
+
+Examples:
+- A point: 0‑dimensional  
+- A line: 1‑dimensional  
+- A circle: 1‑dimensional  
+- Intersection of two curves: 0‑dimensional (typically discrete)
+
+The actual dimension of the carrier ideal \( I_R \) is:
+
+
+
+\[
+\dim(I_R) = \text{Krull dimension of } \mathbb{R}[x]/I_R.
+\]
+
+
+
+Q‑layer compares:
+
+
+
+\[
+\dim(I_R) \quad \text{vs.} \quad \dim_{\text{exp}}(R)
+\]
+
+
+
+to detect degeneracy or over‑constraint.
+
+
 ### 9.2 Q‑rules over RDGA
 
 Let \( I_R \) be a carrier and \( \mathcal{S}_R \) its solution set.

@@ -310,6 +310,26 @@ When a primitive changes (e.g., dragging `A`):
 4. Re‑solve affected systems (e.g., intersection points).
 5. Push updates to any attached fields (MFE) and admissibility checks (Q).
 
+
+### RDGA Invariants
+
+RDGA maintains several invariants across updates:
+
+1. **Ideal Dimension:**  
+   The dimension of \( I_R \) must match the expected geometric dimension unless degeneracy is allowed.
+
+2. **Rank Conditions:**  
+   Jacobian rank must be sufficient to define a well‑posed locus.
+
+3. **Structural Invariants:**  
+   Relations preserve their arity and tuple structure.
+
+4. **Coordinate‑Free Invariants:**  
+   Incidence, parallelism, orthogonality, and tangency remain invariant under admissible transforms.
+
+These invariants are checked during Γ‑updates and Q‑layer evaluation.
+
+
 ---
 
 ## 7. ASCII operator tables

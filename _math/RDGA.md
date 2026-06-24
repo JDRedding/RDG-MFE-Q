@@ -461,6 +461,18 @@ Let \( I_R \) be a carrier and \( \mathcal{S}_R \) its solution set.
   - Check for forbidden singularities or discontinuities on \( \mathcal{S}_R \).
   - If present and not allowed, mark configuration as inadmissible.
 
+### Inequalities and Side‑Constraints
+
+Not all geometric constraints are polynomial equalities. RDGA tracks non‑degeneracy conditions as side‑constraints:
+
+- \( r > 0 \) (circle radius)  
+- \( A \neq B \) (line defined by two distinct points)  
+- direction vectors nonzero  
+- determinant ≠ 0 (invertible transforms)
+
+These are stored separately from the ideal \( I_R \) and evaluated during Q‑layer admissibility checks.
+
+
 ### 9.3 Q‑flags
 
 Q‑layer can annotate each relation \( R \) with flags:

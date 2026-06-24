@@ -738,8 +738,3 @@ G.add_edge("P", "Rel_On")
 print("\nDependency graph nodes:", list(G.nodes))
 # When A moves → propagate to Line_AB → Rel_Inc → re-solve
 ```
-
-
-
-print(collinear_condition)
-

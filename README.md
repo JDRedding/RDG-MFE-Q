@@ -14,14 +14,14 @@ The full **RDG–MFE–Q** stack adds:
 - **Q□** — admissibility & stability layer (SID tri-mode, constraints)
 
 ### Repository Contents
-docs/      → human-readable theory
-_rdg/      → RDG code
-_mfe/      → MFE code
-_q/        → Q-layer code
-_math/     → operators & algebra
-_src/      → engine runtime
-_scripts/  → automation
-_tests/    → invariants & stability checks
+- docs/      → human-readable theory
+- _rdg/      → RDG code
+- _mfe/      → MFE code
+- _q/        → Q-layer code
+- _math/     → operators & algebra
+- _src/      → engine runtime
+- _scripts/  → automation
+- _tests/    → invariants & stability checks
 
 ---
 

@@ -740,8 +740,6 @@ print("\nDependency graph nodes:", list(G.nodes))
 ```
 
 
-# Example: eliminate xP between the two polynomials
-collinear_condition = resultant(I_Inc_PL[0], I_On_PC[0], xP)
 
 print(collinear_condition)
 

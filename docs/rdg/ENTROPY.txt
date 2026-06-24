@@ -207,6 +207,9 @@ PED interprets entropy as:
 
 SHANNON ENTROPY (classical)
 ---------------------------
+
+    𝐻(𝑋) = 𝜋_PED ∘ 𝑅_discard(𝑋)
+
 Input: probability distribution p_i
 Output: -Σ p_i log p_i
 Scope: PED lane only

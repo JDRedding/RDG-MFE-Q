@@ -604,3 +604,26 @@ These flags feed back into higher‑level logic (e.g., simulation, search, or op
   - **RDGA** provides algebraic carriers and operator lifting.
   - **MFE** attaches and evolves fields on solution sets.
   - **Q** evaluates admissibility and flags configurations.
+
+import sympy as sp
+from sympy import groebner
+
+# Variables
+xA, yA, xB, yB, xP, yP, xO, yO, r = sp.symbols('xA yA xB yB xP yP xO yO r')
+
+# Example carriers
+I_Inc_PL = [(yP - yA)*(xB - xA) - (yB - yA)*(xP - xA)]   # Point P on Line AB
+I_On_PC  = [(xP - xO)**2 + (yP - yO)**2 - r**2]         # Point on Circle
+
+# Intersection (algebraic carrier sum)
+I_inter = I_Inc_PL + I_On_PC
+
+# Relational composition example: collinear points via line elimination
+# (Eliminate line parameters implicitly by resultant or Groebner)
+def eliminate(vars_to_elim, polys):
+    G = groebner(polys, *vars_to_elim, domain=sp.RR)
+    return [p for p in G if not any(v in p.free_symbols for v in vars_to_elim)]
+
+# Example: eliminate line coords if we had explicit line params; here simplified
+collinear_condition = sp.resultant(I_Inc_PL[0], I_On_PC[0], xP)  # rough demo
+print(collinear_condition)

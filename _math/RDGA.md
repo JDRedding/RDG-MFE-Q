@@ -384,6 +384,38 @@ Given a relation \( R \) with carrier \( I_R \):
 - **Transform‑induced fields:**  
   `Map(T,X,Y)` defines how fields are pushed forward or pulled back via `T`.
 
+  ### Transform Algebra
+
+Transforms form an algebra with:
+
+- composition: \( T_3 = T_2 \circ T_1 \)
+- identity: \( \mathrm{Id} \)
+- inverse (when defined): \( T^{-1} \)
+
+The carrier for a transform relation:
+
+
+
+\[
+\text{Map}(T,X,Y)
+\]
+
+
+
+is:
+
+
+
+\[
+I_{\text{Map}} = \{ Y - T(X) = 0 \}.
+\]
+
+
+
+Transform composition lifts to carriers via substitution and elimination.  
+Transforms also propagate through dependency graphs and push/pull MFE fields.
+
+
 ---
 
 ## 9. RDGA → Q admissibility rules

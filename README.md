@@ -28,19 +28,3 @@ The full **RDG–MFE–Q** stack adds:
 
 **See also the companion repo:** [RAM-Relational-Automata-Manifolds](https://github.com/JDRedding/RAM-Relational-Automata-Manifolds)
 
----
-
-This makes the repo immediately understandable and positions the Maxwell recovery as a highlight.
-
----
-
-**Would you like me to:**
-
-1. **Generate the full set of clean `.md` files** from your `.txt` files (with proper headings, math, tables)?
-2. **Create diagrams** for the Maxwell–RDG–MFE equivalence (fixed vs dynamic, quaternion potential, continuum limit)?
-3. **Write a short abstract / technical note** ready for arXiv-style submission?
-4. **Build a minimal `code/` folder** with the glider + simple field example?
-
-Just reply with 1, 2, 3, or 4 (or a mix) and I’ll output the exact content/files you can push in the next commit.
-
-The project has strong bones — a few hours of polish will make it look professional and ready for sharing. What’s your top priority right now?

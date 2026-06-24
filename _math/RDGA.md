@@ -595,35 +595,56 @@ These flags feed back into higher‑level logic (e.g., simulation, search, or op
 
 ---
 
-## 11. Implementation notes
+## 11. Implementation Notes
 
-- RDGA is **symbolic‑friendly** but does not mandate a specific CAS:
-  - Gröbner bases, resultants, or numeric solvers with symbolic wrappers are all acceptable.
-- The key contract:
-  - **RDG** provides relational structure and dependency graphs.
-  - **RDGA** provides algebraic carriers and operator lifting.
-  - **MFE** attaches and evolves fields on solution sets.
-  - **Q** evaluates admissibility and flags configurations.
+RDGA is symbolic‑friendly but does not mandate a specific CAS.  
+Gröbner bases, resultants, or numeric solvers with symbolic wrappers are all acceptable.
 
+The key contract between layers:
+
+- RDG provides relational structure and dependency graphs.
+- RDGA provides algebraic carriers and operator lifting.
+- MFE attaches and evolves fields on solution sets.
+- Q evaluates admissibility and flags configurations.
+
+Below is a minimal SymPy demonstration of RDGA carriers and operator lifting.
+
+```python
 import sympy as sp
-from sympy import groebner
+from sympy import groebner, resultant
 
-### Variables
-xA, yA, xB, yB, xP, yP, xO, yO, r = sp.symbols('xA yA xB yB xP yP xO yO r')
+# Variables
+xA, yA, xB, yB = sp.symbols('xA yA xB yB')
+xP, yP = sp.symbols('xP yP')
+xO, yO, r = sp.symbols('xO yO r')
 
-### Example carriers
-I_Inc_PL = [(yP - yA)*(xB - xA) - (yB - yA)*(xP - xA)]   # Point P on Line AB
-I_On_PC  = [(xP - xO)**2 + (yP - yO)**2 - r**2]         # Point on Circle
+# ---------------------------------------------------------------------
+# Example carriers
+# ---------------------------------------------------------------------
 
-### Intersection (algebraic carrier sum)
+# Incidence: Point P on Line AB
+I_Inc_PL = [
+    (yP - yA)*(xB - xA) - (yB - yA)*(xP - xA)
+]
+
+# Circle membership: Point P on Circle O,r
+I_On_PC = [
+    (xP - xO)**2 + (yP - yO)**2 - r**2
+]
+
+# ---------------------------------------------------------------------
+# Intersection (algebraic carrier sum)
+# ---------------------------------------------------------------------
 I_inter = I_Inc_PL + I_On_PC
 
-### Relational composition example: collinear points via line elimination
-### (Eliminate line parameters implicitly by resultant or Groebner)
-def eliminate(vars_to_elim, polys):
-    G = groebner(polys, *vars_to_elim, domain=sp.RR)
-    return [p for p in G if not any(v in p.free_symbols for v in vars_to_elim)]
+# ---------------------------------------------------------------------
+# Relational composition example:
+# Collinearity via elimination of line parameters
+# (Here we simulate elimination using a resultant)
+# ---------------------------------------------------------------------
 
-### Example: eliminate line coords if we had explicit line params; here simplified
-collinear_condition = sp.resultant(I_Inc_PL[0], I_On_PC[0], xP)  # rough demo
+# Example: eliminate xP between the two polynomials
+collinear_condition = resultant(I_Inc_PL[0], I_On_PC[0], xP)
+
 print(collinear_condition)
+

@@ -5,8 +5,7 @@
 A three-layer framework that **strictly generalizes** cellular automata (Conway’s Game of Life, Wolfram rules) **and** classical field theory.
 
 ### Core Idea
-**RDG–MFE** is a discretization of Maxwell’s original **quaternion formulation** of electromagnetism onto a *dynamically generated relational geometry*.  
-When the geometry Γ_t is frozen to a regular lattice approximating ℝ³ and the discretization is taken to the continuum limit, it recovers the classical Heaviside-Maxwell equations.
+**RDG–MFE** is a discretization of Maxwell’s original **quaternion formulation** of electromagnetism onto a *dynamically generated relational geometry*. When the geometry Γ_t is frozen to a regular lattice approximating ℝ³ and the discretization is taken to the continuum limit, it recovers the classical Heaviside-Maxwell equations.
 
 The full **RDG–MFE–Q** stack adds:
 - **RDG** — generative relational manifolds

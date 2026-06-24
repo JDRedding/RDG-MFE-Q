@@ -14,6 +14,7 @@ The full **RDG–MFE–Q** stack adds:
 - **Q□** — admissibility & stability layer (SID tri-mode, constraints)
 
 ### Repository Contents
+- _Papers    → Redding's Closure Stability Conjecture
 - docs/      → human-readable theory
 - _rdg/      → RDG code
 - _mfe/      → MFE code

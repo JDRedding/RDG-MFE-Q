@@ -401,6 +401,38 @@ Given a relation \( R \) with carrier \( I_R \):
 - **Field on intersection curve:**  
   `R = R_1 ∩ R_2` with carrier \( I_R = I_{R_1} + I_{R_2} \); MFE attaches a field to the intersection locus (e.g., a flow along a circle‑line intersection).
 
+### Example: Relational Composition
+
+Let:
+
+- \( R = \text{Inc}(A,L) \subseteq \text{Point} \times \text{Line} \)
+- \( S = \text{Inc}(L,B) \subseteq \text{Line} \times \text{Point} \)
+
+Then the composition:
+
+
+
+\[
+R \circ S \subseteq \text{Point} \times \text{Point}
+\]
+
+
+
+represents all pairs of points \( (A,B) \) that lie on a common line.
+
+Algebraically:
+
+
+
+\[
+I_{R \circ S} = \text{Elim}_L(I_R + I_S)
+\]
+
+
+
+which eliminates the line parameters and yields the condition that \( A \) and \( B \) are collinear.
+
+
 - **Transform‑induced fields:**  
   `Map(T,X,Y)` defines how fields are pushed forward or pulled back via `T`.
 

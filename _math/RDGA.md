@@ -608,6 +608,8 @@ The key contract between layers:
 - **MFE** attaches and evolves fields on solution sets.  
 - **Q** evaluates admissibility and flags configurations.
 
+The following examples illustrate RDGA carriers, operator lifting, elimination, Q‑checks, and Γ‑mode propagation in a minimal CAS‑agnostic way.
+
 ### Representation Note
 
 In the code examples below, carriers are represented as Python **lists of polynomials**:
@@ -721,6 +723,8 @@ print("Q-check collinearity (expect 1-dim curve):",
 ```
 
 ### Dependency Graph Skeleton (Γ-mode)
+Note: The dependency graph encodes structural propagation only. Numerical solving, field updates (MFE), and admissibility checks (Q) occur after graph‑driven recomputation of carriers.
+
 
 ```python
 G = nx.DiGraph()
@@ -741,3 +745,4 @@ G.add_edges_from([("A", "Line_AB"), ("B", "Line_AB"),
 
 print("Dependency graph ready for propagation.")
 ```
+This demonstration shows the RDGA concepts in isolation; a full engine integrates these components with RDG’s structural layer, MFE’s field evolution, and Q‑layer admissibility.

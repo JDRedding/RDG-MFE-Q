@@ -134,6 +134,31 @@ R \circ S = \{ (x,z) \mid \exists y : (x,y)\in R \ \wedge \ (y,z)\in S \}
 
 ## 5. Algebraic carriers (D‑mode)
 
+### Solution‑Set Notation
+
+For any relation \( R \) with algebraic carrier \( I_R \), we define its solution set as:
+
+
+
+\[
+\mathcal{S}(R) = \{ x \mid x \text{ satisfies all polynomials in } I_R \}
+\]
+
+
+
+or equivalently:
+
+
+
+\[
+\mathcal{S}(I_R) = \{ x \mid f(x) = 0 \ \forall f \in I_R \}.
+\]
+
+
+
+This object is used by both MFE (fields defined on solution sets) and Q‑layer (admissibility checks).
+
+
 Each relation \( R \) is mapped to an algebraic carrier:
 
 

@@ -279,3 +279,19 @@ When a primitive changes (e.g., dragging `A`):
 | π_i(R)          | projection on coord i    | Elim_{others}(I_R)            |
 | R ∘ S           | relational composition   | Elim_y(I_R + I_S)             |
 +-----------------+---------------------------+-------------------------------+
+```
+
+Common geometric relations
+
+```text
++----------------+---------------------------+-----------------------------------------------+
+| Relation       | Tuple type                | Example algebraic carrier                     |
++----------------+---------------------------+-----------------------------------------------+
+| Inc(P,L)       | (Point, Line)            | line equation satisfied by P                   |
+| On(P,C)        | (Point, Circle)          | (xP-xO)^2 + (yP-yO)^2 - r^2 = 0                |
+| Par(L1,L2)     | (Line, Line)             | direction(L1) × direction(L2) = 0              |
+| Ort(L1,L2)     | (Line, Line)             | direction(L1) · direction(L2) = 0              |
+| Tan(C,L)       | (Circle, Line)           | distance(center(C), L) - r = 0                 |
+| Map(T,X,Y)     | (Transform, Obj, Obj)    | coordinates(Y) - T(coordinates(X)) = 0         |
++----------------+---------------------------+-----------------------------------------------+
+```

@@ -1,7 +1,7 @@
 RDGA Operator Tables
 
 Logical / Relational Operators
-
+```text
 +-----------------+---------------------------+-----------------------------------------------+
 | Operator        | Set-theoretic definition | Algebraic carrier (Φ)                         |
 +-----------------+---------------------------+-----------------------------------------------+
@@ -11,9 +11,9 @@ Logical / Relational Operators
 | π_i(R)          | projection on coord i    | Elim_{others}(I_R)                            |
 | R ∘ S           | relational composition   | Elim_y(I_R + I_S)                             |
 +-----------------+---------------------------+-----------------------------------------------+
-
+```
 Common Geometric Relations
-
+```text
 +----------------+---------------------------+-----------------------------------------------+
 | Relation       | Tuple type                | Example algebraic carrier                     |
 +----------------+---------------------------+-----------------------------------------------+
@@ -24,4 +24,4 @@ Common Geometric Relations
 | Tan(C,L)       | (Circle, Line)           | distance(center(C), L) - r = 0                |
 | Map(T,X,Y)     | (Transform, Obj, Obj)    | coordinates(Y) - T(coordinates(X)) = 0        |
 +----------------+---------------------------+-----------------------------------------------+
-
+```

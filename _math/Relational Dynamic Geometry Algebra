@@ -1,8 +1,7 @@
-# ASCII operator
+ASCII operator
 
-## Logical/relational operators
+Logical/relational operators
 
-```text
 +-----------------+---------------------------+-------------------------------+
 | Operator        | Set-theoretic definition | Algebraic carrier (Φ)         |
 +-----------------+---------------------------+-------------------------------+
@@ -13,7 +12,7 @@
 | R ∘ S           | relational composition   | Elim_y(I_R + I_S)             |
 +-----------------+---------------------------+-------------------------------+
 
-## Common geometric relations
+Common geometric relations
 
 +----------------+---------------------------+-----------------------------------------------+
 | Relation       | Tuple type                | Example algebraic carrier                     |

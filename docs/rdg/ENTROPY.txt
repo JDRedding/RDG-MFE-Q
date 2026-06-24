@@ -205,6 +205,14 @@ PED interprets entropy as:
     flattening of distributions
     irreversible spreading under dynamics
 
+SHANNON ENTROPY (classical)
+---------------------------
+Input: probability distribution p_i
+Output: -Σ p_i log p_i
+Scope: PED lane only
+Meaning: flattening / uncertainty / coding cost
+Operator: π_PED ∘ R_discard
+
 -------------------------------------------------------------------
 Q  (Admissibility / Constraints)
 -------------------------------------------------------------------

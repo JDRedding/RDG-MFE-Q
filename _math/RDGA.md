@@ -697,6 +697,9 @@ collinear_via_P = eliminate(I_Inc + I_Col, [xP, yP])
 # Projection example
 # -------------------------------------------------------------------
 proj_P = eliminate(I_Inc, [xA, yA, xB, yB])   # should leave no constraint on P
+
+# Projection removes the line parameters, leaving constraints only on P.
+# For incidence, this yields an empty set (no constraint), as expected.
 ```
 
 ### Basic Q-Layer Checks (Γ-mode ready)

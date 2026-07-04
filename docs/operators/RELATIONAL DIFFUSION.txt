@@ -100,7 +100,7 @@ This is relational diffusion.
                               
     SID(i)    	: Structural adjacency of closure i              
     nbhd(i)   	: Invariant neighborhood after PED→Q projection  
-    T(i)      		: Relational tension at closure i                
+    T(i)      	: Relational tension at closure i                
                                                               
   SID Tension Gradient             
                             
@@ -108,23 +108,23 @@ This is relational diffusion.
                                                               
  Neighborhood Projection         
                              
-   	nbhd(i) = Π_nbhd( SID(i) )                                 
+   		nbhd(i) = Π_nbhd( SID(i) )                                 
                                                               
   RDG Tension Gradient Flow         
                            
     	dT(i)/dt = Σ_{j ∈ nbhd(i)} [ T(j) - T(i) ]         
 
-Relational tension gradient flow is the dynamical version — the part that tells  how tension moves in time inside RDG’s SID → PED → Q pipeline. The relational tension gradient flow is the time‑evolution rule:
+Relational tension gradient flow is the dynamical version — the part that tells how tension moves in time inside RDG’s SID → PED → Q pipeline. The relational tension gradient flow is the time‑evolution rule:
 
 	𝑑𝑇(𝑖) / 𝑑𝑡 = ∑((𝑗∈nbhd)(𝑖))(𝑇(𝑗)−𝑇(𝑖))
 
-It is the RDG_gradient ^flow (or  RDG_heat ,  built from relations).
+It is the RDG_gradient^flow (or RDG_heat, built from relations).
 
 1. SID tension gradient
 
 Raw relational gradient:
 
-	∇_SID 𝑇(𝑖) = { 𝑇(𝑗)−𝑇(𝑖)∣𝑗∈SID(𝑖)}
+	∇_SID 𝑇(𝑖) = {𝑇(𝑗)−𝑇(𝑖)∣𝑗∈SID(𝑖)}
 
 This is the primitive “difference set” of tension across structural adjacency.
 
@@ -164,7 +164,7 @@ PROJECTION TRANSPORT
 -------------------------------------------------------
   Primitive Objects        
                                     
-    	SID(i)    	: Structural adjacency of closure i              
+    SID(i)    	: Structural adjacency of closure i              
 	PED       	: Power/Evaluation/Dynamics moderation           
    	Q         	: Observer-slice projection                      
 	nbhd(i) 	: Invariant neighborhood after PED→Q projection  

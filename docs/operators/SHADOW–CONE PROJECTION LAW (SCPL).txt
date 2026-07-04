@@ -10,10 +10,10 @@ triadic generator frame T = {SID, PED, RED}.
 ---------------------------------------------------------------
 1. TRIADIC FRAME
 ---------------------------------------------------------------
-                 Q  (forcing boundary)
-                /|\
-               / | \
-            SID  PED  RED
+                   Q  (forcing boundary)
+                /  |  \
+               /   |   \
+            SID   PED   RED
              |     |     |
           MFE-Q   RDG    TED
               \     |     /

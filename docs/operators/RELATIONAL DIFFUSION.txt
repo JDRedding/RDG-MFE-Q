@@ -283,8 +283,8 @@ RDG HAMILTONIAN
   Primitive Objects                 
                            
     SID(i)	: Structural adjacency of closure i              
-    T(i)      	: Relational tension at closure i                
-    Π_Q      	: Projection into observer geometry (Q-slice)                   
+    T(i)    : Relational tension at closure i                
+    Π_Q     : Projection into observer geometry (Q-slice)                   
 
 The Hamiltonian is curvature of tension is:
 
@@ -326,7 +326,7 @@ in the emergent geometry.
                                                                
  Observable Hamiltonian (Projected Generator)     
             
-   	H_Q(i) = Π_Q( H_RDG(i) )                         
+   	H_Q(i) = Π_Q(H_RDG(i))                         
                                                                
   Interpretation     
                                           
@@ -345,7 +345,7 @@ RDG entropy is:
 
 	 ∑(𝑖)	(𝐼_SID(𝑖)		−𝐼_PED(𝑖)	−𝐼_𝑄(𝑖))
 
- 		 ⏟structural  	 ⏟moderated 	  ⏟projected 
+ 		 	⏟ structural  	 ⏟ moderated 	  ⏟ projected 
 
 It measures information loss as relational structure is:
 
@@ -385,7 +385,7 @@ This is the number of admissible relations.
 
 Q projection discards more structure:
 
-	𝐼𝑄(𝑖)=∣𝑄(𝑖)∣
+	𝐼_𝑄 (𝑖) = ∣𝑄(𝑖)∣
 
 This is the number of observable relations.
 
@@ -409,7 +409,7 @@ This  entropy  drives:
                                   
     	I_SID(i) 	= | SID(i) |                                      
     	I_PED(i) 	= | PED(i) |                                      
-   	I_Q(i)   	= | Q(i)   |                                      
+   	    I_Q(i)   	= | Q(i)   |                                      
                                                                
   RDG Entropy (Local)             
                             
@@ -423,6 +423,6 @@ Interpretation
 
    	• Entropy = relational information discarded by projection.
    	• SID → maximal structure                                  
-    	• PED → moderated structure                                
+    • PED → moderated structure                                
    	• Q   → observable structure                               
-    	• Null-origin, geometry-emergent, field-agnostic.          
+    • Null-origin, geometry-emergent, field-agnostic.          

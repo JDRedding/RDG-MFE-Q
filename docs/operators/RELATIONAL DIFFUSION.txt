@@ -355,9 +355,9 @@ RDG entropy is:
 
 	𝑆_RDG =
 
-	 ∑(𝑖)	(𝐼_SID(𝑖)		−𝐼_PED(𝑖)	−𝐼_𝑄(𝑖))
- 		 	⏟   	 		⏟  	  		⏟  
-			structural		moderated	projected
+	 ∑(𝑖)	(𝐼_SID(𝑖)	−	𝐼_PED(𝑖)		−	𝐼_𝑄(𝑖))
+ 		 	⏟   	 		⏟  	  			⏟  
+			structural		moderated		projected
 
 It measures information loss as relational structure is:
 

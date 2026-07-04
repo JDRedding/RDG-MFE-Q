@@ -32,7 +32,6 @@ Where:
 	Δ_SID 	= SID‑level relational Laplacian
 	Π_nbhd 	= projection into the invariant neighborhood geometry
 
-
 Breakdown of the components
 
 1. SID‑level relational Laplacian
@@ -73,7 +72,6 @@ Putting the RDG diffusion operator together:
 
 Where nbhd(𝑖) is the invariant neighborhood produced by projection.
 
-
 Interpretation inside RDG
 
 	Diffusion = tension equilibration across emergent adjacency
@@ -95,7 +93,6 @@ This is relational diffusion.
     	• Geometry is not fixed; nbhd(i) depends on projection.    
     	• Entropy increases as SID→PED→Q discards relational info. 
     	• Diffusion is domain-dependent, tension-driven, and null-origin.   
-
 
  TENSION GRADIENT FLOW                     
 -------------------------------------------------------

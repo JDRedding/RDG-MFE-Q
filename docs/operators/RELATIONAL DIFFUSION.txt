@@ -1,5 +1,20 @@
 RELATIONAL DIFFUSION   
 -------------------------------------------------------
+SID adjacency
+    ↓
+SID Laplacian (curvature)
+    ↓
+RDG Hamiltonian (generator)
+    ↓
+Diffusion (spread)
+    ↓
+Gradient Flow (time evolution)
+    ↓
+Projection Transport (observable motion)
+    ↓
+Entropy Functional (discard + geometry emergence)
+-------------------------------------------------------
+
   Primitive Objects   
                                          
     SID(i)    : Structural adjacency of closure i              

@@ -1,3 +1,16 @@
+This is the RDG subsystem UML, modeling:
+
+SID‑Structure
+SID‑Interaction
+SID‑Dynamics
+RDG‑MasterOperator
+
+Modular — each SID component is its own operator
+Relational — everything flows through RDG_State
+Composable — RDG_MasterOp ties the triad together
+Transpile‑ready — each operator can map to Pure Data, Python, Rust, etc.
+Clean — safe to commit directly into GitHub
+
 +-------------------------------------------------------------+
 |                        RDG SYSTEM                           |
 |                Relational Dynamic Geometry                  |

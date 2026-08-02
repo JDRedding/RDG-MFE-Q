@@ -3,6 +3,13 @@
 |                     Unified Relational Engine — Modular, Finite, Closed                      |
 +----------------------------------------------------------------------------------------------+
 
+Modular — each subsystem is its own module
+Unified — SYSTEM_State ties everything together
+Finite — Q provides closure
+Dynamic — MFE provides flux
+Geometric — RDG provides relational space
+Evolving — RME provides scoring
+
                                         +----------------------+
                                         |   SYSTEM_Controller  |
                                         |----------------------|

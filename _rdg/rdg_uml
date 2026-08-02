@@ -1,0 +1,57 @@
++-------------------------------------------------------------+
+|                        RDG SYSTEM                           |
+|                Relational Dynamic Geometry                  |
++-------------------------------------------------------------+
+
+                         +----------------+
+                         | RDG_MasterOp   |
+                         |----------------|
+                         | + apply()      |
+                         | + compose()    |
+                         | + relate()     |
+                         +--------+-------+
+                                  |
+          -------------------------------------------------
+          |                       |                       |
+          v                       v                       v
+
++----------------------+  +----------------------+  +----------------------+
+| SID_Structure        |  | SID_Interaction      |  | SID_Dynamics         |
+|----------------------|  |----------------------|  |----------------------|
+| + define_nodes()     |  | + tension_map()      |  | + evolve_state()     |
+| + define_edges()     |  | + adjacency_shift()  |  | + propagate()        |
+| + relational_basis() |  | + coupling_rules()   |  | + flux_update()      |
++----------+-----------+  +----------+-----------+  +----------+-----------+
+           |                        |                        |
+           |                        |                        |
+           |                        |                        |
+           |                        |                        |
+           |                        |                        |
+           v                        v                        v
+
++--------------------------------------------------------------------------+
+|                           RDG_State                                     |
+|--------------------------------------------------------------------------|
+| + nodes[]                                                                |
+| + edges[]                                                                |
+| + tensions[]                                                             |
+| + flux[]                                                                 |
+| + metadata                                                               |
++--------------------------------------------------------------------------+
+
+Relationships:
+-------------
+RDG_MasterOp --> SID_Structure      (uses geometry definitions)
+RDG_MasterOp --> SID_Interaction    (uses relational tensions)
+RDG_MasterOp --> SID_Dynamics       (uses dynamic evolution rules)
+
+SID_Structure --> RDG_State         (creates structural basis)
+SID_Interaction --> RDG_State       (modifies relational tensions)
+SID_Dynamics --> RDG_State          (updates flux + motion)
+
+Notes:
+------
+* SID_Structure defines the relational geometry.
+* SID_Interaction defines how geometry responds to tension.
+* SID_Dynamics defines how states evolve over time.
+* RDG_MasterOp composes all three into a unified relational operator.

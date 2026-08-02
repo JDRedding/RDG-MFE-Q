@@ -9,6 +9,13 @@ Slice instance → Pd state containers + evaluation objects
 Moderator → Pd control‑rate orchestration
 Q state → shared container for RME integration
 
+Hamiltonian core → Pd math + table operators
+Clifford action → flips, rotations, reflections via Pd math + custom subpatches
+Memory → Pd text/list/table containers
+Survival score → Pd energy measurement + nonlinear scoring
+Evolution state → unified Pd container for RDG/MFE/Q/RME
+Master equation → Pd control‑rate orchestration
+
 Q_SLICE_DEFINITION  (criteria, weights, slice template)
 ------------------------------------------------------------------
 [list]               — holds slice criteria and weights

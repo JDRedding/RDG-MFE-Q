@@ -1,0 +1,73 @@
++----------------------------------------------------------------------------------------------+
+|                                   SYSTEM UML — RDG • MFE • Q • RME                           |
+|                     Unified Relational Engine — Modular, Finite, Closed                      |
++----------------------------------------------------------------------------------------------+
+
+                                        +----------------------+
+                                        |   SYSTEM_Controller  |
+                                        |----------------------|
+                                        | + initialize()       |
+                                        | + step()             |
+                                        | + sync_modules()     |
+                                        | + update_state()     |
+                                        | + compute_output()   |
+                                        +----------+-----------+
+                                                   |
+        --------------------------------------------------------------------------------------------
+        |                                  |                                   |                   |
+        v                                  v                                   v                   v
+
++---------------------------+  +---------------------------+  +---------------------------+  +---------------------------+
+| RDG_Module                |  | MFE_Module                |  | Q_Module                 |  | RME_Module                |
+|---------------------------|  |---------------------------|  |---------------------------|  |---------------------------|
+| + rdg_master              |  | + mfe_core                |  | + q_master               |  | + rme_master             |
+| + sid_structure           |  | + pos_flux                |  | + slice_def              |  | + hamiltonian_core       |
+| + sid_interaction         |  | + neg_flux                |  | + moderation_rules       |  | + clifford_action        |
+| + sid_dynamics            |  | + coupling                |  | + boundary_conditions    |  | + memory                 |
+| + apply_rdg()             |  | + apply_mfe()             |  | + apply_q()              |  | + apply_rme()            |
++-------------+-------------+  +-------------+-------------+  +-------------+-------------+  +-------------+-------------+
+              |                           |                           |                           |
+              |                           |                           |                           |
+              v                           v                           v                           v
+
++--------------------------------------------------------------------------------------------------------------------------+
+|                                          SYSTEM_State                                                                    |
+|--------------------------------------------------------------------------------------------------------------------------|
+| + rdg_state       : RDG_State                                                                                           |
+| + flux_state      : MFE_FluxLoop                                                                                        |
+| + q_slice         : Q_SliceInstance                                                                                     |
+| + rme_state       : RME_EvolutionState                                                                                  |
+| + output_rating   : float                                                                                                |
+|--------------------------------------------------------------------------------------------------------------------------|
+| + sync_rdg()                                                                                                             |
+| + sync_mfe()                                                                                                             |
+| + sync_q()                                                                                                               |
+| + sync_rme()                                                                                                             |
+| + compute_output()                                                                                                       |
++--------------------------------------------------------------------------------------------------------------------------+
+
+Relationships:
+-------------
+SYSTEM_Controller --> RDG_Module           (initializes geometry + relational basis)
+SYSTEM_Controller --> MFE_Module           (initializes flux engine)
+SYSTEM_Controller --> Q_Module             (initializes moderation + closure)
+SYSTEM_Controller --> RME_Module           (initializes equation)
+
+RDG_Module --> SYSTEM_State                (writes relational geometry)
+MFE_Module --> SYSTEM_State                (writes flux dynamics)
+Q_Module  --> SYSTEM_State                 (writes moderated slice)
+RME_Module --> SYSTEM_State                (writes scoring)
+
+SYSTEM_State --> RDG_Module                (provides geometry for next step)
+SYSTEM_State --> MFE_Module                (provides flux for next step)
+SYSTEM_State --> Q_Module                  (provides slice for next step)
+SYSTEM_State --> RME_Module                (provides full state)
+
+Notes:
+------
+* SYSTEM_Controller orchestrates the entire relational engine.
+* RDG_Module provides geometry (SID Structure, Interaction, Dynamics).
+* MFE_Module provides bipolar flux and coupling.
+* Q_Module provides moderation, slicing, closure.
+* RME_Module provides scoring.
+* SYSTEM_State is the unified container that keeps all modules synchronized.

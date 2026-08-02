@@ -1,1 +1,72 @@
++--------------------------------------------------------------------------------------+
+|                               qslice.pd — Object Mapping                             |
+|                     Moderation • Slicing • Closure • Evaluation                      |
++--------------------------------------------------------------------------------------+
+
+Q_SLICE_DEFINITION  (criteria, weights, slice template)
+------------------------------------------------------------------
+[list]               — holds slice criteria and weights
+[route]              — dispatch slice parameters
+[pack]/[unpack]      — build slice tuples (criteria, weight, id)
+[text]               — store slice definitions
+[select]             — detect slice type / mode
+[expr]               — compute slice weighting logic
+
+Q_MODERATION_RULES  (dampen, amplify, shape)
+------------------------------------------------------------------
+[lop~]               — low‑pass moderation (dampen high tension)
+[hip~]               — high‑pass moderation (amplify high tension)
+[expr~]              — custom moderation curves
+[*~]                 — scale moderation strength
+[clip~]              — enforce moderation bounds
+[spigot]             — gate moderation based on criteria
+[wrap~]              — cyclic moderation behavior
+
+Q_BOUNDARY_CONDITIONS  (closure, clamping, reflection)
+------------------------------------------------------------------
+[clip~]              — clamp slice values to boundaries
+[expr~]              — compute boundary logic (upper/lower)
+[wrap~]              — wrap values cyclically
+[reflect~]           — reflect values at boundaries
+[select]             — detect boundary violations
+[spigot]             — enable/disable closure logic
+
+Q_SLICE_INSTANCE  (actual moderated slice)
+------------------------------------------------------------------
+[snapshot~]          — convert audio‑rate moderation to control‑rate
+[env~]               — measure slice energy
+[list store]         — store moderated slice values
+[text]               — store slice metadata
+[tabwrite]           — write slice values into tables
+[tabread]            — read slice values for RME
+
+Q_MASTER_MODERATOR  (orchestrator)
+------------------------------------------------------------------
+[trigger]            — enforce deterministic ordering (t b f)
+[metro]              — drive slice updates
+[bang]               — discrete moderation step
+[expr]               — control‑rate evaluation logic
+[list]               — pass slice parameters
+[pack]/[unpack]      — build slice tuples
+[text]               — store slice metadata
+
+Q_STATE  (shared state container)
+------------------------------------------------------------------
+[text]               — store slice definition + moderated slice
+[list store]         — maintain evolving slice lists
+[tabwrite]           — write slice values into tables
+[tabread]            — read slice values for RDG/MFE/RME modules
+
+FLOW (inside qslice.pd)
+------------------------------------------------------------------
+[SYSTEM_init]
+    |
+    v
+[Q_SLICE_DEFINITION] --> [Q_MODERATION_RULES] --> [Q_BOUNDARY_CONDITIONS]
+    |                           |                           |
+    v                           v                           v
+                        [Q_SLICE_INSTANCE]
+                               |
+                               v
+                           [Q_STATE]
 

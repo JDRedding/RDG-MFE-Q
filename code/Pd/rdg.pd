@@ -1,1 +1,53 @@
++--------------------------------------------------------------------------------------+
+|                               RDG.pd — Object Mapping                                |
+|                     Relational Dynamic Geometry in Pure Data                         |
++--------------------------------------------------------------------------------------+
+
+SID_STRUCTURE  (geometry / adjacency / relational basis)
+------------------------------------------------------------------
+[table]              — stores node positions, adjacency weights
+[text]               — stores relational metadata
+[list]               — passes node/edge lists between operators
+[route]              — dispatches structural messages
+[pack]/[unpack]      — build/parse relational tuples
+[expr]               — compute adjacency ratios, relational metrics
+[trigger]            — enforce deterministic ordering (t b f)
+
+SID_INTERACTION  (tension / coupling / adjacency modulation)
+------------------------------------------------------------------
+[expr]               — compute tension functions
+[line]/[vline]       — smooth transitions in relational tension
+[* ] [+ ] [- ]       — adjust tension magnitudes
+[clip]               — enforce interaction bounds
+[select]             — detect threshold crossings
+[spigot]             — gate interactions based on conditions
+[metro]              — periodic interaction updates
+
+SID_DYNAMICS  (motion / evolution / relational flow)
+------------------------------------------------------------------
+[bang]               — drive discrete evolution steps
+[metro]              — continuous evolution clock
+[delay]              — temporal spacing for dynamic updates
+[expr]               — compute dynamic flow equations
+[osc~]               — optional audio-based dynamic modulation
+[phasor~]            — continuous relational motion driver
+[snapshot~]          — convert audio-rate dynamics to control-rate
+[env~]               — measure dynamic energy levels
+
+RDG_STATE  (shared state container)
+------------------------------------------------------------------
+[text]               — store full RDG state (nodes, edges, tensions)
+[list store]         — maintain evolving relational lists
+[tabwrite]           — write dynamic geometry into tables
+[tabread]            — read geometry for downstream modules
+
+FLOW (inside rdg.pd)
+------------------------------------------------------------------
+[SYSTEM_init]
+    |
+    v
+[SID_STRUCTURE] --> [SID_INTERACTION] --> [SID_DYNAMICS]
+    |                    |                    |
+    v                    v                    v
+                 [RDG_STATE] (shared container)
 

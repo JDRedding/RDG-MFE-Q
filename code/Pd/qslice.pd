@@ -2,6 +2,12 @@
 |                               qslice.pd — Object Mapping                             |
 |                     Moderation • Slicing • Closure • Evaluation                      |
 +--------------------------------------------------------------------------------------+
+Slice definition → Pd list/table/text objects
+Moderation rules → Pd filters, math, and shaping objects
+Boundary conditions → Pd clamping, wrapping, reflection logic
+Slice instance → Pd state containers + evaluation objects
+Moderator → Pd control‑rate orchestration
+Q state → shared container for RME integration
 
 Q_SLICE_DEFINITION  (criteria, weights, slice template)
 ------------------------------------------------------------------

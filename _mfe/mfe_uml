@@ -1,0 +1,74 @@
+This diagram models the Momentum Flux Engine exactly the way your architecture defines it:
+
+Bipolar flux
+Coupling
+Reset behavior
+Flux loops
+Integration with RDG state
+Modularity for later integration
+
+Bipolar flux (positive + negative)
+Coupling operator (PED‑side logic)
+Flux loop (oscillation, stabilization)
+Core engine (the orchestrator)
+RDG integration (flux written into geometry)
+Modular boundaries (each operator stands alone)
+
++------------------------------------------------------------------+
+|                     MFE — Momentum Flux Engine                   |
+|                 Bipolar Coupled Relational Dynamics              |
++------------------------------------------------------------------+
+
+                           +--------------------+
+                           |   MFE_CoreEngine   |
+                           |--------------------|
+                           | + step()           |
+                           | + flux_pair()      |
+                           | + normalize()      |
+                           | + integrate()      |
+                           +---------+----------+
+                                     |
+             -----------------------------------------------------
+             |                       |                           |
+             v                       v                           v
+
++--------------------------+  +--------------------------+  +--------------------------+
+| MFE_PositiveFlux         |  | MFE_NegativeFlux         |  | MFE_Coupling             |
+|--------------------------|  |--------------------------|  |--------------------------|
+| + magnitude              |  | + magnitude              |  | + coupling_strength      |
+| + direction              |  | + direction              |  | + coupling_rule()        |
+| + update()               |  | + update()               |  | + apply_coupling()       |
++------------+-------------+  +------------+-------------+  +------------+-------------+
+             |                           |                           |
+             |                           |                           |
+             v                           v                           v
+
++--------------------------------------------------------------------------------------+
+|                                MFE_FluxLoop                                          |
+|--------------------------------------------------------------------------------------|
+| + pos_flux : MFE_PositiveFlux                                                        |
+| + neg_flux : MFE_NegativeFlux                                                        |
+| + coupling : MFE_Coupling                                                            |
+| + loop()                                                                             |
+| + stabilize()                                                                        |
+| + oscillate()                                                                        |
++--------------------------------------------------------------------------------------+
+
+Relationships:
+-------------
+MFE_CoreEngine --> MFE_PositiveFlux     (creates +flux)
+MFE_CoreEngine --> MFE_NegativeFlux     (creates -flux)
+MFE_CoreEngine --> MFE_Coupling         (applies coupling rules)
+MFE_CoreEngine --> MFE_FluxLoop         (executes bipolar flux loop)
+
+MFE_PositiveFlux <--> MFE_NegativeFlux  (bipolar symmetry)
+MFE_Coupling --> MFE_FluxLoop           (modulates oscillation)
+MFE_FluxLoop --> RDG_State              (writes flux into relational geometry)
+
+Notes:
+------
+* MFE_PositiveFlux and MFE_NegativeFlux form a bipolar pair.
+* MFE_Coupling defines how the fluxes interact.
+* MFE_FluxLoop stabilizes or oscillates flux based on coupling.
+* MFE_CoreEngine orchestrates the entire flux cycle.
+* Output is written into RDG_State for downstream Q and RME processing.

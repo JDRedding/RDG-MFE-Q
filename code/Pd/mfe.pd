@@ -1,1 +1,77 @@
 
++--------------------------------------------------------------------------------------+
+|                               MFE.pd — Object Mapping                                |
+|                     Momentum Flux Engine in Pure Data                                |
++--------------------------------------------------------------------------------------+
+
+MFE_POSITIVE_FLUX  (positive polarity flux)
+------------------------------------------------------------------
+[osc~]               — base oscillator for +flux
+[phasor~]            — continuous ramp for directional flux
+[*~]                 — scale magnitude
+[+~]                 — bias / offset
+[clip~]              — enforce upper/lower bounds
+[snapshot~]          — convert audio-rate flux to control-rate
+[env~]               — measure flux energy
+
+MFE_NEGATIVE_FLUX  (negative polarity flux)
+------------------------------------------------------------------
+[osc~]               — base oscillator for -flux
+[phasor~]            — continuous ramp for directional flux
+[*~]                 — scale magnitude (negative domain)
+[-~]                 — invert polarity
+[clip~]              — enforce bounds
+[snapshot~]          — control-rate conversion
+[env~]               — energy measurement
+
+MFE_COUPLING  (bipolar interaction rules)
+------------------------------------------------------------------
+[expr~]              — coupling equations (e.g., pos * neg, pos - neg)
+[*~]                 — coupling strength multiplier
+[clip~]              — clamp coupling output
+[wrap~]              — cyclic coupling behavior
+[spigot]             — gate coupling based on conditions
+[select]             — detect threshold crossings
+
+MFE_FLUX_LOOP  (oscillation / stabilization / feedback)
+------------------------------------------------------------------
+[delwrite~]          — write flux into delay buffer
+[delread~]           — read flux for feedback loop
+[vd~]                — variable delay for dynamic modulation
+[feedback~]          — custom feedback patch (pos/neg flux)
+[*~]                 — feedback gain
+[lop~]/[hip~]        — stabilize flux by filtering extremes
+[env~]               — measure loop energy for stabilization logic
+
+MFE_CORE_ENGINE  (orchestrator)
+------------------------------------------------------------------
+[trigger]            — enforce deterministic ordering (t b f)
+[metro]              — drive flux updates
+[bang]               — discrete flux step
+[expr]               — control-rate logic for normalization
+[list]               — pass flux parameters
+[pack]/[unpack]      — build flux tuples
+[text]               — store flux metadata
+
+MFE_STATE  (shared state container)
+------------------------------------------------------------------
+[text]               — store pos_flux, neg_flux, coupling values
+[list store]         — maintain evolving flux lists
+[tabwrite]           — write flux values into tables
+[tabread]            — read flux values for RDG/Q/RME modules
+
+FLOW (inside mfe.pd)
+------------------------------------------------------------------
+[SYSTEM_init]
+    |
+    v
+[MFE_POSITIVE_FLUX] <--> [MFE_NEGATIVE_FLUX]
+           |                     |
+           v                     v
+                [MFE_COUPLING]
+                       |
+                       v
+                [MFE_FLUX_LOOP]
+                       |
+                       v
+                  [MFE_STATE]

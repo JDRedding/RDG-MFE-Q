@@ -4,6 +4,12 @@
 |                     Momentum Flux Engine in Pure Data                                |
 +--------------------------------------------------------------------------------------+
 
+Bipolar flux → two oscillators, two phasors, two energy channels
+Coupling → Pd math objects for relational modulation
+Flux loop → delay‑based oscillation and stabilization
+Core engine → control‑rate logic for normalization and orchestration
+State container → tables/text for downstream RDG/Q/RME integration
+
 MFE_POSITIVE_FLUX  (positive polarity flux)
 ------------------------------------------------------------------
 [osc~]               — base oscillator for +flux

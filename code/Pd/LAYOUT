@@ -1,0 +1,75 @@
++--------------------------------------------------------------------------------------+
+|                               SYSTEM.pd (Top Patch)                                  |
+|                     RDG • MFE • Q • RME — Unified Flow Layout                        |
++--------------------------------------------------------------------------------------+
+
+   [loadbang]
+       |
+       v
+   [SYSTEM_init]
+       |
+       v
++------------------+      +------------------+      +------------------+      +------------------+
+|   rdg.pd         | ---> |   mfe.pd         | ---> |   qslice.pd      | ---> |   rme.pd         |
+|------------------|      |------------------|      |------------------|      |------------------|
+| SID_structure    |      | pos_flux         |      | slice_def        |      | hamiltonian_core |
+| SID_interaction  |      | neg_flux         |      | moderation_rules |      | clifford_action  |
+| SID_dynamics     |      | coupling         |      | boundary_cond    |      | memory           |
+|                  |      | flux_loop        |      | slice_instance   |      | survival_score   |
++------------------+      +------------------+      +------------------+      +------------------+
+       |                        |                        |                        |
+       |                        |                        |                        |
+       v                        v                        v                        v
+
++--------------------------------------------------------------------------------------+
+|                                 SYSTEM_STATE.pd                                      |
+|--------------------------------------------------------------------------------------|
+| [rdg_state]      <-- from rdg.pd                                                     |
+| [flux_state]     <-- from mfe.pd                                                     |
+| [qslice_state]   <-- from qslice.pd                                                  |
+| [rme_state]      <-- from rme.pd                                                     |
+| [output_rating]  <-- final output                                                    |
++--------------------------------------------------------------------------------------+
+
+Flow:
+-----
+[rdg.pd]      --> relational geometry
+[mfe.pd]      --> flux dynamics
+[qslice.pd]   --> moderated slice
+[rme.pd]      --> evolution + rating
+
+Audio/Control Mapping:
+----------------------
+RDG:
+  - SID_structure:   [table], [list], [route], [pack]
+  - SID_interaction: [expr], [line], [vline]
+  - SID_dynamics:    [metro], [bang], [trigger]
+
+MFE:
+  - pos_flux:        [osc~], [phasor~], [+~], [*~]
+  - neg_flux:        [osc~], [phasor~], [-~], [*~]
+  - coupling:        [expr~], [*~], [clip~]
+  - flux_loop:       [delwrite~], [delread~], [feedback~]
+
+Q-Slice:
+  - slice_def:       [list], [route], [select]
+  - moderation:      [lop~], [hip~], [expr~], [clip~]
+  - boundaries:      [clip~], [wrap~], [expr~]
+  - slice_instance:  [snapshot~], [env~]
+
+RME:
+  - hamiltonian:     [expr~], [+~], [*~], [tabread~]
+  - clifford:        [expr~], [swap], [rotate], [reflect]
+  - memory:          [text], [list store], [tabwrite]
+  - survival_score:  [env~], [snapshot~], [expr]
+
+Top-Level Control:
+------------------
+[SYSTEM_init]
+[SYSTEM_step]
+[SYSTEM_sync]
+[SYSTEM_output]
+
+Final Output:
+-------------
+[rme.pd] --> [output_rating] --> [number] or [dac~] or [print]

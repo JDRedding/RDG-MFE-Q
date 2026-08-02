@@ -1,0 +1,79 @@
+This models Q‑system:
+
+moderation
+slicing
+evaluation
+closure
+reset
+
+Modular — each Q operator stands alone
+Relational — everything flows through Q_SliceInstance
+Closure‑driven — boundaries and resets are explicit
+Evaluation‑ready — score computation is built in
+Compatible — Q outputs feed 
+
++-----------------------------------------------------------------------+
+|                         Q-SLICE SYSTEM                                |
+|             Moderation • Slicing • Closure • Evaluation               |
++-----------------------------------------------------------------------+
+
+                           +----------------------+
+                           |   Q_MasterModerator  |
+                           |----------------------|
+                           | + apply_slice()      |
+                           | + evaluate()         |
+                           | + enforce_bounds()   |
+                           | + reset_if_needed()  |
+                           +----------+-----------+
+                                      |
+          -----------------------------------------------------------------
+          |                           |                                   |
+          v                           v                                   v
+
++---------------------------+  +---------------------------+  +---------------------------+
+| Q_SliceDefinition         |  | Q_ModerationRules         |  | Q_BoundaryConditions      |
+|---------------------------|  |---------------------------|  |---------------------------|
+| + slice_id                |  | + rule_set[]              |  | + upper_bound             |
+| + criteria[]              |  | + apply_rules()           |  | + lower_bound             |
+| + weight                  |  | + dampen()                |  | + clamp()                 |
+| + construct_slice()       |  | + amplify()               |  | + reflect()               |
++-------------+-------------+  +-------------+-------------+  +-------------+-------------+
+              |                           |                                   |
+              |                           |                                   |
+              v                           v                                   v
+
++-----------------------------------------------------------------------------------------+
+|                                   Q_SliceInstance                                       |
+|-----------------------------------------------------------------------------------------|
+| + slice_definition : Q_SliceDefinition                                                  |
+| + moderated_state   : RDG_State                                                         |
+| + moderation_rules  : Q_ModerationRules                                                 |
+| + boundaries        : Q_BoundaryConditions                                              |
+| + score             : float                                                             |
+|-----------------------------------------------------------------------------------------|
+| + compute_score()                                                                       |
+| + apply_moderation()                                                                    |
+| + enforce_closure()                                                                     |
++-----------------------------------------------------------------------------------------+
+
+Relationships:
+-------------
+Q_MasterModerator --> Q_SliceDefinition     (creates slice template)
+Q_MasterModerator --> Q_ModerationRules     (applies moderation logic)
+Q_MasterModerator --> Q_BoundaryConditions  (enforces closure)
+Q_MasterModerator --> Q_SliceInstance       (produces final moderated slice)
+
+Q_SliceDefinition --> Q_SliceInstance       (defines slice structure)
+Q_ModerationRules --> Q_SliceInstance       (modifies moderated state)
+Q_BoundaryConditions --> Q_SliceInstance    (clamps, reflects, resets)
+
+Q_SliceInstance --> RDG_State               (reads relational geometry)
+Q_SliceInstance --> RME                     (provides survival score input)
+
+Notes:
+------
+* Q_SliceDefinition defines what the slice *is*.
+* Q_ModerationRules define how the slice is *shaped*.
+* Q_BoundaryConditions define how the slice is *closed*.
+* Q_SliceInstance is the actual moderated slice used by the RME.
+* Q_MasterModerator orchestrates the entire moderation pipeline.

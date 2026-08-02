@@ -3,6 +3,14 @@
 |                     Unified Relational Engine in Pure Data                           |
 +======================================================================================+
 
+RDG builds relational geometry
+MFE injects bipolar flux
+Q‑Slice moderates and closes the geometry
+RME computes the rating
+SYSTEM_STATE synchronizes all modules
+Audio‑rate + control‑rate coexist cleanly
+Pd abstractions keep everything modular
+
 [loadbang]
      |
      v

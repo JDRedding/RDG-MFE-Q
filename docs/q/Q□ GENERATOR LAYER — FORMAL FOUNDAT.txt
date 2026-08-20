@@ -111,7 +111,7 @@ Interpretation:
     Input richness → projection richness → continuum signature,
     all expressed via finite-resolution families.
 
-RDG-Compatible Interpretation Block
+Interpretation Block
 -----------------------------------
     • Q□ has generative richness: at every finite resolution n,
       R produces at least 2^n distinct meso-layer states.

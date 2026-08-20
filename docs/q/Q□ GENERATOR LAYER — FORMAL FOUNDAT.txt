@@ -21,7 +21,7 @@ A1. Q□ is the only locus of irrationality.
 A2. Irrationality never appears in observables (RDG/MFE).
 A3. SID/PED act only on rational + relational structures.
 A4. Q□ is not a set, but admits coarse-graining into G.
-A5. Projection of Q□ yields continuum-many observables.
+A5. Projection of Q□ yields continuum-like richness at finite resolution.
 
 Interpretation:
 Q□ replaces the inaccessible “thing-in-itself” with an inaccessible

@@ -74,19 +74,56 @@ All SID/PED-visible structure exists only on the image side I.
 3. CONTINUUM SIGNATURE OF Image(R)
 =====================================================================
 
-Axiom (Generator richness):
-    ∃ injection ι : ℝ → G such that R∘ι is injective on its image.
+Axiom (Generative richness, constructive form)
+----------------------------------------------
+For every finite resolution n ∈ ℕ,
+there exists a finite subset S_n ⊆ Image(R)
+such that:
 
-Theorem (Continuum Image):
-    |Image(R)| ≥ 2^ℵ₀.
+    |S_n| ≥ 2^n
 
-If I is at most continuum-sized (e.g. encodable in ℝⁿ), then:
-    |Image(R)| = 2^ℵ₀.
+Interpretation of axiom:
+    R can produce at least 2^n mutually distinguishable
+    meso-layer states at resolution n.
+    (Finite resolution → finite distinguishability → exponential growth.)
+
+Theorem (Continuum-signature behavior)
+--------------------------------------
+For every finite resolution n:
+
+    Image(R) contains at least 2^n
+    distinct states distinguishable at resolution n.
+
+Interpretation of theorem:
+    Image(R) exhibits continuum-like richness at arbitrarily
+    fine finite resolutions.
+    (Continuum behavior without continuum ontology.)
+
+Corollary (Maximal richness when I is continuum-encodable)
+----------------------------------------------------------
+If the input space I is encodable in ℝ^m (i.e., supports arbitrarily
+fine finite resolutions), then:
+
+    ∀ n,  Image(R) contains ≥ 2^n
+          resolution-distinguishable states.
 
 Interpretation:
-    • Q□ contains enough generative richness to produce
-      continuum-many distinct meso-layer states.
-    • The continuum signature arises from projection, not geometry.
+    Input richness → projection richness → continuum signature,
+    all expressed via finite-resolution families.
+
+RDG-Compatible Interpretation Block
+-----------------------------------
+    • Q□ has generative richness: at every finite resolution n,
+      R produces at least 2^n distinct meso-layer states.
+
+    • The “continuum signature” is behavioral: it arises from
+      arbitrarily fine projection, not from any infinite geometry.
+
+    • No completed continuum exists inside G or R; only finite
+      approximants whose richness grows without bound.
+
+    • Continuum-like behavior is an emergent property of projection,
+      not a foundational cardinality.
 
 =====================================================================
 4. SID/PED CANNOT EXTEND TO G

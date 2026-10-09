@@ -49,13 +49,9 @@ Each object has an underlying coordinate representation, but RDGA keeps that **b
 
 A relation is a subset of admissible tuples:
 
-
-
-\[
+$$
 R \subseteq \text{Obj}^n
-\]
-
-
+$$
 
 Examples:
 
@@ -74,15 +70,15 @@ Each such relation will have an **algebraic carrier** (Section 5).
 
 Relational operators act on sets of tuples. They are defined abstractly here, then given algebraic liftings in Section 5.
 
-Let \( R, S \subseteq \text{Obj}^n \).
+Let $R, S \subseteq \text{Obj}^n$.
 
 ### 4.1 Union
 
 
 
-\[
+$$
 R \cup S = \{ x \mid x \in R \ \text{or} \ x \in S \}
-\]
+$$
 
 
 
@@ -90,9 +86,9 @@ R \cup S = \{ x \mid x \in R \ \text{or} \ x \in S \}
 
 
 
-\[
+$$
 R \cap S = \{ x \mid x \in R \ \text{and} \ x \in S \}
-\]
+$$
 
 
 
@@ -100,33 +96,33 @@ R \cap S = \{ x \mid x \in R \ \text{and} \ x \in S \}
 
 
 
-\[
+$$
 \neg R = \{ x \mid x \notin R \}
-\]
+$$
 
 
 
 ### 4.4 Projection
 
-For \( R \subseteq \text{Obj}^n \), projection onto coordinate \( i \):
+For $R \subseteq \text{Obj}^n$, projection onto coordinate $i$:
 
 
 
-\[
+$$
 \pi_i(R) = \{ x_i \mid (x_1,\dots,x_n) \in R \}
-\]
+$$
 
 
 
 ### 4.5 Composition
 
-For \( R \subseteq X \times Y \), \( S \subseteq Y \times Z \):
+For $R \subseteq X \times Y$, $S \subseteq Y \times Z$:
 
 
 
-\[
+$$
 R \circ S = \{ (x,z) \mid \exists y : (x,y)\in R \ \wedge \ (y,z)\in S \}
-\]
+$$
 
 
 
@@ -136,13 +132,13 @@ R \circ S = \{ (x,z) \mid \exists y : (x,y)\in R \ \wedge \ (y,z)\in S \}
 
 ### Solution‑Set Notation
 
-For any relation \( R \) with algebraic carrier \( I_R \), we define its solution set as:
+For any relation $R$ with algebraic carrier $I_R$, we define its solution set as:
 
 
 
-\[
+$$
 \mathcal{S}(R) = \{ x \mid x \text{ satisfies all polynomials in } I_R \}
-\]
+$$
 
 
 
@@ -150,46 +146,46 @@ or equivalently:
 
 
 
-\[
+$$
 \mathcal{S}(I_R) = \{ x \mid f(x) = 0 \ \forall f \in I_R \}.
-\]
+$$
 
 
 
 This object is used by both MFE (fields defined on solution sets) and Q‑layer (admissibility checks).
 
 
-Each relation \( R \) is mapped to an algebraic carrier:
+Each relation $R$ is mapped to an algebraic carrier:
 
 
 
-\[
+$$
 \Phi : R \mapsto I_R \subseteq \mathbb{R}[x_1,\dots,x_n]
-\]
+$$
 
 
 
 where:
 
-- \( I_R \) is an ideal (or more generally, a set of polynomial constraints).
-- Solutions of \( I_R \) correspond to admissible configurations in \( R \).
+- $I_R$ is an ideal (or more generally, a set of polynomial constraints).
+- Solutions of $I_R$ correspond to admissible configurations in $R$.
 
 ### 5.1 Basic examples
 
 Let coordinates be:
 
-- Point \( P = (x_P, y_P) \)
-- Points \( A = (x_A, y_A), B = (x_B, y_B) \)
-- Line \( L = \overline{AB} \)
-- Circle center \( O = (x_O, y_O) \), radius \( r \)
+- Point $P = (x_P, y_P)$
+- Points $A = (x_A, y_A), B = (x_B, y_B)$
+- Line $L = \overline{AB}$
+- Circle center $O = (x_O, y_O)$, radius $r$
 
 **Incidence** `Inc(P,L)`:
 
 
 
-\[
-I_{\text{Inc}} = \left\{ (y_P - y_A)(x_B - x_A) - (y_B - y_A)(x_P - x_A) \right\}
-\]
+$$
+I_{\text{Inc}} = \{ (y_P - y_A)(x_B - x_A) - (y_B - y_A)(x_P - x_A) \}
+$$
 
 
 
@@ -197,58 +193,58 @@ I_{\text{Inc}} = \left\{ (y_P - y_A)(x_B - x_A) - (y_B - y_A)(x_P - x_A) \right\
 
 
 
-\[
-I_{\text{Circ}} = \left\{ (x_P - x_O)^2 + (y_P - y_O)^2 - r^2 \right\}
-\]
+$$
+I_{\text{Circ}} = \{ (x_P - x_O)^2 + (y_P - y_O)^2 - r^2 \}
+$$
 
 
 
-**Intersection** of line and circle (point(s) \( P \)):
+**Intersection** of line and circle (point(s) $P$):
 
 
 
-\[
+$$
 I_P = I_{\text{Inc}} + I_{\text{Circ}}
-\]
+$$
 
 
 
-Solutions of \( I_P \) give the intersection points.
+Solutions of $I_P$ give the intersection points.
 
 ### 5.2 Operator lifting
 
-Given \( R, S \) with carriers \( I_R, I_S \):
+Given $R, S$ with carriers $I_R, I_S$:
 
 - **Intersection:**
   
 
-\[
+$$
   \Phi(R \cap S) = I_R + I_S
-  \]
+  $$
 
 
 - **Union:**
   
 
-\[
+$$
   \Phi(R \cup S) = I_R \cap I_S
-  \]
+  $$
 
 
-- **Composition** (eliminate intermediate variables \( y \)):
+- **Composition** (eliminate intermediate variables $y$):
   
 
-\[
+$$
   \Phi(R \circ S) = \text{Elim}_y(I_R + I_S)
-  \]
+  $$
 
 
 - **Projection** onto a subset of variables:
   
 
-\[
+$$
   \Phi(\pi_i(R)) = \text{Elim}_{\text{all but } i}(I_R)
-  \]
+  $$
 
 
 
@@ -258,17 +254,17 @@ Implementation detail (symbolic): Gröbner bases or other elimination methods.
 
 ### Closure Under Operator Lifting
 
-RDGA requires that the carrier mapping \( \Phi \) is closed under all relational operators:
+RDGA requires that the carrier mapping $\Phi$ is closed under all relational operators:
 
 
 
-\[
+$$
 \Phi(R \ \text{op} \ S) = \Phi(R) \ \widehat{\text{op}} \ \Phi(S)
-\]
+$$
 
 
 
-where \( \widehat{\text{op}} \) is the corresponding algebraic operator:
+where $\widehat{\text{op}}$ is the corresponding algebraic operator:
 
 - intersection → ideal sum  
 - union → ideal intersection  
@@ -284,9 +280,9 @@ RDGA becomes dynamic when tied to an update operator:
 
 
 
-\[
+$$
 \Gamma : \text{State}_t \to \text{State}_{t+1}
-\]
+$$
 
 
 
@@ -306,7 +302,7 @@ When a primitive changes (e.g., dragging `A`):
 
 1. Update coordinates of `A`.
 2. Recompute any derived objects depending on `A` (e.g., `L`).
-3. Recompute carriers \( I_R \) for affected relations.
+3. Recompute carriers $I_R$ for affected relations.
 4. Re‑solve affected systems (e.g., intersection points).
 5. Push updates to any attached fields (MFE) and admissibility checks (Q).
 
@@ -316,7 +312,7 @@ When a primitive changes (e.g., dragging `A`):
 RDGA maintains several invariants across updates:
 
 1. **Ideal Dimension:**  
-   The dimension of \( I_R \) must match the expected geometric dimension unless degeneracy is allowed.
+   The dimension of $I_R$ must match the expected geometric dimension unless degeneracy is allowed.
 
 2. **Rank Conditions:**  
    Jacobian rank must be sufficient to define a well‑posed locus.
@@ -372,65 +368,65 @@ MFE (Metric/Field Engine) attaches **fields** to the **solution sets** of RDGA c
 ### 8.1 Conceptual mapping
 
 - RDGA gives:  
-  \[
+  $$
   I_R \subseteq \mathbb{R}[x_1,\dots,x_n]
-  \]
-  whose solution set \( \mathcal{S}_R \) is a geometric locus or configuration space.
+  $$
+  whose solution set $\mathcal{S}_R$ is a geometric locus or configuration space.
 
-- MFE defines fields on \( \mathcal{S}_R \):
-  - Scalar fields: \( \phi : \mathcal{S}_R \to \mathbb{R} \)
-  - Vector fields: \( \mathbf{F} : \mathcal{S}_R \to T\mathcal{S}_R \)
+- MFE defines fields on $\mathcal{S}_R$:
+  - Scalar fields: $\phi : \mathcal{S}_R \to \mathbb{R}$
+  - Vector fields: $\mathbf{F} : \mathcal{S}_R \to T\mathcal{S}_R$
   - Tensor fields: etc.
 
 ### 8.2 Attachment rule
 
-Given a relation \( R \) with carrier \( I_R \):
+Given a relation $R$ with carrier $I_R$:
 
-1. Compute (or represent) its solution set \( \mathcal{S}_R \).
-2. Define field(s) restricted to \( \mathcal{S}_R \):
+1. Compute (or represent) its solution set $\mathcal{S}_R$.
+2. Define field(s) restricted to $\mathcal{S}_R$:
    - Example: a potential field along a line, or a flow along a curve.
-3. When RDGA updates \( I_R \) (due to motion), MFE:
-   - Updates the domain \( \mathcal{S}_R \).
+3. When RDGA updates $I_R$ (due to motion), MFE:
+   - Updates the domain $\mathcal{S}_R$.
    - Re‑expresses fields in the new coordinates/geometry.
 
 ### 8.3 Examples
 
 - **Field along a line:**  
-  `Inc(P,L)` defines a line locus; MFE attaches a 1D field \( \phi(s) \) along the line parameter \( s \).
+  `Inc(P,L)` defines a line locus; MFE attaches a 1D field $\phi(s)$ along the line parameter $s$.
 
 - **Field on intersection curve:**  
-  `R = R_1 ∩ R_2` with carrier \( I_R = I_{R_1} + I_{R_2} \); MFE attaches a field to the intersection locus (e.g., a flow along a circle‑line intersection).
+  `R = R_1 ∩ R_2` with carrier $I_R = I_{R_1} + I_{R_2}$; MFE attaches a field to the intersection locus (e.g., a flow along a circle‑line intersection).
 
 ### Example: Relational Composition
 
 Let:
 
-- \( R = \text{Inc}(A,L) \subseteq \text{Point} \times \text{Line} \)
-- \( S = \text{Inc}(L,B) \subseteq \text{Line} \times \text{Point} \)
+- $R = \text{Inc}(A,L) \subseteq \text{Point} \times \text{Line}$
+- $S = \text{Inc}(L,B) \subseteq \text{Line} \times \text{Point}$
 
 Then the composition:
 
 
 
-\[
+$$
 R \circ S \subseteq \text{Point} \times \text{Point}
-\]
+$$
 
 
 
-represents all pairs of points \( (A,B) \) that lie on a common line.
+represents all pairs of points $(A,B)$ that lie on a common line.
 
 Algebraically:
 
 
 
-\[
+$$
 I_{R \circ S} = \text{Elim}_L(I_R + I_S)
-\]
+$$
 
 
 
-which eliminates the line parameters and yields the condition that \( A \) and \( B \) are collinear.
+which eliminates the line parameters and yields the condition that $A$ and $B$ are collinear.
 
 
 - **Transform‑induced fields:**  
@@ -440,17 +436,17 @@ which eliminates the line parameters and yields the condition that \( A \) and \
 
 Transforms form an algebra with:
 
-- composition: \( T_3 = T_2 \circ T_1 \)
-- identity: \( \mathrm{Id} \)
-- inverse (when defined): \( T^{-1} \)
+- composition: $T_3 = T_2 \circ T_1$
+- identity: $\mathrm{Id}$
+- inverse (when defined): $T^{-1}$
 
 The carrier for a transform relation:
 
 
 
-\[
+$$
 \text{Map}(T,X,Y)
-\]
+$$
 
 
 
@@ -458,9 +454,9 @@ is:
 
 
 
-\[
+$$
 I_{\text{Map}} = \{ Y - T(X) = 0 \}.
-\]
+$$
 
 
 
@@ -485,11 +481,11 @@ Q‑layer enforces **admissibility** and, later, **quantization** on top of RDGA
    - Avoiding pathological configurations unless explicitly allowed.
 
 3. **Field compatibility:**
-   - Fields defined by MFE must be well‑posed on \( \mathcal{S}_R \) (no undefined singularities unless flagged).
+   - Fields defined by MFE must be well‑posed on $\mathcal{S}_R$ (no undefined singularities unless flagged).
 
 ### Dimensionality Expectations
 
-For each relation \( R \), RDGA assigns an expected geometric dimension \( \dim_{\text{exp}}(R) \).
+For each relation $R$, RDGA assigns an expected geometric dimension $\dim_{\text{exp}}(R)$.
 
 Examples:
 - A point: 0‑dimensional  
@@ -497,13 +493,13 @@ Examples:
 - A circle: 1‑dimensional  
 - Intersection of two curves: 0‑dimensional (typically discrete)
 
-The actual dimension of the carrier ideal \( I_R \) is:
+The actual dimension of the carrier ideal $I_R$ is:
 
 
 
-\[
+$$
 \dim(I_R) = \text{Krull dimension of } \mathbb{R}[x]/I_R.
-\]
+$$
 
 
 
@@ -511,9 +507,9 @@ Q‑layer compares:
 
 
 
-\[
+$$
 \dim(I_R) \quad \text{vs.} \quad \dim_{\text{exp}}(R)
-\]
+$$
 
 
 
@@ -522,44 +518,44 @@ to detect degeneracy or over‑constraint.
 
 ### 9.2 Q‑rules over RDGA
 
-Let \( I_R \) be a carrier and \( \mathcal{S}_R \) its solution set.
+Let $I_R$ be a carrier and $\mathcal{S}_R$ its solution set.
 
 **Q1 — Existence:**
 
-- Require \( \mathcal{S}_R \neq \emptyset \) unless the relation is explicitly allowed to be empty.
+- Require $\mathcal{S}_R \neq \emptyset$ unless the relation is explicitly allowed to be empty.
 - If empty, mark relation as **inadmissible** or **void**.
 
 **Q2 — Dimensionality:**
 
-- Expected dimension \( \dim_{\text{exp}}(R) \) vs. actual dimension \( \dim(\mathcal{S}_R) \).
+- Expected dimension $\dim_{\text{exp}}(R)$ vs. actual dimension $\dim(\mathcal{S}_R)$.
 - If mismatch is not allowed (e.g., expecting a point but getting a line), mark as inadmissible or degenerate.
 
 **Q3 — Non‑degeneracy:**
 
-- Enforce inequalities (e.g., \( r > 0 \), \( A \neq B \)) as part of admissibility.
+- Enforce inequalities (e.g., $r > 0$, $A \neq B$) as part of admissibility.
 - These are not polynomial equalities, but can be tracked as side‑constraints.
 
 **Q4 — Field regularity:**
 
-- For fields \( \phi, \mathbf{F} \) attached via MFE:
-  - Check for forbidden singularities or discontinuities on \( \mathcal{S}_R \).
+- For fields $\phi, \mathbf{F}$ attached via MFE:
+  - Check for forbidden singularities or discontinuities on $\mathcal{S}_R$.
   - If present and not allowed, mark configuration as inadmissible.
 
 ### Inequalities and Side‑Constraints
 
 Not all geometric constraints are polynomial equalities. RDGA tracks non‑degeneracy conditions as side‑constraints:
 
-- \( r > 0 \) (circle radius)  
-- \( A \neq B \) (line defined by two distinct points)  
+- $r > 0$ (circle radius)  
+- $A \neq B$ (line defined by two distinct points)  
 - direction vectors nonzero  
 - determinant ≠ 0 (invertible transforms)
 
-These are stored separately from the ideal \( I_R \) and evaluated during Q‑layer admissibility checks.
+These are stored separately from the ideal $I_R$ and evaluated during Q‑layer admissibility checks.
 
 
 ### 9.3 Q‑flags
 
-Q‑layer can annotate each relation \( R \) with flags:
+Q‑layer can annotate each relation $R$ with flags:
 
 ```text
 Q_OK        : admissible, non-degenerate
@@ -577,20 +573,20 @@ These flags feed back into higher‑level logic (e.g., simulation, search, or op
 
 1. **RDGA (S/I/D):**
    - Relations: `Inc(P,L)`, `On(P,C)`
-   - Carrier: \( I_P = I_{\text{Inc}} + I_{\text{Circ}} \)
-   - Solutions: intersection points \( \{P_1, P_2\} \) (or fewer in degenerate cases).
+   - Carrier: $I_P = I_{\text{Inc}} + I_{\text{Circ}}$
+   - Solutions: intersection points $\{P_1, P_2\}$ (or fewer in degenerate cases).
 
 2. **MFE:**
-   - Attach a scalar field \( \phi(P) \) (e.g., potential) defined at each intersection point.
-   - As `A` or `O` moves, \( I_P \) changes, and so do the positions of \( P_1, P_2 \) and the field values.
+   - Attach a scalar field $\phi(P)$ (e.g., potential) defined at each intersection point.
+   - As `A` or `O` moves, $I_P$ changes, and so do the positions of $P_1, P_2$ and the field values.
 
 3. **Q:**
-   - Check if \( I_P \) has real solutions:
+   - Check if $I_P$ has real solutions:
      - If none: `Q_EMPTY`.
    - Check if the intersection is tangential (double root):
      - If tangency is allowed: `Q_OK` with a `DEGEN` note.
      - If not: `Q_DEGEN`.
-   - Check field regularity at \( P_i \):
+   - Check field regularity at $P_i$:
      - If singular: `Q_SINGULAR`.
 
 ---

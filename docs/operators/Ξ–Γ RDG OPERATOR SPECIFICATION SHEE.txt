@@ -24,6 +24,7 @@ or equivalently
     ≅
 Id_Meso
 
+
 SECTION 0 — AMBIENT STRUCTURES
 ------------------------------------------------------------
 Let R be the RDG category:

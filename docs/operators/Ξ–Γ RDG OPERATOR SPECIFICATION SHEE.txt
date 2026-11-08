@@ -4,6 +4,9 @@
 Default mode: Functor (per W3)
 Regime: Γ/Λ‑closed unless explicitly stated otherwise
 
+FORMATION / ACCESS SCALE INTERPRETATION
+------------------------------------------------------------
+
 Formation:
 Ξ_μm : Micro → Meso
 Ξ_mM : Meso → Macro
@@ -11,8 +14,18 @@ Formation:
 Access:
 Ξ_Mm : Macro → Meso
 
+
 Consistency:
-Ξ_μm(Micro) ≅ Ξ_Mm(Macro)
+
+Ξ_μm(Micro)
+    ≅
+Ξ_Mm(Macro)
+
+or equivalently
+
+Ξ_Mm ∘ Ξ_mM
+    ≅
+Id_Meso
 
 SECTION 0 — AMBIENT STRUCTURES
 ------------------------------------------------------------

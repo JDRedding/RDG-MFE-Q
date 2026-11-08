@@ -14,15 +14,12 @@ Formation:
 Access:
 Ξ_Mm : Macro → Meso
 
-
 Consistency:
-
 Ξ_μm(Micro)
     ≅
 Ξ_Mm(Macro)
 
 or equivalently
-
 Ξ_Mm ∘ Ξ_mM
     ≅
 Id_Meso

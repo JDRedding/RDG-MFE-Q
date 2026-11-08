@@ -4,6 +4,16 @@
 Default mode: Functor (per W3)
 Regime: Γ/Λ‑closed unless explicitly stated otherwise
 
+Formation:
+Ξ_μm : Micro → Meso
+Ξ_mM : Meso → Macro
+
+Access:
+Ξ_Mm : Macro → Meso
+
+Consistency:
+Ξ_μm(Micro) ≅ Ξ_Mm(Macro)
+
 SECTION 0 — AMBIENT STRUCTURES
 ------------------------------------------------------------
 Let R be the RDG category:

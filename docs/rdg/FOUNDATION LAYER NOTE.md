@@ -15,7 +15,7 @@ $$
 G = {Aut}(M,R) \cong S_3 \times D_4,
 $$
 
-together with the induced orbit structure on partitions. The orbit structure alone does not determine the lawful treatment cardinalities 
+together with the induced orbit structure on partitions. Orbit equivalence preserves partition profile and block cardinality and therefore does not, by itself, determine 
 
 $$
 K_{\text{lawful}}=\{3,4\}.

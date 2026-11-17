@@ -149,8 +149,8 @@ It means that the representation no longer contains the information needed to re
 
 Examples include:
 
-- a partition \\(\pi\\),
-- an orbit class \\([\pi]\\),
+- a partition \$\pi\$,
+- an orbit class \$[\pi]\$,
 - a synchronization label,
 - a proof object.
 
@@ -287,10 +287,8 @@ Objects, classifications, and labels are viewed as stabilized projections of ong
 Consider
 
 $$
-\dot{\theta}_i
-=
-\omega_i
-+
+\dot{\theta}_i =
+\omega_i +
 \frac{K}{N}
 \sum_j
 \sin(\theta_j-\theta_i).
@@ -299,8 +297,7 @@ $$
 In a synchronized regime,
 
 $$
-\theta_i(t)
-=
+\theta_i(t) =
 \Omega t+\delta_i.
 $$
 

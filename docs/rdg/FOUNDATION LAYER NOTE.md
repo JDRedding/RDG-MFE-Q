@@ -12,7 +12,7 @@
 The Foundation Layer establishes
 
 $$
-G = \operatorname{Aut}(M,R) \cong S_3 \times D_4,
+G = {Aut}(M,R) \cong S_3 \times D_4,
 $$
 
 together with the induced orbit structure on partitions. Orbit equivalence preserves partition profile and block cardinality and therefore does not derive
@@ -452,7 +452,7 @@ $$
 \pi_2=g\cdot\pi_1
 \quad
 \text{for some }
-g\in\operatorname{Aut}(M,R).
+g\in{Aut}(M,R).
 $$
 
 Orbit equivalence preserves representation-level structure.
